@@ -1,5 +1,5 @@
 diff --git a/src/Mod/Drawing/Gui/DrawingView.cpp b/src/Mod/Drawing/Gui/DrawingView.cpp
-index bbfb05465..90d3677f4 100644
+index bbfb054..90d3677 100644
 --- a/src/Mod/Drawing/Gui/DrawingView.cpp
 +++ b/src/Mod/Drawing/Gui/DrawingView.cpp
 @@ -306,7 +306,7 @@ void DrawingView::findPrinterSettings(const QString& fileName)
