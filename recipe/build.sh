@@ -3,8 +3,6 @@ cd build
 
 declare -a CMAKE_PLATFORM_FLAGS
 if [ `uname` = "Darwin" ]; then
-
-      sed -i '' 's/Xcode-9.app/Xcode.app/g' $PREFIX/lib/cmake/opencascade/OpenCASCADEVisualizationTargets.cmake
       CMAKE_PLATFORM_FLAGS+=(-DCMAKE_OSX_SYSROOT="${CONDA_BUILD_SYSROOT}")
       SOME_VAR="-D BUILD_WEB:BOOL=OFF \
                 -D BUILD_START:BOOL=OFF \
