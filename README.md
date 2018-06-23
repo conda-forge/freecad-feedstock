@@ -7,7 +7,7 @@ Package license: LGPL2
 
 Feedstock license: BSD 3-Clause
 
-Summary: Simple, fast, extensible JSON encoder/decoder for Python
+Summary: FreeCAD is a parametric 3D modeler made primarily to design real-life objects of any size. 
 
 FreeCAD is a general purpose feature-based, parametric 3D modeler for
 CAD, MCAD, CAx, CAE and PLM, aimed directly at mechanical engineering
@@ -25,9 +25,8 @@ platforms.
 Current build status
 ====================
 
-[![OSX](https://img.shields.io/circleci/project/github/conda-forge/freecad-feedstock/master.svg?label=OSX)](https://circleci.com/gh/conda-forge/freecad-feedstock)
-![Linux disabled](https://img.shields.io/badge/linux-disabled-lightgrey.svg)
-![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
+[![Linux,OSX](https://img.shields.io/circleci/project/github/conda-forge/freecad-feedstock/master.svg?label=Linux,OSX)](https://circleci.com/gh/conda-forge/freecad-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/freecad-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/freecad-feedstock/branch/master)
 
 Current release info
 ====================
