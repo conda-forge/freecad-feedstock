@@ -25,7 +25,8 @@ platforms.
 Current build status
 ====================
 
-[![Linux,OSX](https://img.shields.io/circleci/project/github/conda-forge/freecad-feedstock/master.svg?label=Linux,OSX)](https://circleci.com/gh/conda-forge/freecad-feedstock)
+[![OSX](https://img.shields.io/circleci/project/github/conda-forge/freecad-feedstock/master.svg?label=OSX)](https://circleci.com/gh/conda-forge/freecad-feedstock)
+![Linux disabled](https://img.shields.io/badge/linux-disabled-lightgrey.svg)
 ![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
