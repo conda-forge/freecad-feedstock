@@ -1,46 +1,22 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 31f0f9a..a9aeb67 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -1000,13 +1000,6 @@ endif()
-                                                             "QHeaderView.setResizeMode = QHeaderView.setSectionResizeMode\n")
-         file(WRITE ${CMAKE_BINARY_DIR}/Ext/PySide/QtSvg.py  "from PySide2.QtSvg import *\n")
- 
--	if(APPLE)
--	    INSTALL(
--	        DIRECTORY	
--                    ${CMAKE_BINARY_DIR}/Ext/PySide
--		DESTINATION
--                    MacOS
--            )
- 	else()
-             INSTALL(
- 	        DIRECTORY	
 diff --git a/src/Main/CMakeLists.txt b/src/Main/CMakeLists.txt
-index 4948cb2..a3ebdd1 100644
+index 4948cb2..bebbc5e 100644
 --- a/src/Main/CMakeLists.txt
 +++ b/src/Main/CMakeLists.txt
-@@ -49,11 +49,6 @@ if(BUILD_GUI)
+@@ -49,7 +49,7 @@ if(BUILD_GUI)
              RUNTIME DESTINATION bin
              LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
          )
 -    elseif(APPLE)
--        INSTALL(TARGETS FreeCADMain
--	    RUNTIME DESTINATION MacOS
--            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
--        )
-     else()
-         INSTALL(TARGETS FreeCADMain 
-             RUNTIME DESTINATION bin
-@@ -94,11 +89,6 @@ if(WIN32)
++    elseif(APPLE AND NOT BUILD_WITH_CONDA)
+         INSTALL(TARGETS FreeCADMain
+ 	    RUNTIME DESTINATION MacOS
+             LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+@@ -94,7 +94,7 @@ if(WIN32)
          RUNTIME DESTINATION bin
          LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
      )
 -elseif(APPLE)
--    INSTALL(TARGETS FreeCADMainCmd
--        RUNTIME DESTINATION MacOS
--        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
--    )
- else()
-     INSTALL(TARGETS FreeCADMainCmd 
-         RUNTIME DESTINATION bin
++elseif(APPLE AND NOT BUILD_WITH_CONDA)
+     INSTALL(TARGETS FreeCADMainCmd
+         RUNTIME DESTINATION MacOS
+         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
