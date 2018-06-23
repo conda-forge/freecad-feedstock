@@ -26,7 +26,7 @@ Current build status
 ====================
 
 [![Linux,OSX](https://img.shields.io/circleci/project/github/conda-forge/freecad-feedstock/master.svg?label=Linux,OSX)](https://circleci.com/gh/conda-forge/freecad-feedstock)
-[![Windows](https://img.shields.io/appveyor/ci/conda-forge/freecad-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/freecad-feedstock/branch/master)
+![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
 ====================
