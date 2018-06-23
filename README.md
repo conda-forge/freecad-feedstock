@@ -7,7 +7,7 @@ Package license: LGPL2
 
 Feedstock license: BSD 3-Clause
 
-Summary: Simple, fast, extensible JSON encoder/decoder for Python
+Summary: FreeCAD is a parametric 3D modeler made primarily to design real-life objects of any size. 
 
 FreeCAD is a general purpose feature-based, parametric 3D modeler for
 CAD, MCAD, CAx, CAE and PLM, aimed directly at mechanical engineering
