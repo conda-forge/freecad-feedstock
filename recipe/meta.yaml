@@ -20,7 +20,7 @@ source:
 
 build:
     number: 1
-    skip: True  # [win]
+    skip: True  # [win or linux]
 
 requirements:
     build:
