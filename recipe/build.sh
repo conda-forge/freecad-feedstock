@@ -39,4 +39,4 @@ cmake -G "Ninja" \
       ..
 
 ninja install
-rm ${PREFIX}/doc -r     # smaller size of package!
+rm -r ${PREFIX}/doc     # smaller size of package!
