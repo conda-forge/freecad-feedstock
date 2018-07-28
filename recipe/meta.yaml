@@ -15,7 +15,7 @@ source:
     patches:
         - osx.patch  # [osx]
         - osx1.patch  # [osx]
-        - smesh.patch # [osx]
+        - smesh.patch  # [osx]
         - win_unicode.patch
 
 build:
