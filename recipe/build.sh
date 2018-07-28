@@ -41,6 +41,4 @@ cmake -G "Ninja" \
       ..
 
 ninja install
-if [ `uname` != "Darwin" ]; then
-      rm ${PREFIX}/doc -r     # smaller size of package!
-fi
+rm ${PREFIX}/doc -r     # smaller size of package!

@@ -1,7 +1,7 @@
 {% set name = "freecad" %}
 {% set version = "0.18b0" %}
-{% set sha256 = "bcd7d9a585b1c024ec706d7d9250b986aa0931db2f242751a610cf3d0e4f55cb" %}
-{% set commit = "8f1c6f77c090ae7d9c2bfd4f18811083b01a3eb2" %}
+{% set sha256 = "b0552a514a24e80d2895c2dc3c44d05b29b3946876c42c17047a2e8e704f8a6f" %}
+{% set commit = "db4f47cf281859c2b3821ceb53cbd95588655967" %}
 
 
 package:
@@ -15,11 +15,11 @@ source:
     patches:
         - osx.patch  # [osx]
         - osx1.patch  # [osx]
-        - smesh.patch
+        - smesh.patch # [osx]
         - win_unicode.patch
 
 build:
-    number: 2
+    number: 3
 
 requirements:
     build:
@@ -50,8 +50,8 @@ requirements:
         - hdf5 1.10.1
     run:
         - {{ pin_compatible("pyside2") }}
-        - {{ pin_compatible("occt", max_pin="x.x") }}
-        - {{ pin_compatible("vtk", max_pin='x.x.x') }}
+        - occt
+        - vtk
         - qt
         - xerces-c
         - zlib
