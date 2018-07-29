@@ -31,6 +31,7 @@ requirements:
         - boost-cpp
         - python
         - qt
+        - qtwebkit  # [osx]
         - occt
         - xerces-c
         - zlib
@@ -45,14 +46,18 @@ requirements:
         - smesh
         - netgen  # [not win32]
         - doxygen
+        - hdf5 1.10.1
         - libglu  # [linux]
         - mesalib  # [linux]
-        - hdf5 1.10.1
+        - xorg-libxi  # [linux]
+        - xorg-libxmu  # [linux]
+        - xorg-libxt  # [linux]
     run:
         - {{ pin_compatible("pyside2") }}
         - occt
         - vtk
         - qt
+        - qtwebkit  # [osx]
         - xerces-c
         - zlib
         - boost-cpp
@@ -66,6 +71,9 @@ requirements:
         - netgen  # [not win32]
         - libglu  # [linux]
         - mesalib  # [linux]
+        - xorg-libxi  # [linux]
+        - xorg-libxmu  # [linux]
+        - xorg-libxt  # [linux]
 
 test:
     commands:

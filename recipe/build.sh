@@ -4,8 +4,8 @@ cd build
 declare -a CMAKE_PLATFORM_FLAGS
 if [ `uname` = "Darwin" ]; then
       CMAKE_PLATFORM_FLAGS+=(-DCMAKE_OSX_SYSROOT="${CONDA_BUILD_SYSROOT}")
-      SOME_VAR="-D BUILD_WEB:BOOL=OFF \
-                -D BUILD_START:BOOL=OFF \
+      SOME_VAR="-D BUILD_WEB:BOOL=ON \
+                -D BUILD_START:BOOL=ON \
              "
 else
       SOME_VAR="-D BUILD_WEB:BOOL=ON \
