@@ -1,7 +1,7 @@
 {% set name = "freecad" %}
 {% set version = "0.18b0" %}
-{% set sha256 = "b0552a514a24e80d2895c2dc3c44d05b29b3946876c42c17047a2e8e704f8a6f" %}
-{% set commit = "db4f47cf281859c2b3821ceb53cbd95588655967" %}
+{% set sha256 = "5737252019f778d49f7ef0befd17f90462bee67d513364320a5bc900773fc9e2" %}
+{% set commit = "2a6655e1768d80e0098d410989ae02c622f2e698" %}
 
 
 package:
@@ -19,7 +19,7 @@ source:
         - win_unicode.patch
 
 build:
-    number: 3
+    number: 4
 
 requirements:
     build:
