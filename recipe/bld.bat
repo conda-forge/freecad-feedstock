@@ -1,11 +1,6 @@
 mkdir build
 cd build
 
-set "CFLAGS= "
-set "CXXFLAGS= "
-set "LDFLAGS_SHARED= ucrt.lib"
-
-IF %ARCH%==64 (SET BUILD_WITH_NETGEN=1) ELSE (SET BUILD_WITH_NETGEN=0)
 
 cmake -G "Ninja" ^
       -D BUID_WITH_CONDA:BOOL=ON ^
@@ -32,6 +27,8 @@ cmake -G "Ninja" ^
       -D SMESH_INCLUDE_DIR:FILEPATH=%LIBRARY_PREFIX%/include/smesh ^
       -D FREECAD_USE_EXTERNAL_SMESH:BOOL=ON ^
       -D BUILD_FLAT_MESH:BOOL=ON ^
+      -D BUILD_PLOT:BOOL=OFF ^
+      -D BUILD_SHIP:BOOL=OFF ^
       -D OCCT_CMAKE_FALLBACK:BOOL=ON ^
       ..
 
