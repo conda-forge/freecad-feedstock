@@ -7,6 +7,7 @@ if [ `uname` = "Darwin" ]; then
       SOME_VAR="-D BUILD_WEB:BOOL=ON \
                 -D BUILD_START:BOOL=ON \
              "
+      sed -i '' 's/Xcode-9.app/Xcode.app/g' $PREFIX/lib/cmake/opencascade/OpenCASCADEVisualizationTargets.cmake
 else
       SOME_VAR="-D BUILD_WEB:BOOL=ON \
              "
@@ -33,7 +34,10 @@ cmake -G "Ninja" \
       -D BUILD_WITH_CONDA:BOOL=ON \
       -D PYTHON_EXECUTABLE:FILEPATH=$PREFIX/bin/python \
       -D BUILD_FEM_NETGEN:BOOL=ON \
+      -D BUILD_PLOT:BOOL=OFF \
+      -D BUILD_SHIP:BOOL=OFF \
       -D OCCT_CMAKE_FALLBACK:BOOL=OFF \
+      -D FREECAD_USE_QT_DIALOG:BOOL=ON \
       ${SOME_VAR} \
       ${CMAKE_PLATFORM_FLAGS[@]} \
       ..

@@ -14,16 +14,23 @@ source:
     sha256: {{ sha256 }}
     patches:
         - osx.patch  # [osx]
-        - osx1.patch  # [osx]
-        - smesh.patch  # [osx]
-        - win_unicode.patch
 
 build:
-    number: 4
+    number: 1000
+    skip: true  # [py<37]
 
 requirements:
     build:
         - {{ compiler("cxx") }}
+        - {{ cdt('mesa-libgl-devel') }}  # [linux]
+        - {{ cdt('mesa-dri-drivers') }}  # [linux]
+        - {{ cdt('libselinux') }}  # [linux]
+        - {{ cdt('libxdamage') }}  # [linux]
+        - {{ cdt('libxfixes') }}  # [linux]
+        - {{ cdt('libxxf86vm') }}  # [linux]
+        - {{ cdt('libxcb') }}  # [linux]
+        - {{ cdt('libxext') }}  # [linux]
+        - {{ cdt('xorg-x11-server-xvfb') }}  # [linux]
         - cmake
         - ninja
         - git

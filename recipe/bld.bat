@@ -32,6 +32,8 @@ cmake -G "Ninja" ^
       -D SMESH_INCLUDE_DIR:FILEPATH=%LIBRARY_PREFIX%/include/smesh ^
       -D FREECAD_USE_EXTERNAL_SMESH:BOOL=ON ^
       -D BUILD_FLAT_MESH:BOOL=ON ^
+      -D BUILD_PLOT:BOOL=OFF ^
+      -D BUILD_SHIP:BOOL=OFF ^
       -D OCCT_CMAKE_FALLBACK:BOOL=ON ^
       ..
 
