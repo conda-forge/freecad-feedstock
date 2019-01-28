@@ -1,19 +1,6 @@
 mkdir -p build
 cd build
 
-declare -a CMAKE_PLATFORM_FLAGS
-if [ `uname` = "Darwin" ]; then
-      CMAKE_PLATFORM_FLAGS+=(-DCMAKE_OSX_SYSROOT="${CONDA_BUILD_SYSROOT}")
-      SOME_VAR="-D BUILD_WEB:BOOL=ON \
-                -D BUILD_START:BOOL=ON \
-             "
-else
-      SOME_VAR="-D BUILD_WEB:BOOL=ON \
-             "
-fi
-
-export LIBRARY_PATH=$PREFIX/lib
-
 cmake -G "Ninja" \
       -D BUID_WITH_CONDA:BOOL=ON \
       -D CMAKE_BUILD_TYPE=Release \
@@ -33,9 +20,10 @@ cmake -G "Ninja" \
       -D BUILD_WITH_CONDA:BOOL=ON \
       -D PYTHON_EXECUTABLE:FILEPATH=$PREFIX/bin/python \
       -D BUILD_FEM_NETGEN:BOOL=ON \
+      -D BUILD_PLOT:BOOL=OFF \
+      -D BUILD_SHIP:BOOL=OFF \
       -D OCCT_CMAKE_FALLBACK:BOOL=OFF \
-      ${SOME_VAR} \
-      ${CMAKE_PLATFORM_FLAGS[@]} \
+      -D FREECAD_USE_QT_DIALOG:BOOL=ON \
       ..
 
 ninja install

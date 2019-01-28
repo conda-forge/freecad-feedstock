@@ -1,7 +1,6 @@
 {% set name = "freecad" %}
-{% set version = "0.18b0" %}
-{% set sha256 = "5737252019f778d49f7ef0befd17f90462bee67d513364320a5bc900773fc9e2" %}
-{% set commit = "2a6655e1768d80e0098d410989ae02c622f2e698" %}
+{% set version = "0.18" %}
+{% set sha256 = "7f3824097c43547c0557312c1cc179c274c28a64384ca9de1e8cf6bbef6f0a19" %}
 
 
 package:
@@ -10,20 +9,26 @@ package:
 
 source:
     fn: {{ name }}_{{ version }}.tar.gz
-    url: https://github.com/FreeCAD/FreeCAD/archive/{{ commit }}.tar.gz
+    url: https://github.com/FreeCAD/FreeCAD/archive/{{ version }}.tar.gz
     sha256: {{ sha256 }}
-    patches:
-        - osx.patch  # [osx]
-        - osx1.patch  # [osx]
-        - smesh.patch  # [osx]
-        - win_unicode.patch
 
 build:
-    number: 4
+    number: 0
+    skip: true  # [py<37]
 
 requirements:
     build:
         - {{ compiler("cxx") }}
+        - {{ cdt('mesa-libgl-devel') }}  # [linux]
+        - {{ cdt('mesa-dri-drivers') }}  # [linux]
+        - {{ cdt('libselinux') }}  # [linux]
+        - {{ cdt('libxdamage') }}  # [linux]
+        - {{ cdt('libxfixes') }}  # [linux]
+        - {{ cdt('libxxf86vm') }}  # [linux]
+        - {{ cdt('libxcb') }}  # [linux]
+        - {{ cdt('libxext') }}  # [linux]
+        - {{ cdt('xorg-x11-server-xvfb') }}  # [linux]
+        - {{ cdt('libxau') }}  # [linux]
         - cmake
         - ninja
         - git
@@ -31,49 +36,46 @@ requirements:
         - boost-cpp
         - python
         - qt
-        - qtwebkit  # [osx]
         - occt
         - xerces-c
         - zlib
-        - vtk 8.1.1
+        - vtk  8.1.2
         - swig
         - eigen
         - pybind11
-        - matplotlib
         - coin3d
         - pivy
         - pyside2
         - smesh
-        - netgen  # [not win32]
+        - netgen
         - doxygen
-        - hdf5 1.10.1
-        - libglu  # [linux]
-        - mesalib  # [linux]
+        - hdf5
         - xorg-libxi  # [linux]
         - xorg-libxmu  # [linux]
         - xorg-libxt  # [linux]
+        - tbb-devel
+        - blas * openblas
+        - freetype
     run:
         - {{ pin_compatible("pyside2") }}
         - occt
-        - vtk
+        - {{ pin_compatible("vtk") }}
         - qt
-        - qtwebkit  # [osx]
         - xerces-c
         - zlib
         - boost-cpp
         - hdf5
         - python
-        - numpy
-        - matplotlib
         - coin3d
         - pivy
         - smesh
-        - netgen  # [not win32]
-        - libglu  # [linux]
-        - mesalib  # [linux]
+        - netgen
         - xorg-libxi  # [linux]
         - xorg-libxmu  # [linux]
         - xorg-libxt  # [linux]
+        - freetype
+        - numpy
+        - six
 
 test:
     commands:
@@ -83,7 +85,7 @@ about:
     home: https://www.freecadweb.org/
     license: LGPL2
     license_family: LGPL
-    license_file: COPYING
+    license_file: LICENSE
     summary: 'FreeCAD is a parametric 3D modeler made primarily to design real-life objects of any size. '
     description: |
         FreeCAD is a general purpose feature-based, parametric 3D modeler for
