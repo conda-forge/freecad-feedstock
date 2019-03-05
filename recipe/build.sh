@@ -1,18 +1,6 @@
 mkdir -p build
 cd build
 
-declare -a CMAKE_PLATFORM_FLAGS
-if [ `uname` = "Darwin" ]; then
-      CMAKE_PLATFORM_FLAGS+=(-DCMAKE_OSX_SYSROOT="${CONDA_BUILD_SYSROOT}")
-      SOME_VAR="-D BUILD_WEB:BOOL=ON \
-                -D BUILD_START:BOOL=ON \
-             "
-      sed -i '' 's/Xcode-9.app/Xcode.app/g' $PREFIX/lib/cmake/opencascade/OpenCASCADEVisualizationTargets.cmake
-else
-      SOME_VAR="-D BUILD_WEB:BOOL=ON \
-             "
-fi
-
 export LIBRARY_PATH=$PREFIX/lib
 
 cmake -G "Ninja" \

@@ -1,7 +1,7 @@
 {% set name = "freecad" %}
 {% set version = "0.18b0" %}
-{% set sha256 = "23a87b4011999ece1cd96c84e3fe71ea86dc68ca7d40d0d532e8dbe6b59fd19e" %}
-{% set commit = "93dd00cc3953416bf46fb0a5b7b3c6397df6e4d0" %}
+{% set sha256 = "TODO" %}
+{% set commit = "TODO" %}
 
 
 package:
@@ -39,7 +39,6 @@ requirements:
         - boost-cpp
         - python
         - qt
-        - qtwebkit  # [osx]
         - occt
         - xerces-c
         - zlib
@@ -59,12 +58,12 @@ requirements:
         - xorg-libxt  # [linux]
         - tbb-devel
         - blas * openblas
+        - freetype
     run:
         - {{ pin_compatible("pyside2") }}
         - occt
         - vtk
         - qt
-        - qtwebkit  # [osx]
         - xerces-c
         - zlib
         - boost-cpp
@@ -77,8 +76,11 @@ requirements:
         - xorg-libxi  # [linux]
         - xorg-libxmu  # [linux]
         - xorg-libxt  # [linux]
+        - freetype
 
 test:
+    requires:
+        - six
     commands:
         - FreeCADCmd -t 0
 
