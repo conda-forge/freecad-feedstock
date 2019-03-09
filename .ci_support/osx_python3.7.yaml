@@ -8,6 +8,8 @@ channel_targets:
 - conda-forge main
 cxx_compiler:
 - clangxx
+freetype:
+- 2.9.1
 hdf5:
 - 1.10.4
 macos_machine:
@@ -19,6 +21,8 @@ occt:
 pin_run_as_build:
   boost-cpp:
     max_pin: x.x.x
+  freetype:
+    max_pin: x
   occt:
     max_pin: x.x
   python:
@@ -37,7 +41,7 @@ python:
 qt:
 - '5.6'
 vtk:
-- 8.1.2
+- 8.1.1
 xerces_c:
 - 3.2.2
 zlib:
