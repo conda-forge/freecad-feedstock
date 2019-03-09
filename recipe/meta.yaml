@@ -1,7 +1,7 @@
 {% set name = "freecad" %}
-{% set version = "0.18b0" %}
-{% set sha256 = "TODO" %}
-{% set commit = "TODO" %}
+{% set version = "0.18" %}
+{% set sha256 = "5829bbb131aad7d6d0ef9688dfcd64bd1efe2a920f111df8196cbba3458e2467" %}
+{% set commit = "6363c90a20b296ab69d7b52230009928199d90df" %}
 
 
 package:

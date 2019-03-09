@@ -1,8 +1,6 @@
 mkdir -p build
 cd build
 
-export LIBRARY_PATH=$PREFIX/lib
-
 cmake -G "Ninja" \
       -D BUID_WITH_CONDA:BOOL=ON \
       -D CMAKE_BUILD_TYPE=Release \
@@ -26,8 +24,6 @@ cmake -G "Ninja" \
       -D BUILD_SHIP:BOOL=OFF \
       -D OCCT_CMAKE_FALLBACK:BOOL=OFF \
       -D FREECAD_USE_QT_DIALOG:BOOL=ON \
-      ${SOME_VAR} \
-      ${CMAKE_PLATFORM_FLAGS[@]} \
       ..
 
 ninja install

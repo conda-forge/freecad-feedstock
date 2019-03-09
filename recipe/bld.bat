@@ -1,11 +1,6 @@
 mkdir build
 cd build
 
-set "CFLAGS= "
-set "CXXFLAGS= "
-set "LDFLAGS_SHARED= ucrt.lib"
-
-IF %ARCH%==64 (SET BUILD_WITH_NETGEN=1) ELSE (SET BUILD_WITH_NETGEN=0)
 
 cmake -G "Ninja" ^
       -D BUID_WITH_CONDA:BOOL=ON ^
