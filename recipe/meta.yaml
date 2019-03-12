@@ -1,7 +1,6 @@
 {% set name = "freecad" %}
 {% set version = "0.18" %}
-{% set sha256 = "5829bbb131aad7d6d0ef9688dfcd64bd1efe2a920f111df8196cbba3458e2467" %}
-{% set commit = "6363c90a20b296ab69d7b52230009928199d90df" %}
+{% set sha256 = "970f81420494a3f83d5c7d4e63c4eae5c68b08b496371674fdc2ddbadd0f9378" %}
 
 
 package:
@@ -10,10 +9,8 @@ package:
 
 source:
     fn: {{ name }}_{{ version }}.tar.gz
-    url: https://github.com/FreeCAD/FreeCAD/archive/{{ commit }}.tar.gz
+    url: https://github.com/FreeCAD/FreeCAD/archive/releases/FreeCAD-0-18.tar.gz
     sha256: {{ sha256 }}
-    patches:
-        - osx.patch  # [osx]
 
 build:
     number: 1000
@@ -77,10 +74,10 @@ requirements:
         - xorg-libxmu  # [linux]
         - xorg-libxt  # [linux]
         - freetype
+        - numpy
+        - six
 
 test:
-    requires:
-        - six
     commands:
         - FreeCADCmd -t 0
 
