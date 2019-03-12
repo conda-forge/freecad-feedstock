@@ -1,6 +1,9 @@
 mkdir build
 cd build
 
+set "CFLAGS= "
+set "CXXFLAGS= "
+set "LDFLAGS_SHARED= ucrt.lib"
 
 cmake -G "Ninja" ^
       -D BUID_WITH_CONDA:BOOL=ON ^
