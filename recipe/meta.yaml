@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
 {% set version = "0.18" %}
-{% set sha256 = "924b5a2c796014981a977189b9264bbfaedeca41dd6053285f0c38c75d573c9c" %}
+{% set sha256 = "7f3824097c43547c0557312c1cc179c274c28a64384ca9de1e8cf6bbef6f0a19" %}
 
 
 package:
@@ -9,8 +9,7 @@ package:
 
 source:
     fn: {{ name }}_{{ version }}.tar.gz
-    # url: https://github.com/FreeCAD/FreeCAD/archive/{{ version }}.tar.gz
-    url: https://github.com/FreeCAD/FreeCAD/archive/690774c0effe4fd7b8d2b5e2fb2b8c8d145e21ce.tar.gz
+    url: https://github.com/FreeCAD/FreeCAD/archive/{{ version }}.tar.gz
     sha256: {{ sha256 }}
 
 build:
@@ -59,8 +58,8 @@ requirements:
         - freetype
     run:
         - {{ pin_compatible("pyside2") }}
-        - occt
         - {{ pin_compatible("vtk") }}
+        - occt
         - qt
         - xerces-c
         - zlib
