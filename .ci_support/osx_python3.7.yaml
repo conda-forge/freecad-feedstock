@@ -3,11 +3,13 @@ MACOSX_DEPLOYMENT_TARGET:
 boost_cpp:
 - 1.68.0
 channel_sources:
-- conda-forge,defaults
+- freecad,conda-forge,defaults
 channel_targets:
-- conda-forge main
+- freecad dev
 cxx_compiler:
 - clangxx
+cxx_compiler_version:
+- '4'
 freetype:
 - 2.9.1
 hdf5:

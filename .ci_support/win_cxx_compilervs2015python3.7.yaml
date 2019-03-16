@@ -1,9 +1,9 @@
 boost_cpp:
 - 1.68.0
 channel_sources:
-- conda-forge,defaults
+- freecad,conda-forge,defaults
 channel_targets:
-- conda-forge main
+- freecad dev
 cxx_compiler:
 - vs2015
 freetype:
