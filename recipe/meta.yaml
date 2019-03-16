@@ -1,16 +1,13 @@
 {% set name = "freecad" %}
-{% set version = "0.18" %}
-{% set sha256 = "7f3824097c43547c0557312c1cc179c274c28a64384ca9de1e8cf6bbef6f0a19" %}
-
+{% set version = "0.19.pre" %}
 
 package:
     name: {{ name }}
     version: {{ version }}
 
 source:
-    fn: {{ name }}_{{ version }}.tar.gz
-    url: https://github.com/FreeCAD/FreeCAD/archive/{{ version }}.tar.gz
-    sha256: {{ sha256 }}
+    git-url: https://github.com/FreeCAD/FreeCAD
+    git-tag: master
 
 build:
     number: 0
