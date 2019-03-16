@@ -6,8 +6,8 @@ package:
     version: {{ version }}
 
 source:
-    git-url: https://github.com/FreeCAD/FreeCAD
-    git-tag: master
+    git_url: https://github.com/FreeCAD/FreeCAD
+    git_tag: master
 
 build:
     number: 0
