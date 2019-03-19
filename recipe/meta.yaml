@@ -13,7 +13,7 @@ source:
     sha256: {{ sha256 }}
 
 build:
-    number: 0
+    number: 1
     skip: true  # [py<37]
 
 requirements:
@@ -33,6 +33,8 @@ requirements:
         - ninja
         - git
     host:
+      - libblas
+      - libcblas
         - boost-cpp
         - python
         - qt
@@ -54,7 +56,6 @@ requirements:
         - xorg-libxmu  # [linux]
         - xorg-libxt  # [linux]
         - tbb-devel
-        - blas * openblas
         - freetype
     run:
         - {{ pin_compatible("pyside2") }}
