@@ -33,8 +33,6 @@ requirements:
     - ninja
     - git
   host:
-    - libblas
-    - libcblas
     - boost-cpp
     - python
     - qt
