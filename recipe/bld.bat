@@ -33,6 +33,7 @@ cmake -G "Ninja" ^
       -D BUILD_PLOT:BOOL=OFF ^
       -D BUILD_SHIP:BOOL=OFF ^
       -D OCCT_CMAKE_FALLBACK:BOOL=ON ^
+      -D FREECAD_USE_QWEBKIT:BOOL=ON ^
       ..
 
 if errorlevel 1 exit 1
