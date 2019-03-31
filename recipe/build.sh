@@ -24,6 +24,7 @@ cmake -G "Ninja" \
       -D BUILD_SHIP:BOOL=OFF \
       -D OCCT_CMAKE_FALLBACK:BOOL=OFF \
       -D FREECAD_USE_QT_DIALOG:BOOL=ON \
+      -D FREECAD_USE_QWEBKIT:BOOL=ON \
       ..
 
 ninja install
