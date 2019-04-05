@@ -10,7 +10,7 @@ source:
     git_tag: master
 
 build:
-    number: 2
+    number: 3
     skip: true  # [py<37]
 
 requirements:
@@ -36,7 +36,7 @@ requirements:
         - occt
         - xerces-c
         - zlib
-        - vtk  8.1.2
+        - vtk
         - swig
         - eigen
         - pybind11
@@ -55,7 +55,7 @@ requirements:
         - freetype
     run:
         - {{ pin_compatible("pyside2") }}
-        - {{ pin_compatible("vtk") }}
+        - vtk
         - occt
         - qt
         - xerces-c
