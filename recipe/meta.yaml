@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
-{% set version = "0.18" %}
-{% set sha256 = "7f3824097c43547c0557312c1cc179c274c28a64384ca9de1e8cf6bbef6f0a19" %}
+{% set version = "0.18.1" %}
+{% set sha256 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" %}
 
 
 package:
@@ -13,7 +13,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   skip: true  # [py<37]
 
 requirements:
