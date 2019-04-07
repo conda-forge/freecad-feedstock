@@ -39,7 +39,7 @@ requirements:
     - occt
     - xerces-c
     - zlib
-    - vtk
+    - vtk  8.2.*
     - swig
     - eigen
     - pybind11
@@ -57,7 +57,7 @@ requirements:
     - freetype
   run:
     - {{ pin_compatible("pyside2") }}
-    - vtk
+    - {{ pin_compatible("vtk") }}
     - occt
     - qt
     - xerces-c
