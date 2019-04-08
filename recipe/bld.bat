@@ -33,7 +33,7 @@ cmake -G "Ninja" ^
       -D BUILD_FLAT_MESH:BOOL=ON ^
       -D BUILD_PLOT:BOOL=OFF ^
       -D BUILD_SHIP:BOOL=OFF ^
-      -D PYTHON_EXECUTABLE:FILEPATH=%LIBRARY_PREFIX%/python ^
+      -D PYTHON_EXECUTABLE:FILEPATH=%PREFIX%/python ^
       ..
 
 if errorlevel 1 exit 1
