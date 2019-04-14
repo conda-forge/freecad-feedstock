@@ -10,7 +10,7 @@ source:
     git_tag: master
 
 build:
-    number: 3
+    number: 4
     skip: true  # [py<37]
 
 requirements:
@@ -81,7 +81,7 @@ test:
 
 about:
     home: https://www.freecadweb.org/
-    license: LGPL2
+    license: LGPL2.1
     license_family: LGPL
     license_file: LICENSE
     summary: 'FreeCAD is a parametric 3D modeler made primarily to design real-life objects of any size. '
