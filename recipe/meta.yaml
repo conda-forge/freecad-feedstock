@@ -9,6 +9,9 @@ source:
     git_url: https://github.com/FreeCAD/FreeCAD
     git_tag: master
 
+    patches:
+        - smesh_version.patch
+
 build:
     number: 10
     skip: true  # [py<37]
