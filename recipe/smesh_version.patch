@@ -18,3 +18,15 @@ index 7cebb2dcc..877bf0c08 100755
  #include "FemMeshPy.h"
  #include <Base/Interpreter.h>
  #include <Mod/Part/App/TopoShapePy.h>
+diff --git a/src/Mod/Fem/App/PreCompiled.h b/src/Mod/Fem/App/PreCompiled.h
+index 459eee481..9a879c1b7 100644
+--- a/src/Mod/Fem/App/PreCompiled.h
++++ b/src/Mod/Fem/App/PreCompiled.h
+@@ -74,6 +74,7 @@
+ #include <boost/tokenizer.hpp>
+ 
+ // Salomesh
++#include <SMESH_Version.h>
+ #include <SMESH_Gen.hxx>
+ #include <SMESH_Group.hxx>
+ #include <SMESHDS_Mesh.hxx>
