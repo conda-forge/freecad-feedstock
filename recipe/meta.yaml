@@ -10,10 +10,10 @@ source:
     git_tag: master
 
     patches:
-        - smesh_version.patch
+        - python_linking.patch
 
 build:
-    number: 11
+    number: 12
     skip: true  # [py<37]
 
 requirements:

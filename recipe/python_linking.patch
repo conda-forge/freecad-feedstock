@@ -1,0 +1,102 @@
+diff --git a/src/Base/CMakeLists.txt b/src/Base/CMakeLists.txt
+index 46a1f7302..a6579041e 100644
+--- a/src/Base/CMakeLists.txt
++++ b/src/Base/CMakeLists.txt
+@@ -20,7 +20,6 @@ include_directories(
+ if(MSVC)
+     set(FreeCADBase_LIBS
+         ${Boost_LIBRARIES}
+-        ${PYTHON_LIBRARIES}
+         debug ${XercesC_DEBUG_LIBRARIES}
+         optimized ${XercesC_LIBRARIES}
+         ${ZLIB_LIBRARIES}
+@@ -45,7 +44,6 @@ if(MSVC)
+     endif()
+ elseif(MINGW)
+     set(FreeCADBase_LIBS
+-        ${PYTHON_LIBRARIES}
+         ${XercesC_LIBRARIES}
+         ${Boost_LIBRARIES}
+         ${ZLIB_LIBRARIES}
+@@ -53,7 +51,6 @@ elseif(MINGW)
+     )
+ else(MSVC)
+     set(FreeCADBase_LIBS
+-        ${PYTHON_LIBRARIES}
+         ${XercesC_LIBRARIES}
+         ${Boost_LIBRARIES}
+         ${ZLIB_LIBRARIES}
+diff --git a/src/Main/CMakeLists.txt b/src/Main/CMakeLists.txt
+index bebbc5ebc..fd1f9aa10 100644
+--- a/src/Main/CMakeLists.txt
++++ b/src/Main/CMakeLists.txt
+@@ -40,7 +40,7 @@ if(BUILD_GUI)
+     endif()
+ 
+     add_executable(FreeCADMain WIN32 ${FreeCAD_SRCS})
+-    target_link_libraries(FreeCADMain ${FreeCAD_LIBS})
++    target_link_libraries(FreeCADMain ${FreeCAD_LIBS} ${PYTHON_LIBRARIES})
+ 
+     SET_BIN_DIR(FreeCADMain FreeCAD)
+ 
+@@ -83,6 +83,10 @@ else()
+     )
+ endif()
+ 
++list(APPEND FreeCADMainCmd_LIBS
++    ${PYTHON_LIBRARIES}
++    )
++
+ target_link_libraries(FreeCADMainCmd 
+     ${FreeCADMainCmd_LIBS}
+ )
+diff --git a/src/Mod/MeshPart/App/CMakeLists.txt b/src/Mod/MeshPart/App/CMakeLists.txt
+index b62337cc9..cb535c42a 100644
+--- a/src/Mod/MeshPart/App/CMakeLists.txt
++++ b/src/Mod/MeshPart/App/CMakeLists.txt
+@@ -94,7 +94,7 @@ if (BUILD_FLAT_MESH)
+ 
+         add_library(flatmesh SHARED ${FLATMESH_SRCS})
+         SET_PYTHON_PREFIX_SUFFIX(flatmesh)
+-        target_link_libraries(flatmesh ${PYTHON_LIBRARIES} ${MeshPart_LIBS})
++        target_link_libraries(flatmesh ${MeshPart_LIBS})
+ 
+         SET_BIN_DIR(flatmesh flatmesh /Mod/MeshPart)
+         install(TARGETS flatmesh DESTINATION ${CMAKE_INSTALL_LIBDIR})
+@@ -128,7 +128,7 @@ if (BUILD_FLAT_MESH)
+ 
+                 add_library(flatmesh SHARED ${FLATMESH_SRCS})
+                 SET_PYTHON_PREFIX_SUFFIX(flatmesh)
+-                target_link_libraries(flatmesh ${PYTHON_LIBRARIES} ${MeshPart_LIBS} ${Boost_LIBRARIES})
++                target_link_libraries(flatmesh ${MeshPart_LIBS} ${Boost_LIBRARIES})
+ 
+                 SET_BIN_DIR(flatmesh flatmesh /Mod/MeshPart)
+                 install(TARGETS flatmesh DESTINATION ${CMAKE_INSTALL_LIBDIR})
+diff --git a/src/Mod/Path/libarea/CMakeLists.txt b/src/Mod/Path/libarea/CMakeLists.txt
+index 3e223f258..6e65aa046 100644
+--- a/src/Mod/Path/libarea/CMakeLists.txt
++++ b/src/Mod/Path/libarea/CMakeLists.txt
+@@ -123,7 +123,6 @@ if(MSVC)
+ 
+     set(area_LIBS
+         ${Boost_LIBRARIES}
+-        ${PYTHON_LIBRARIES}
+         ${area_native_LIBS}
+     )
+ elseif(MINGW)
+@@ -132,7 +131,6 @@ elseif(MINGW)
+     )
+     set(area_LIBS
+         ${Boost_LIBRARIES}
+-        ${PYTHON_LIBRARIES}
+         ${area_native_LIBS}
+     )
+ else(MSVC)
+@@ -140,7 +138,6 @@ else(MSVC)
+         )
+     set(area_LIBS
+         ${Boost_LIBRARIES}
+-        ${PYTHON_LIBRARIES}
+     )
+ endif(MSVC)
+ 
