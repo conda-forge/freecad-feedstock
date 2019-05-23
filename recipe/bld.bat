@@ -35,6 +35,7 @@ cmake -G "Ninja" ^
       -D OCCT_CMAKE_FALLBACK:BOOL=ON ^
       -D FREECAD_USE_QWEBKIT:BOOL=ON ^
       -D PYTHON_EXECUTABLE:FILEPATH=%PREFIX%/python ^
+      -D BUILD_DYNAMIC_LINK_PYTHON:BOOL=OFF ^
       ..
 
 if errorlevel 1 exit 1
