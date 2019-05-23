@@ -1,0 +1,156 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a12219e89..45ddd8989 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -106,11 +106,13 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_COMPILER_IS_CLANGXX)
+     INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
+ 
+     # get linker errors as soon as possible and not at runtime e.g. for modules
+-    if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+-        set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-undefined,error")
+-    elseif(UNIX)
+-        set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--no-undefined")
+-    endif()
++    if(BUILD_DYNAMIC_LINK_PYTHON)
++        if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
++            set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-undefined,error")
++        elseif(UNIX)
++            set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--no-undefined")
++        endif()
++    endif(BUILD_DYNAMIC_LINK_PYTHON)
+ endif(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_COMPILER_IS_CLANGXX)
+ 
+ if(CMAKE_COMPILER_IS_CLANGXX)
+@@ -209,6 +211,7 @@ OPTION(FREECAD_USE_EXTERNAL_KDL "Use system installed orocos-kdl instead of the
+ OPTION(FREECAD_USE_FREETYPE "Builds the features using FreeType libs" ON)
+ OPTION(FREECAD_BUILD_DEBIAN "Prepare for a build of a Debian package" OFF)
+ OPTION(BUILD_WITH_CONDA "Set ON if you build freecad with conda" OFF)
++OPTION(BUILD_DYNAMIC_LINK_PYTHON "If OFF extension-modules do not link against python-libraries" ON)
+ OPTION(OCCT_CMAKE_FALLBACK "disable usage of occt-config files" OFF)
+ if (WIN32 OR APPLE)
+     OPTION(FREECAD_USE_QT_FILEDIALOG "Use Qt's file dialog instead of the native one." OFF)
+diff --git a/src/Base/CMakeLists.txt b/src/Base/CMakeLists.txt
+index 46a1f7302..fadcf5147 100644
+--- a/src/Base/CMakeLists.txt
++++ b/src/Base/CMakeLists.txt
+@@ -17,10 +17,14 @@ include_directories(
+     ${PYCXX_INCLUDE_DIR}
+ )
+ 
++if (BUILD_DYNAMIC_LINK_PYTHON)
++    set(LINK_PYTHON_LIBRARIES ${PYTHON_LIBRARIES})
++endif (BUILD_DYNAMIC_LINK_PYTHON)
++
+ if(MSVC)
+     set(FreeCADBase_LIBS
+         ${Boost_LIBRARIES}
+-        ${PYTHON_LIBRARIES}
++        ${LINK_PYTHON_LIBRARIES}
+         debug ${XercesC_DEBUG_LIBRARIES}
+         optimized ${XercesC_LIBRARIES}
+         ${ZLIB_LIBRARIES}
+@@ -45,7 +49,7 @@ if(MSVC)
+     endif()
+ elseif(MINGW)
+     set(FreeCADBase_LIBS
+-        ${PYTHON_LIBRARIES}
++        ${LINK_PYTHON_LIBRARIES}
+         ${XercesC_LIBRARIES}
+         ${Boost_LIBRARIES}
+         ${ZLIB_LIBRARIES}
+@@ -53,7 +57,7 @@ elseif(MINGW)
+     )
+ else(MSVC)
+     set(FreeCADBase_LIBS
+-        ${PYTHON_LIBRARIES}
++        ${LINK_PYTHON_LIBRARIES}
+         ${XercesC_LIBRARIES}
+         ${Boost_LIBRARIES}
+         ${ZLIB_LIBRARIES}
+diff --git a/src/Main/CMakeLists.txt b/src/Main/CMakeLists.txt
+index bebbc5ebc..846e1ae0d 100644
+--- a/src/Main/CMakeLists.txt
++++ b/src/Main/CMakeLists.txt
+@@ -42,6 +42,12 @@ if(BUILD_GUI)
+     add_executable(FreeCADMain WIN32 ${FreeCAD_SRCS})
+     target_link_libraries(FreeCADMain ${FreeCAD_LIBS})
+ 
++    if(NOT BUILD_DYNAMIC_LINK_PYTHON)
++        # executeables have to be linked against python libraries,
++        # because extension modules are not.
++        target_link_libraries(FreeCADMain ${PYTHON_LIBRARIES})
++    endif(NOT BUILD_DYNAMIC_LINK_PYTHON)
++
+     SET_BIN_DIR(FreeCADMain FreeCAD)
+ 
+     if(WIN32)
+@@ -87,6 +93,12 @@ target_link_libraries(FreeCADMainCmd
+     ${FreeCADMainCmd_LIBS}
+ )
+ 
++if(NOT BUILD_DYNAMIC_LINK_PYTHON)
++    # executeables have to be linked against python libraries,
++    # because extension modules are not.
++    target_link_libraries(FreeCADMainCmd ${PYTHON_LIBRARIES})
++endif(NOT BUILD_DYNAMIC_LINK_PYTHON)
++
+ SET_BIN_DIR(FreeCADMainCmd FreeCADCmd)
+ 
+ if(WIN32)
+diff --git a/src/Mod/MeshPart/App/CMakeLists.txt b/src/Mod/MeshPart/App/CMakeLists.txt
+index b62337cc9..939f56638 100644
+--- a/src/Mod/MeshPart/App/CMakeLists.txt
++++ b/src/Mod/MeshPart/App/CMakeLists.txt
+@@ -128,7 +128,12 @@ if (BUILD_FLAT_MESH)
+ 
+                 add_library(flatmesh SHARED ${FLATMESH_SRCS})
+                 SET_PYTHON_PREFIX_SUFFIX(flatmesh)
+-                target_link_libraries(flatmesh ${PYTHON_LIBRARIES} ${MeshPart_LIBS} ${Boost_LIBRARIES})
++
++                if (BUILD_DYNAMIC_LINK_PYTHON)
++                    target_link_libraries(flatmesh ${PYTHON_LIBRARIES})
++                endif(BUILD_DYNAMIC_LINK_PYTHON)
++
++                target_link_libraries(flatmesh ${MeshPart_LIBS} ${Boost_LIBRARIES})
+ 
+                 SET_BIN_DIR(flatmesh flatmesh /Mod/MeshPart)
+                 install(TARGETS flatmesh DESTINATION ${CMAKE_INSTALL_LIBDIR})
+diff --git a/src/Mod/Path/libarea/CMakeLists.txt b/src/Mod/Path/libarea/CMakeLists.txt
+index 3e223f258..6f53cd097 100644
+--- a/src/Mod/Path/libarea/CMakeLists.txt
++++ b/src/Mod/Path/libarea/CMakeLists.txt
+@@ -123,25 +123,31 @@ if(MSVC)
+ 
+     set(area_LIBS
+         ${Boost_LIBRARIES}
+-        ${PYTHON_LIBRARIES}
+         ${area_native_LIBS}
+     )
++    if(BUILD_DYNAMIC_LINK_PYTHON)
++        list(APPEND area_LIBS ${PYTHON_LIBRARIES})
++    endif(BUILD_DYNAMIC_LINK_PYTHON)
+ elseif(MINGW)
+     set(area_native_LIBS
+         Rpcrt4.lib
+     )
+     set(area_LIBS
+         ${Boost_LIBRARIES}
+-        ${PYTHON_LIBRARIES}
+         ${area_native_LIBS}
+     )
++    if(BUILD_DYNAMIC_LINK_PYTHON)
++        list(APPEND area_LIBS ${PYTHON_LIBRARIES})
++    endif(BUILD_DYNAMIC_LINK_PYTHON)
+ else(MSVC)
+     set(area_native_LIBS
+         )
+     set(area_LIBS
+         ${Boost_LIBRARIES}
+-        ${PYTHON_LIBRARIES}
+     )
++    if(BUILD_DYNAMIC_LINK_PYTHON)
++        list(APPEND area_LIBS ${PYTHON_LIBRARIES})
++    endif(BUILD_DYNAMIC_LINK_PYTHON)
+ endif(MSVC)
+ 
+ target_link_libraries(area-native ${area_native_LIBS})
