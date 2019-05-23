@@ -120,9 +120,20 @@ index b62337cc9..939f56638 100644
                  SET_BIN_DIR(flatmesh flatmesh /Mod/MeshPart)
                  install(TARGETS flatmesh DESTINATION ${CMAKE_INSTALL_LIBDIR})
 diff --git a/src/Mod/Path/libarea/CMakeLists.txt b/src/Mod/Path/libarea/CMakeLists.txt
-index 3e223f258..6f53cd097 100644
+index 3e223f258..f9a0900d7 100644
 --- a/src/Mod/Path/libarea/CMakeLists.txt
 +++ b/src/Mod/Path/libarea/CMakeLists.txt
+@@ -1,8 +1,8 @@
+ # Turn compiler warnings on for gcc 
+-if (CMAKE_BUILD_TOOL MATCHES "make")
++if (CMAKE_BUILD_TOOL MATCHES "make" AND BUILD_DYNAMIC_LINK_PYTHON)
+     MESSAGE(STATUS "setting gcc options: -Wall -Werror -Wno-deprecated -pedantic-errors")
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+-endif (CMAKE_BUILD_TOOL MATCHES "make")
++endif (CMAKE_BUILD_TOOL MATCHES "make" AND BUILD_DYNAMIC_LINK_PYTHON)
+ 
+ if(MSVC)
+     add_definitions(-D_CRT_SECURE_NO_WARNINGS /wd4244)
 @@ -123,25 +123,31 @@ if(MSVC)
  
      set(area_LIBS
