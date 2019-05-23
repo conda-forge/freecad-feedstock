@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index a12219e89..45ddd8989 100644
+index a12219e89..3e8a0435b 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -106,11 +106,13 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_COMPILER_IS_CLANGXX)
+@@ -106,11 +106,17 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_COMPILER_IS_CLANGXX)
      INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
  
      # get linker errors as soon as possible and not at runtime e.g. for modules
@@ -17,11 +17,15 @@ index a12219e89..45ddd8989 100644
 +        elseif(UNIX)
 +            set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--no-undefined")
 +        endif()
++    else(BUILD_DYNAMIC_LINK_PYTHON)
++        if(CMAKE_COMPILER_IS_CLANGXX)
++            set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-undefined dynamic_lookup")
++        endif()
 +    endif(BUILD_DYNAMIC_LINK_PYTHON)
  endif(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_COMPILER_IS_CLANGXX)
  
  if(CMAKE_COMPILER_IS_CLANGXX)
-@@ -209,6 +211,7 @@ OPTION(FREECAD_USE_EXTERNAL_KDL "Use system installed orocos-kdl instead of the
+@@ -209,6 +215,7 @@ OPTION(FREECAD_USE_EXTERNAL_KDL "Use system installed orocos-kdl instead of the
  OPTION(FREECAD_USE_FREETYPE "Builds the features using FreeType libs" ON)
  OPTION(FREECAD_BUILD_DEBIAN "Prepare for a build of a Debian package" OFF)
  OPTION(BUILD_WITH_CONDA "Set ON if you build freecad with conda" OFF)
