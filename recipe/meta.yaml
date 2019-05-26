@@ -9,11 +9,8 @@ source:
     git_url: https://github.com/FreeCAD/FreeCAD
     git_tag: master
 
-    patches:
-        - python_linking.patch
-
 build:
-    number: 12
+    number: 13
     skip: true  # [py<37]
 
 requirements:
