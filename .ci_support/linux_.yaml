@@ -1,5 +1,7 @@
+CONDA_BUILD_SYSROOT:
+- /opt/MacOSX10.10.sdk
 boost_cpp:
-- 1.68.0
+- 1.70.0
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -10,8 +12,6 @@ cxx_compiler_version:
 - '7'
 docker_image:
 - condaforge/linux-anvil-comp7
-freetype:
-- 2.9.1
 hdf5:
 - 1.10.4
 occt:
@@ -19,8 +19,6 @@ occt:
 pin_run_as_build:
   boost-cpp:
     max_pin: x.x.x
-  freetype:
-    max_pin: x
   occt:
     max_pin: x.x
   python:
@@ -28,14 +26,18 @@ pin_run_as_build:
     max_pin: x.x
   qt:
     max_pin: x.x
+  vtk:
+    max_pin: x.x.x
   xerces-c:
     max_pin: x.x.x
   zlib:
     max_pin: x.x
 python:
-- '3.7'
+- '3.6'
 qt:
-- '5.6'
+- '5.9'
+vtk:
+- 8.2.0
 xerces_c:
 - 3.2.2
 zlib:

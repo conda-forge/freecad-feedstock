@@ -3,7 +3,7 @@ About freecad
 
 Home: https://www.freecadweb.org/
 
-Package license: LGPL2
+Package license: LGPL2.1
 
 Feedstock license: BSD 3-Clause
 
@@ -56,24 +56,24 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_python3.7</td>
+              <td>linux</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5916&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/freecad-feedstock?branchName=master&jobName=linux&configuration=linux_python3.7" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/freecad-feedstock?branchName=master&jobName=linux&configuration=linux_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_python3.7</td>
+              <td>osx</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5916&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/freecad-feedstock?branchName=master&jobName=osx&configuration=osx_python3.7" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/freecad-feedstock?branchName=master&jobName=osx&configuration=osx_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_cxx_compilervs2015python3.7</td>
+              <td>win</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5916&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/freecad-feedstock?branchName=master&jobName=win&configuration=win_cxx_compilervs2015python3.7" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/freecad-feedstock?branchName=master&jobName=win&configuration=win_" alt="variant">
                 </a>
               </td>
             </tr>
@@ -82,6 +82,7 @@ Current build status
       </details>
     </td>
   </tr>
+![ppc64le disabled](https://img.shields.io/badge/ppc64le-disabled-lightgrey.svg)
 </table>
 
 Current release info

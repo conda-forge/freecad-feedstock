@@ -5,12 +5,12 @@
 version: 2
 
 jobs:
-  build_osx_python3.7:
+  build_osx_:
     working_directory: ~/test
     macos:
       xcode: "9.0"
     environment:
-      - CONFIG: "osx_python3.7"
+      - CONFIG: "osx_"
     steps:
       - checkout
       - run:
@@ -26,4 +26,4 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - build_osx_python3.7
+      - build_osx_
