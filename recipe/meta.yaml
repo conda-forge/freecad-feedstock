@@ -1,6 +1,7 @@
 {% set name = "freecad" %}
-{% set version = "0.18.2" %}
-{% set sha256 = "6c0171001a2cba2795122c47959dc907da2aab4acd447f3ed929ed4f90ce5551" %}
+{% set version = "0.18b0" %}
+{% set sha256 = "5737252019f778d49f7ef0befd17f90462bee67d513364320a5bc900773fc9e2" %}
+{% set commit = "2a6655e1768d80e0098d410989ae02c622f2e698" %}
 
 
 package:
@@ -8,12 +9,17 @@ package:
   version: {{ version }}
 
 source:
-  git_url: https://github.com/FreeCAD/FreeCAD
-  git_tag: {{ version }}
+  fn: {{ name }}_{{ version }}.tar.gz
+  url: https://github.com/FreeCAD/FreeCAD/archive/{{ commit }}.tar.gz
+  sha256: {{ sha256 }}
+  patches:
+    - osx.patch  # [osx]
+    - osx1.patch  # [osx]
+    - smesh.patch  # [osx]
+    - win_unicode.patch
 
 build:
-  number: 0
-  skip: true  # [py<37]
+  number: 5
 
 requirements:
   build:
@@ -35,6 +41,7 @@ requirements:
     - boost-cpp
     - python
     - qt
+    - qtwebkit  # [osx]
     - occt
     - xerces-c
     - zlib
@@ -42,39 +49,42 @@ requirements:
     - swig
     - eigen
     - pybind11
+    - matplotlib
     - coin3d
     - pivy
     - pyside2
     - smesh
-    - netgen
+    - netgen  # [not win32]
     - doxygen
-    - hdf5
+    - hdf5 1.10.1
+    - libglu  # [linux]
+    - mesalib  # [linux]
     - xorg-libxi  # [linux]
     - xorg-libxmu  # [linux]
     - xorg-libxt  # [linux]
-    - tbb-devel
-    - freetype
   run:
     - {{ pin_compatible("pyside2") }}
     - {{ pin_compatible("vtk") }}
     - occt
+    - vtk
     - qt
+    - qtwebkit  # [osx]
     - xerces-c
     - zlib
     - boost-cpp
     - hdf5
     - python
+    - numpy
+    - matplotlib
     - coin3d
     - pivy
     - smesh
-    - netgen
+    - netgen  # [not win32]
+    - libglu  # [linux]
+    - mesalib  # [linux]
     - xorg-libxi  # [linux]
     - xorg-libxmu  # [linux]
     - xorg-libxt  # [linux]
-    - freetype
-    - numpy
-    - six
-    - pyyaml
 
 test:
   commands:
