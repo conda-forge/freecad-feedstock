@@ -3,7 +3,7 @@ About freecad
 
 Home: https://www.freecadweb.org/
 
-Package license: LGPL2
+Package license: LGPL2.1
 
 Feedstock license: BSD 3-Clause
 
@@ -82,6 +82,7 @@ Current build status
       </details>
     </td>
   </tr>
+![ppc64le disabled](https://img.shields.io/badge/ppc64le-disabled-lightgrey.svg)
 </table>
 
 Current release info
