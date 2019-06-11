@@ -39,3 +39,5 @@ zip_keys:
   - cxx_compiler
 zlib:
 - '1.2'
+vtk:
+- 8.2.0

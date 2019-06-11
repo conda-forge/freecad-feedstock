@@ -10,7 +10,7 @@ source:
     git_tag: master
 
 build:
-    number: 15
+    number: 16
     skip: true  # [py<37]
 
 requirements:
