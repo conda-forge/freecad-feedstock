@@ -28,6 +28,8 @@ pin_run_as_build:
     max_pin: x.x
   qt:
     max_pin: x.x
+  vtk:
+    max_pin: x.x.x
   xerces-c:
     max_pin: x.x.x
   zlib:
@@ -36,6 +38,8 @@ python:
 - '3.7'
 qt:
 - '5.9'
+vtk:
+- 8.2.0
 xerces_c:
 - 3.2.2
 zlib:
