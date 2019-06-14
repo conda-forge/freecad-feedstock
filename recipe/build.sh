@@ -1,6 +1,15 @@
 mkdir -p build
 cd build
 
+declare -a _CMAKE_EXTRA_CONFIG
+
+if [[ ${HOST} =~ .*linux.* ]]; then
+  LIBPTHREAD=$(find ${PREFIX} -name "libpthread.so")
+  _CMAKE_EXTRA_CONFIG+=(-DPTHREAD_LIBRARY=${LIBPTHREAD})
+  LIBRT=$(find ${PREFIX} -name "librt.so")
+  _CMAKE_EXTRA_CONFIG+=(-DRT_LIBRARIES=${LIBRT})
+fi
+
 cmake -G "Ninja" \
       -D BUID_WITH_CONDA:BOOL=ON \
       -D CMAKE_BUILD_TYPE=Release \
@@ -25,6 +34,7 @@ cmake -G "Ninja" \
       -D OCCT_CMAKE_FALLBACK:BOOL=OFF \
       -D FREECAD_USE_QT_DIALOG:BOOL=ON \
       -D Boost_NO_BOOST_CMAKE:BOOL=ON \
+      "${_CMAKE_EXTRA_CONFIG[@]}" \
       ..
 
 ninja install
