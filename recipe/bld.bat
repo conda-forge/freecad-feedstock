@@ -33,6 +33,7 @@ cmake -G "Ninja" ^
       -D BUILD_FLAT_MESH:BOOL=ON ^
       -D BUILD_PLOT:BOOL=OFF ^
       -D BUILD_SHIP:BOOL=OFF ^
+      -D Boost_NO_BOOST_CMAKE:BOOL=ON ^
       -D PYTHON_EXECUTABLE:FILEPATH=%PREFIX%/python ^
       ..
 
