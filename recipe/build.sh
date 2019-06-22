@@ -1,6 +1,12 @@
 mkdir -p build
 cd build
 
+# temporary workaround for vtk-cmake setup
+# should be applied @vtk-feedstock
+if [[ ${HOST} =~ .*linux.* ]]; then
+  sed -i 's#/home/conda/feedstock_root/build_artifacts/vtk_.*_build_env/x86_64-conda_cos6-linux-gnu/sysroot/usr/lib.*;##g' ${PREFIX}/lib/cmake/vtk-8.2/Modules/vtkhdf5.cmake 
+fi
+
 cmake -G "Ninja" \
       -D BUID_WITH_CONDA:BOOL=ON \
       -D CMAKE_BUILD_TYPE=Release \
