@@ -24,8 +24,8 @@ cmake -G "Ninja" \
       -D BUILD_SHIP:BOOL=OFF \
       -D OCCT_CMAKE_FALLBACK:BOOL=OFF \
       -D FREECAD_USE_QT_DIALOG:BOOL=ON \
-      -D FREECAD_USE_QWEBKIT:BOOL=ON \
       -D BUILD_DYNAMIC_LINK_PYTHON:BOOL=OFF \
+      -D Boost_NO_BOOST_CMAKE:BOOL=ON \
       ..
 
 ninja install
