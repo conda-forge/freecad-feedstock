@@ -10,8 +10,10 @@ source:
     git_tag: master
 
 build:
-    number: 17
+    number: 18
     skip: true  # [py<37]
+    patches:
+        - win_snprintf.patch
 
 requirements:
     build:

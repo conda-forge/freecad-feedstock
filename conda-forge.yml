@@ -4,3 +4,4 @@ appveyor:
 
 provider:
   osx: circle
+  linux: circle
