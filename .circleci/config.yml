@@ -10,6 +10,7 @@ jobs:
     machine: true
     environment:
       - CONFIG: "linux_python3.7"
+        DOCKER_IMAGE: "condaforge/linux-anvil-comp7"
     steps:
       - checkout
       - run:
@@ -18,10 +19,10 @@ jobs:
             ./.circleci/fast_finish_ci_pr_build.sh
             ./.circleci/checkout_merge_commit.sh
       - run:
-          command: docker pull condaforge/linux-anvil-comp7
-      - run:
           # Run, test and (if we have a BINSTAR_TOKEN) upload the distributions.
-          command: ./.circleci/run_docker_build.sh
+          command: |
+            export CI=circle
+            ./.circleci/run_docker_build.sh
   build_osx_python3.7:
     working_directory: ~/test
     macos:
@@ -37,7 +38,9 @@ jobs:
             ./.circleci/checkout_merge_commit.sh
       - run:
           # Run, test and (if we have a BINSTAR_TOKEN) upload the distributions.
-          command: ./.circleci/run_osx_build.sh
+          command: |
+            export CI=circle
+            ./.circleci/run_osx_build.sh
 
 workflows:
   version: 2
