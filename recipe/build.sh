@@ -1,10 +1,17 @@
 mkdir -p build
 cd build
 
-# temporary workaround for vtk-cmake setup
-# should be applied @vtk-feedstock
 if [[ ${HOST} =~ .*linux.* ]]; then
+  # temporary workaround for vtk-cmake setup
+  # should be applied @vtk-feedstock
   sed -i 's#/home/conda/feedstock_root/build_artifacts/vtk_.*_build_env/x86_64-conda_cos6-linux-gnu/sysroot/usr/lib.*;##g' ${PREFIX}/lib/cmake/vtk-8.2/Modules/vtkhdf5.cmake 
+fi
+
+
+if [[ ${HOST} =~ .*darwin.* ]]; then
+  # create link from MacOSX10.12 to MacOSX10.9
+  # this is necessarry because not all deps are built with 10.12
+  ln -s /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk
 fi
 
 cmake -G "Ninja" \
