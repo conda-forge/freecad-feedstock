@@ -5,6 +5,9 @@ set "CFLAGS= "
 set "CXXFLAGS= "
 set "LDFLAGS_SHARED= ucrt.lib"
 
+rem netgen needs nglib in %LIBRARY_PREFIX%/include/netgen/include for windows
+copy %LIBRARY_PREFIX%/include/netgen/nglib.h %LIBRARY_PREFIX%/include/netgen/include/nglib.h
+
 cmake -G "Ninja" ^
       -D BUID_WITH_CONDA:BOOL=ON ^
       -D CMAKE_BUILD_TYPE=Release ^
