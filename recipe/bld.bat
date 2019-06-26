@@ -5,9 +5,6 @@ set "CFLAGS= "
 set "CXXFLAGS= "
 set "LDFLAGS_SHARED= ucrt.lib"
 
-rem netgen needs nglib in %LIBRARY_PREFIX%/include/netgen/include for windows
-copy %LIBRARY_PREFIX%/include/netgen/nglib.h %LIBRARY_PREFIX%/include/netgen/include/nglib.h
-
 cmake -G "Ninja" ^
       -D BUID_WITH_CONDA:BOOL=ON ^
       -D CMAKE_BUILD_TYPE=Release ^
@@ -39,6 +36,7 @@ cmake -G "Ninja" ^
       -D PYTHON_EXECUTABLE:FILEPATH=%PREFIX%/python ^
       -D BUILD_DYNAMIC_LINK_PYTHON:BOOL=ON ^
       -D Boost_NO_BOOST_CMAKE:BOOL=ON ^
+      -D FREECAD_USE_PCH:BOOL=OFF ^
       ..
 
 if errorlevel 1 exit 1
