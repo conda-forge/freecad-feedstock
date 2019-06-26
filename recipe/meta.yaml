@@ -8,11 +8,9 @@ package:
 source:
     git_url: https://github.com/FreeCAD/FreeCAD
     git_tag: master
-    patches:
-        - win_snprintf.patch
 
 build:
-    number: 19
+    number: 20
     skip: true  # [py<37]
 
 requirements:
