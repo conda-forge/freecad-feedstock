@@ -12,7 +12,7 @@ source:
         - win_snprintf.patch
 
 build:
-    number: 22
+    number: 23
     skip: true  # [py<37]
 
 requirements:
