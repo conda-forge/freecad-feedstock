@@ -77,11 +77,11 @@ requirements:
         - six
         - pyyaml
 
-test:
-    requires:
-        - calculix
-    commands:
-        - FreeCADCmd -t 0
+# test:
+#     requires:
+#         - calculix
+#     commands:
+#         - FreeCADCmd -t 0
 
 about:
     home: https://www.freecadweb.org/
