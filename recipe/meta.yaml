@@ -12,7 +12,7 @@ source:
         - win_snprintf.patch
 
 build:
-    number: 25
+    number: 26
     skip: true  # [py<37]
 
 requirements:
@@ -55,7 +55,7 @@ requirements:
         - tbb-devel
         - blas * openblas
         - freetype
-        - libspnav  # [unix]
+        - libspnav  # [linux]
     run:
         - {{ pin_compatible("pyside2") }}
         - vtk
@@ -77,7 +77,7 @@ requirements:
         - numpy
         - six
         - pyyaml
-        - libspnav  # [unix]
+        - libspnav  # [linux]
 
 test:
     commands:
