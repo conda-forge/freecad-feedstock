@@ -1,6 +1,19 @@
 mkdir -p build
 cd build
 
+
+if [[ ${HOST} =~ .*darwin.* ]]; then
+  # create link from MacOSX10.12 to MacOSX10.9
+  # this is necessarry because not all deps are built with 10.12
+  ln -s /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk
+fi
+
+# temporary workaround for vtk-cmake setup
+# should be applied @vtk-feedstock
+if [[ ${HOST} =~ .*linux.* ]]; then
+  sed -i 's#/home/conda/feedstock_root/build_artifacts/vtk_.*_build_env/x86_64-conda_cos6-linux-gnu/sysroot/usr/lib.*;##g' ${PREFIX}/lib/cmake/vtk-8.2/Modules/vtkhdf5.cmake 
+fi
+
 cmake -G "Ninja" \
       -D BUID_WITH_CONDA:BOOL=ON \
       -D CMAKE_BUILD_TYPE=Release \
@@ -24,6 +37,7 @@ cmake -G "Ninja" \
       -D BUILD_SHIP:BOOL=OFF \
       -D OCCT_CMAKE_FALLBACK:BOOL=OFF \
       -D FREECAD_USE_QT_DIALOG:BOOL=ON \
+      -D Boost_NO_BOOST_CMAKE:BOOL=ON \
       ..
 
 ninja install

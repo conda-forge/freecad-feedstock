@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
-{% set version = "0.18.2" %}
-{% set sha256 = "6c0171001a2cba2795122c47959dc907da2aab4acd447f3ed929ed4f90ce5551" %}
+{% set version = "0.18.3" %}
+{% set sha256 = "7f86b9b31f3b5bdf64e0c3978f71916f7a427c09776a6f3143adb268df57471e" %}
 
 
 package:
@@ -10,9 +10,11 @@ package:
 source:
   git_url: https://github.com/FreeCAD/FreeCAD
   git_tag: {{ version }}
+  patches:
+    - win_snprintf.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<37]
 
 requirements:
@@ -38,7 +40,7 @@ requirements:
     - occt
     - xerces-c
     - zlib
-    - vtk  8.1.2
+    - vtk
     - swig
     - eigen
     - pybind11
@@ -56,7 +58,7 @@ requirements:
     - freetype
   run:
     - {{ pin_compatible("pyside2") }}
-    - {{ pin_compatible("vtk") }}
+    - vtk
     - occt
     - qt
     - xerces-c
