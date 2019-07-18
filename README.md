@@ -29,13 +29,6 @@ Current build status
 
 
 <table><tr>
-    <td>CircleCI</td>
-    <td>
-      <a href="https://circleci.com/gh/conda-forge/freecad-feedstock">
-        <img alt="OSX" src="https://img.shields.io/circleci/project/github/conda-forge/freecad-feedstock/master.svg?label=OSX">
-      </a>
-    </td>
-  </tr><tr>
     <td>Appveyor</td>
     <td>
       <a href="https://ci.appveyor.com/project/conda-forge/freecad-feedstock/branch/master">
