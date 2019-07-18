@@ -2,6 +2,12 @@ mkdir -p build
 cd build
 
 
+if [[ ${HOST} =~ .*darwin.* ]]; then
+  # create link from MacOSX10.12 to MacOSX10.9
+  # this is necessarry because not all deps are built with 10.12
+  ln -s /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk
+fi
+
 # temporary workaround for vtk-cmake setup
 # should be applied @vtk-feedstock
 if [[ ${HOST} =~ .*linux.* ]]; then
