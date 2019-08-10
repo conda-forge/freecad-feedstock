@@ -14,7 +14,7 @@ source:
     - win_snprintf.patch  # [win]
 
 build:
-  number: 1
+  number: 2
   skip: true  # [py<37]
 
 requirements:
