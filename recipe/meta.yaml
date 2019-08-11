@@ -77,9 +77,9 @@ requirements:
         - pyyaml
         - libspnav  # [linux]
 
-test:
-    commands:
-        - FreeCADCmd -t 0
+#test:
+#    commands:
+#        - FreeCADCmd -t 0
 
 about:
     home: https://www.freecadweb.org/
