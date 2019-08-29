@@ -10,7 +10,7 @@ source:
     git_tag: master
     patches:
         - 0001-fix-detection-of-recent-versions-of-PySide2.patch
-
+        - TopoShape.patch  # [win]
 build:
     number: 38
     skip: true  # [py<37]

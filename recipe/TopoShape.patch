@@ -1,0 +1,13 @@
+diff C3 C:/Users/aio/FreeCADcode/src/Mod/Part/App/TopoShape.cpp C:/Users/aio/Desktop/TopoShape.cpp
+*** C:/Users/aio/FreeCADcode/src/Mod/Part/App/TopoShape.cpp	Sat Aug 24 09:37:55 2019
+--- C:/Users/aio/Desktop/TopoShape.cpp	Sat Aug 24 09:33:54 2019
+***************
+*** 28,33 ****
+--- 28,34 ----
+  # include <cstdlib>
+  # include <sstream>
+  # include <QString>
++ # include <array>
+  
+  # include <BRepLib.hxx>
+  # include <BSplCLib.hxx>
