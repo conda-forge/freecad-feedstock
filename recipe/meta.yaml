@@ -12,7 +12,7 @@ source:
         - 0001-fix-detection-of-recent-versions-of-PySide2.patch
 
 build:
-    number: 37
+    number: 38
     skip: true  # [py<37]
 
 requirements:
