@@ -43,4 +43,4 @@ if errorlevel 1 exit 1
 ninja install
 if errorlevel 1 exit 1
 
-REM rmdir /s /q "%LIBRARY_PREFIX%\doc"
+rmdir /s /q "%LIBRARY_PREFIX%\doc"
