@@ -11,7 +11,7 @@ source:
     patches:
         - 0002-TopoShape.patch  # [win]
 build:
-    number: 40
+    number: 41
     skip: true  # [py<37]
 
 requirements:
