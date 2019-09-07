@@ -1,6 +1,4 @@
-appveyor:
-  secure: {BINSTAR_TOKEN: HJ+NXrvUtfFXeOuC8d+a6rEDBCVuklRzAe600/St3wvCc5yuE3mYmoDSMXkAmUu0}
-
 provider:
-  osx: circle
-  linux: circle
+  win: azure
+  osx: azure
+  linux: azure
