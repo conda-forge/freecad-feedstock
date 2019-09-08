@@ -76,7 +76,7 @@ index 3a6b2c820..220f1bc37 100644
          if(NOT PYSIDE2_TOOLS_FOUND)
 diff --git a/cMake/FindPySide2.cmake b/cMake/FindPySide2.cmake
 new file mode 100644
-index 000000000..92d7207d8
+index 000000000..91ff64e7c
 --- /dev/null
 +++ b/cMake/FindPySide2.cmake
 @@ -0,0 +1,48 @@
@@ -100,7 +100,7 @@ index 000000000..92d7207d8
 +
 +execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "
 +import find_pyside2_helper
-+print(find_pyside2_helper.find_pyside2_includes(), end="");
++print(find_pyside2_helper.find_pyside2_includes(), end="")
 +"
 +    OUTPUT_VARIABLE PYSIDE2_INCLUDE_PATH
 +    WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
@@ -130,7 +130,7 @@ index 000000000..92d7207d8
 +set(PySide2_FOUND ${PYSIDE2_FOUND})
 diff --git a/cMake/FindShiboken2.cmake b/cMake/FindShiboken2.cmake
 new file mode 100644
-index 000000000..b3a33bfbf
+index 000000000..c4681a37c
 --- /dev/null
 +++ b/cMake/FindShiboken2.cmake
 @@ -0,0 +1,50 @@
@@ -145,7 +145,7 @@ index 000000000..b3a33bfbf
 +execute_process(
 +    COMMAND ${PYTHON_EXECUTABLE} -c "
 +import find_pyside2_helper
-+print(find_pyside2_helper.find_shiboken2_library());
++print(find_pyside2_helper.find_shiboken2_library(), end="")
 +"
 +    RESULT_VARIABLE FAILURE
 +    OUTPUT_VARIABLE SHIBOKEN2_LIBRARY_PATH
@@ -155,7 +155,7 @@ index 000000000..b3a33bfbf
 +execute_process(
 +    COMMAND ${PYTHON_EXECUTABLE} -c "
 +import find_pyside2_helper
-+print(find_pyside2_helper.find_shiboken2_includes())
++print(find_pyside2_helper.find_shiboken2_includes(), end="")
 +"
 +    RESULT_VARIABLE FAILURE
 +    OUTPUT_VARIABLE SHIBOKEN2_INCLUDE_PATH
