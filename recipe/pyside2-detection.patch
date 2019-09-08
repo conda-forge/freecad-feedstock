@@ -1,8 +1,29 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 3a6b2c820..220f1bc37 100644
+index 3a6b2c820..4e40d03d4 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -1022,39 +1022,39 @@ if(NOT FREECAD_LIBPACK_USE OR FREECAD_LIBPACK_CHECKFILE_CLBUNDLER)
+@@ -188,6 +188,7 @@ option(FREECAD_BUILD_DEBIAN "Prepare for a build of a Debian package" OFF)
+ option(BUILD_WITH_CONDA "Set ON if you build freecad with conda" OFF)
+ option(BUILD_DYNAMIC_LINK_PYTHON "If OFF extension-modules do not link against python-libraries" ON)
+ option(OCCT_CMAKE_FALLBACK "disable usage of occt-config files" OFF)
++option(FREECAD_USE_PYTHON3 "force usage of python3" OFF)
+ if (WIN32 OR APPLE)
+     option(FREECAD_USE_QT_FILEDIALOG "Use Qt's file dialog instead of the native one." OFF)
+ else()
+@@ -462,7 +463,11 @@ if(NOT FREECAD_LIBPACK_USE OR FREECAD_LIBPACK_CHECKFILE_CLBUNDLER)
+ 
+     # http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=677598
+     # Acceptable versions of Python
+-    set(Python_ADDITIONAL_VERSIONS "2.7")
++    if (FREECAD_USE_PYTHON3)
++        set(Python_ADDITIONAL_VERSIONS "3.4" "3.5" "3.6" "3.7")
++    else(FREECAD_USE_PYTHON3)
++        set(Python_ADDITIONAL_VERSIONS "2.7")
++    endif(FREECAD_USE_PYTHON3)
+ 
+     # For building on OS X
+     if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin" AND NOT BUILD_WITH_CONDA)
+@@ -1022,39 +1027,39 @@ if(NOT FREECAD_LIBPACK_USE OR FREECAD_LIBPACK_CHECKFILE_CLBUNDLER)
          # CMake to fail to create Makefiles for a debug build.
          # So as a workaround we save and restore the value after checking for Shiboken2.
          set (SAVE_BUILD_TYPE ${CMAKE_BUILD_TYPE})
@@ -76,10 +97,10 @@ index 3a6b2c820..220f1bc37 100644
          if(NOT PYSIDE2_TOOLS_FOUND)
 diff --git a/cMake/FindPySide2.cmake b/cMake/FindPySide2.cmake
 new file mode 100644
-index 000000000..91ff64e7c
+index 000000000..441242ab3
 --- /dev/null
 +++ b/cMake/FindPySide2.cmake
-@@ -0,0 +1,48 @@
+@@ -0,0 +1,45 @@
 +# - Find PySide2 installation
 +#
 +# The following variable are set:
@@ -91,7 +112,7 @@ index 000000000..91ff64e7c
 +
 +execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "
 +import find_pyside2_helper
-+print(find_pyside2_helper.find_pyside2_library(), end="")
++print(find_pyside2_helper.find_pyside2_library(), end='')
 +"
 +    RESULT_VARIABLE FAILURE
 +    OUTPUT_VARIABLE PYSIDE2_LIBRARY_PATH
@@ -100,17 +121,14 @@ index 000000000..91ff64e7c
 +
 +execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "
 +import find_pyside2_helper
-+print(find_pyside2_helper.find_pyside2_includes(), end="")
++print(find_pyside2_helper.find_pyside2_includes(), end='')
 +"
 +    OUTPUT_VARIABLE PYSIDE2_INCLUDE_PATH
 +    WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
 +)
 +
-+MESSAGE(STATUS "PYSIDE2_LIBRARY_PATH")
-+MESSAGE(STATUS ${PYSIDE2_LIBRARY_PATH})
-+
-+MESSAGE(STATUS "PYSIDE2_INCLUDE_PATH")
-+MESSAGE(STATUS ${PYSIDE2_INCLUDE_PATH})
++MESSAGE(STATUS "PYSIDE2_LIBRARY_PATH: ${PYSIDE2_LIBRARY_PATH}")
++MESSAGE(STATUS "PYSIDE2_INCLUDE_PATH: ${PYSIDE2_INCLUDE_PATH}")
 +
 +set(PYSIDE2_FOUND FALSE)
 +if(NOT FAILURE)
@@ -130,10 +148,10 @@ index 000000000..91ff64e7c
 +set(PySide2_FOUND ${PYSIDE2_FOUND})
 diff --git a/cMake/FindShiboken2.cmake b/cMake/FindShiboken2.cmake
 new file mode 100644
-index 000000000..c4681a37c
+index 000000000..466e612cf
 --- /dev/null
 +++ b/cMake/FindShiboken2.cmake
-@@ -0,0 +1,50 @@
+@@ -0,0 +1,47 @@
 +# - Find Shiboken2 installation
 +#
 +# The following variable are set:
@@ -145,7 +163,7 @@ index 000000000..c4681a37c
 +execute_process(
 +    COMMAND ${PYTHON_EXECUTABLE} -c "
 +import find_pyside2_helper
-+print(find_pyside2_helper.find_shiboken2_library(), end="")
++print(find_pyside2_helper.find_shiboken2_library(), end='')
 +"
 +    RESULT_VARIABLE FAILURE
 +    OUTPUT_VARIABLE SHIBOKEN2_LIBRARY_PATH
@@ -155,18 +173,15 @@ index 000000000..c4681a37c
 +execute_process(
 +    COMMAND ${PYTHON_EXECUTABLE} -c "
 +import find_pyside2_helper
-+print(find_pyside2_helper.find_shiboken2_includes(), end="")
++print(find_pyside2_helper.find_shiboken2_includes(), end='')
 +"
 +    RESULT_VARIABLE FAILURE
 +    OUTPUT_VARIABLE SHIBOKEN2_INCLUDE_PATH
 +    WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
 +)
 +
-+MESSAGE(STATUS "SHIBOKEN2_LIBRARY_PATH")
-+MESSAGE(STATUS ${SHIBOKEN2_LIBRARY_PATH})
-+
-+MESSAGE(STATUS "SHIBOKEN2_INCLUDE_PATH")
-+MESSAGE(STATUS ${SHIBOKEN2_INCLUDE_PATH})
++MESSAGE(STATUS "SHIBOKEN2_LIBRARY_PATH: ${SHIBOKEN2_LIBRARY_PATH}")
++MESSAGE(STATUS "SHIBOKEN2_INCLUDE_PATH: ${SHIBOKEN2_INCLUDE_PATH}")
 +
 +set(SHIBOKEN2_FOUND FALSE)
 +if(NOT FAILURE)
