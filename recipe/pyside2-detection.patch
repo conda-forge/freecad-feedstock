@@ -76,38 +76,35 @@ index 3a6b2c820..220f1bc37 100644
          if(NOT PYSIDE2_TOOLS_FOUND)
 diff --git a/cMake/FindPySide2.cmake b/cMake/FindPySide2.cmake
 new file mode 100644
-index 000000000..09ac71d80
+index 000000000..92d7207d8
 --- /dev/null
 +++ b/cMake/FindPySide2.cmake
-@@ -0,0 +1,49 @@
+@@ -0,0 +1,48 @@
 +# - Find PySide2 installation
 +#
 +# The following variable are set:
 +#   PySide2_FOUND      - PySide2 was found
 +#   PYSIDE2_FOUND      - PySide2 was found
 +#   PYSIDE2_LIBRARY    - The PySide2 libraries
-+#   PYSIDE_INCLUDE_DIR - The PySide2 header-directory
++#   PYSIDE2_INCLUDE_DIR - The PySide2 header-directory
 +
 +
-+execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "import find_pyside2_helper; print(find_pyside2_helper.find_pyside2_library());"
++execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "
++import find_pyside2_helper
++print(find_pyside2_helper.find_pyside2_library(), end="")
++"
 +    RESULT_VARIABLE FAILURE
 +    OUTPUT_VARIABLE PYSIDE2_LIBRARY_PATH
-+    WORKING_DIRECTORY CMAKE_CURRENT_SOURCE_DIR
++    WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
 +)
 +
-+execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "import find_pyside_helper; print(find_pyside2_helper.find_pyside2_includes;"
++execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "
++import find_pyside2_helper
++print(find_pyside2_helper.find_pyside2_includes(), end="");
++"
 +    OUTPUT_VARIABLE PYSIDE2_INCLUDE_PATH
-+    WORKING_DIRECTORY CMAKE_CURRENT_SOURCE_DIR
++    WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
 +)
-+
-+MESSAGE(STATUS "#################################")
-+MESSAGE(STATUS "PYSIDE2")
-+
-+MESSAGE(STATUS "CMAKE_CURRENT_SOURCE_DIR")
-+MESSAGE(STATUS ${CMAKE_CURRENT_SOURCE_DIR})
-+
-+MESSAGE(STATUS "FAILURE")
-+MESSAGE(STATUS ${FAILURE})
 +
 +MESSAGE(STATUS "PYSIDE2_LIBRARY_PATH")
 +MESSAGE(STATUS ${PYSIDE2_LIBRARY_PATH})
@@ -119,7 +116,9 @@ index 000000000..09ac71d80
 +if(NOT FAILURE)
 +    set(PYSIDE2_FOUND TRUE)
 +    set(PYSIDE2_LIBRARY ${PYSIDE2_LIBRARY_PATH} CACHE PATH "The location of the PySide2 library")
++    set(PYSIDE_LIBRARY ${PYSIDE2_LIBRARY_PATH} CACHE PATH "The location of the PySide2 library")
 +    set(PYSIDE2_INCLUDE_DIR ${PYSIDE2_INCLUDE_PATH} CACHE PATH "The location of PySide2 headers")
++    set(PYSIDE_INCLUDE_DIR ${PYSIDE2_INCLUDE_PATH} CACHE PATH "The location of PySide2 headers")
 +endif(NOT FAILURE)
 +
 +if(NOT PYSIDE2_FOUND)
@@ -131,10 +130,10 @@ index 000000000..09ac71d80
 +set(PySide2_FOUND ${PYSIDE2_FOUND})
 diff --git a/cMake/FindShiboken2.cmake b/cMake/FindShiboken2.cmake
 new file mode 100644
-index 000000000..46f3e1e10
+index 000000000..b3a33bfbf
 --- /dev/null
 +++ b/cMake/FindShiboken2.cmake
-@@ -0,0 +1,51 @@
+@@ -0,0 +1,50 @@
 +# - Find Shiboken2 installation
 +#
 +# The following variable are set:
@@ -144,27 +143,24 @@ index 000000000..46f3e1e10
 +
 +
 +execute_process(
-+    COMMAND ${PYTHON_EXECUTABLE} -c "import find_pyside2_helper; print(find_pyside2_helper.find_shiboken2_library());"
++    COMMAND ${PYTHON_EXECUTABLE} -c "
++import find_pyside2_helper
++print(find_pyside2_helper.find_shiboken2_library());
++"
 +    RESULT_VARIABLE FAILURE
-+    OUTPUT_VARIABLE SHIBOKEN_LIBRARY_PATH
-+    WORKING_DIRECTORY CMAKE_CURRENT_SOURCE_DIR
++    OUTPUT_VARIABLE SHIBOKEN2_LIBRARY_PATH
++    WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
 +)
 +
 +execute_process(
-+    COMMAND ${PYTHON_EXECUTABLE} -c "import find_pyside2_helper; print(find_pyside2_helper.find_shiboken2_library());"
++    COMMAND ${PYTHON_EXECUTABLE} -c "
++import find_pyside2_helper
++print(find_pyside2_helper.find_shiboken2_includes())
++"
 +    RESULT_VARIABLE FAILURE
-+    OUTPUT_VARIABLE SHIBOKEN_INCLUDE_PATH
-+    WORKING_DIRECTORY CMAKE_CURRENT_SOURCE_DIR
++    OUTPUT_VARIABLE SHIBOKEN2_INCLUDE_PATH
++    WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
 +)
-+
-+MESSAGE(STATUS "#################################")
-+MESSAGE(STATUS "SHIBOKEN2")
-+
-+MESSAGE(STATUS "CMAKE_CURRENT_SOURCE_DIR")
-+MESSAGE(STATUS ${CMAKE_CURRENT_SOURCE_DIR})
-+
-+MESSAGE(STATUS "FAILURE")
-+MESSAGE(STATUS ${FAILURE})
 +
 +MESSAGE(STATUS "SHIBOKEN2_LIBRARY_PATH")
 +MESSAGE(STATUS ${SHIBOKEN2_LIBRARY_PATH})
@@ -176,7 +172,9 @@ index 000000000..46f3e1e10
 +if(NOT FAILURE)
 +    set(SHIBOKEN2_FOUND TRUE)
 +    set(SHIBOKEN2_LIBRARY ${SHIBOKEN2_LIBRARY_PATH} CACHE PATH "The location of the SHIBOKEN2 library")
++    set(SHIBOKEN_LIBRARY ${SHIBOKEN2_LIBRARY_PATH} CACHE PATH "The location of the SHIBOKEN2 library")
 +    set(SHIBOKEN2_INCLUDE_DIR ${SHIBOKEN2_INCLUDE_PATH} CACHE PATH "The location of SHIBOKEN2 headers")
++    set(SHIBOKEN_INCLUDE_DIR ${SHIBOKEN2_INCLUDE_PATH} CACHE PATH "The location of SHIBOKEN2 headers")
 +endif(NOT FAILURE)
 +
 +if(NOT SHIBOKEN2_FOUND)
@@ -188,10 +186,10 @@ index 000000000..46f3e1e10
 +set(Shiboken2_FOUND ${SHIBOKEN2_FOUND})
 diff --git a/cMake/find_pyside2_helper.py b/cMake/find_pyside2_helper.py
 new file mode 100644
-index 000000000..1ed0b7c68
+index 000000000..524f0a0e4
 --- /dev/null
 +++ b/cMake/find_pyside2_helper.py
-@@ -0,0 +1,70 @@
+@@ -0,0 +1,78 @@
 +import sysconfig
 +import glob
 +import os
@@ -262,6 +260,15 @@ index 000000000..1ed0b7c68
 +
 +def find_shiboken2_includes():
 +    return find_path(include_path, shiboken2_include_test, "shiboken2 includes")
++
++
++if __name__ == "__main__":
++    DEBUGGING = True
++    find_pyside2_library()
++    find_pyside2_includes()
++    find_shiboken2_library()
++    find_shiboken2_includes()
+\ No newline at end of file
 diff --git a/src/Gui/CMakeLists.txt b/src/Gui/CMakeLists.txt
 index b709ecbcc..1348b7331 100644
 --- a/src/Gui/CMakeLists.txt
