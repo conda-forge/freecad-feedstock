@@ -10,8 +10,9 @@ source:
     git_tag: master
     patches:
         - 0002-TopoShape.patch  # [win]
+        - pyside2-detection.patch
 build:
-    number: 41
+    number: 42
     skip: true  # [py<37]
 
 requirements:
