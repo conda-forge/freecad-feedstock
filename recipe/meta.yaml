@@ -12,7 +12,7 @@ source:
         - 0002-TopoShape.patch  # [win]
         - pyside2-detection.patch
 build:
-    number: 45
+    number: 46
     skip: true  # [py<37]
 
 requirements:
