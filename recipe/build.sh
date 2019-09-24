@@ -5,6 +5,8 @@ if [[ ${HOST} =~ .*linux.* ]]; then
   # temporary workaround for vtk-cmake setup
   # should be applied @vtk-feedstock
   sed -i 's#/home/conda/feedstock_root/build_artifacts/vtk_.*_build_env/x86_64-conda_cos6-linux-gnu/sysroot/usr/lib.*;##g' ${PREFIX}/lib/cmake/vtk-8.2/Modules/vtkhdf5.cmake 
+  # temporary workaround for qt-cmake:
+  sed -i 's|_qt5gui_find_extra_libs(EGL.*)|_qt5gui_find_extra_libs(EGL "EGL" "" "")|g' $PREFIX/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake
 fi
 
 
