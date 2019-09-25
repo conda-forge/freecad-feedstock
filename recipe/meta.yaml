@@ -9,10 +9,9 @@ source:
     git_url: https://github.com/FreeCAD/FreeCAD
     git_tag: master
     patches:
-        - 0002-TopoShape.patch  # [win]
         - pyside2-detection.patch
 build:
-    number: 51
+    number: 52
     skip: true  # [py<37]
 
 requirements:
