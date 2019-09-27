@@ -1,23 +1,17 @@
 diff --git a/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake b/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
-index ee0a6142f..ef23a684a 100644
+index ee0a6142f..41e52667a 100644
 --- a/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
 +++ b/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
-@@ -43,18 +43,30 @@ macro(SetupShibokenAndPyside)
+@@ -43,11 +43,17 @@ macro(SetupShibokenAndPyside)
              endif()
          endif()
  
 -        if(NOT SHIBOKEN_INCLUDE_DIR)
 +        # pyside2 changed it's cmake files, this is the dance we have
-+        # to dance to be compatible with the old and the new versions
++        # to dance to be compatible with the old (<5.12) and the new versions (>=5.12)
 +        if(NOT SHIBOKEN_LIBRARY)
 +            get_property(SHIBOKEN_LIBRARY TARGET Shiboken2::libshiboken PROPERTY IMPORTED_LOCATION_RELEASE)
 +        endif(SHIBOKEN_PYTHON_INCLUDE_DIRS AND NOT SHIBOKEN_INCLUDE_DIR)
-+
-+        # pyside2 changed it's cmake files, this is the dance we have
-+        # to dance to be compatible with the old and the new versions
-+        if(NOT PYSIDE_LIBRARY)
-+          get_property(PYSIDE_LIBRARY TARGET PySide2::pyside2 PROPERTY IMPORTED_LOCATION_RELEASE)
-+        endif(NOT PYSIDE_INCLUDE_DIR)
 +
 +        if(NOT SHIBOKEN_LIBRARY)
              message("====================\n"
@@ -27,13 +21,4 @@ index ee0a6142f..ef23a684a 100644
 +        endif(NOT SHIBOKEN_LIBRARY)
  
          find_package(PySide2 QUIET)# REQUIRED
--        if(NOT PYSIDE_INCLUDE_DIR)
-+        if(NOT PYSIDE_LIBRARY)
-             message("==================\n"
-                     "PySide2 not found.\n"
-                     "==================\n")
--        endif(NOT PYSIDE_INCLUDE_DIR)
-+        endif(NOT PYSIDE_LIBRARY)
- 
-         find_package(PySide2Tools QUIET) #REQUIRED # PySide2 utilities (pyside2-uic & pyside2-rcc)
-         if(NOT PYSIDE2_TOOLS_FOUND)
+         if(NOT PYSIDE_INCLUDE_DIR)
