@@ -9,9 +9,9 @@ source:
     git_url: https://github.com/FreeCAD/FreeCAD
     git_tag: master
     patches:
-        - pyside2-detection.patch
+        # - pyside2-detection.patch
 build:
-    number: 52
+    number: 53
     skip: true  # [py<37]
 
 requirements:
