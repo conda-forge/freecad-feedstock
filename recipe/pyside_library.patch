@@ -1,16 +1,23 @@
 diff --git a/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake b/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
-index 0cd35615c..8ae24b166 100644
+index 0cd35615c..fb5280633 100644
 --- a/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
 +++ b/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
-@@ -56,6 +56,11 @@ macro(SetupShibokenAndPyside)
+@@ -56,11 +56,16 @@ macro(SetupShibokenAndPyside)
          endif(NOT SHIBOKEN_LIBRARY)
  
          find_package(PySide2 QUIET)# REQUIRED
+-        if(NOT PYSIDE_INCLUDE_DIR)
 +
 +        if(NOT PYSIDE_LIBRARY AND TARGET PySide2::pyside2)
 +                get_property(PYSIDE_LIBRARY TARGET PySide2::pyside2 PROPERTY IMPORTED_LOCATION_RELEASE)
 +        endif(NOT PYSIDE_LIBRARY AND TARGET PySide2::pyside2)
 +
-         if(NOT PYSIDE_INCLUDE_DIR)
++        if(NOT PYSIDE_LIBRARY)
              message("==================\n"
                      "PySide2 not found.\n"
+                     "==================\n")
+-        endif(NOT PYSIDE_INCLUDE_DIR)
++        endif(NOT PYSIDE_LIBRARY)
+ 
+         find_package(PySide2Tools QUIET) #REQUIRED # PySide2 utilities (pyside2-uic & pyside2-rcc)
+         if(NOT PYSIDE2_TOOLS_FOUND)
