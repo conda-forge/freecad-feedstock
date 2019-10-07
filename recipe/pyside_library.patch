@@ -1,13 +1,22 @@
 diff --git a/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake b/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
-index 7082116d3..1ddf35897 100644
+index 7082116d3..2aaae3ffd 100644
 --- a/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
 +++ b/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
-@@ -50,6 +50,8 @@ macro(SetupShibokenAndPyside)
+@@ -50,6 +50,7 @@ macro(SetupShibokenAndPyside)
                  get_property(SHIBOKEN_INCLUDE_DIR TARGET Shiboken2::libshiboken PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
          endif(NOT SHIBOKEN_LIBRARY AND TARGET Shiboken2::libshiboken)
  
-+        set(SHIBOKEN_LIBRARY "${CMAKE_LIBRARY_PATH}/shiboken2.cp37-win_amd64.lib")
 +
          if(NOT SHIBOKEN_LIBRARY AND NOT SHIBOKEN_INCLUDE_DIR)
              message("====================\n"
                      "shiboken2 not found.\n"
+@@ -63,6 +64,9 @@ macro(SetupShibokenAndPyside)
+                 get_property(PYSIDE_INCLUDE_DIR TARGET PySide2::pyside2 PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
+         endif(NOT PYSIDE_LIBRARY AND TARGET PySide2::pyside2)
+ 
++        set(SHIBOKEN_LIBRARY "${CMAKE_LIBRARY_PATH}/shiboken2.cp37-win_amd64.lib")
++        set(PYSIDE_LIBRARY "${CMAKE_LIBRARY_PATH}/pyside2.cp37-win_amd64.lib")
++
+         if(NOT PYSIDE_LIBRARY AND NOT PYSIDE_INCLUDE_DIR)
+             message("==================\n"
+                     "PySide2 not found.\n"
