@@ -1,12 +1,12 @@
 diff --git a/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake b/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
-index 7082116d3..64a67119d 100644
+index 7082116d3..1ddf35897 100644
 --- a/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
 +++ b/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
 @@ -50,6 +50,8 @@ macro(SetupShibokenAndPyside)
                  get_property(SHIBOKEN_INCLUDE_DIR TARGET Shiboken2::libshiboken PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
          endif(NOT SHIBOKEN_LIBRARY AND TARGET Shiboken2::libshiboken)
  
-+        set(SHIBOKEN_LIBRARY "${LIBRARY_PREFIX}/lib/shiboken2.cp37-win_amd64.lib")
++        set(SHIBOKEN_LIBRARY "${CMAKE_LIBRARY_PATH}/shiboken2.cp37-win_amd64.lib")
 +
          if(NOT SHIBOKEN_LIBRARY AND NOT SHIBOKEN_INCLUDE_DIR)
              message("====================\n"
