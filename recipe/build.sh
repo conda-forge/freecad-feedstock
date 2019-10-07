@@ -1,6 +1,8 @@
 mkdir -p build
 cd build
 
+declare -a CMAKE_PLATFORM_FLAGS
+
 if [[ ${HOST} =~ .*linux.* ]]; then
   # temporary workaround for vtk-cmake setup
   # should be applied @vtk-feedstock
@@ -8,6 +10,7 @@ if [[ ${HOST} =~ .*linux.* ]]; then
   # temporary workaround for qt-cmake:
   sed -i 's|_qt5gui_find_extra_libs(EGL.*)|_qt5gui_find_extra_libs(EGL "EGL" "" "")|g' $PREFIX/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake
   sed -i 's|_qt5gui_find_extra_libs(OPENGL.*)|_qt5gui_find_extra_libs(OPENGL "GL" "" "")|g' $PREFIX/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake
+  CMAKE_PLATFORM_FLAGS+=(-DCMAKE_TOOLCHAIN_FILE="${RECIPE_DIR}/cross-linux.cmake")
 fi
 
 
@@ -43,6 +46,7 @@ cmake -G "Ninja" \
       -D FREECAD_USE_QT_DIALOG:BOOL=ON \
       -D BUILD_DYNAMIC_LINK_PYTHON:BOOL=OFF \
       -D Boost_NO_BOOST_CMAKE:BOOL=ON \
+      ${CMAKE_PLATFORM_FLAGS[@]} \
       ..
 
 ninja install
