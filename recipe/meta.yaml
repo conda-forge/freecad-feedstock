@@ -29,6 +29,7 @@ requirements:
         - {{ cdt('libxext') }}               # [linux]
         - {{ cdt('xorg-x11-server-xvfb') }}  # [linux]
         - {{ cdt('libxau') }}                # [linux]
+        - {{ cdt('libxi-devel') }}           # [linux]
         - cmake
         - ninja
         - git
@@ -50,7 +51,6 @@ requirements:
         - netgen
         - doxygen
         - hdf5
-        - xorg-libxi  # [linux]
         - xorg-libxmu  # [linux]
         - xorg-libxt  # [linux]
         - tbb-devel
@@ -71,7 +71,6 @@ requirements:
         - pivy
         - smesh
         - netgen
-        - xorg-libxi  # [linux]
         - xorg-libxmu  # [linux]
         - xorg-libxt  # [linux]
         - freetype
