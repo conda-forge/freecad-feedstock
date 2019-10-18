@@ -1,0 +1,22 @@
+diff --git a/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake b/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
+index 7082116d3..943f44bd1 100644
+--- a/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
++++ b/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
+@@ -46,7 +46,7 @@ macro(SetupShibokenAndPyside)
+         # pyside2 changed it's cmake files, this is the dance we have
+         # to dance to be compatible with the old (<5.12) and the new versions (>=5.12)
+         if(NOT SHIBOKEN_LIBRARY AND TARGET Shiboken2::libshiboken)
+-                get_property(SHIBOKEN_LIBRARY TARGET Shiboken2::libshiboken PROPERTY IMPORTED_LOCATION_RELEASE)
++                get_property(SHIBOKEN_LIBRARY TARGET Shiboken2::libshiboken PROPERTY IMPORTED_IMPLIB)
+                 get_property(SHIBOKEN_INCLUDE_DIR TARGET Shiboken2::libshiboken PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
+         endif(NOT SHIBOKEN_LIBRARY AND TARGET Shiboken2::libshiboken)
+ 
+@@ -59,7 +59,7 @@ macro(SetupShibokenAndPyside)
+         find_package(PySide2 QUIET)# REQUIRED
+ 
+         if(NOT PYSIDE_LIBRARY AND TARGET PySide2::pyside2)
+-                get_property(PYSIDE_LIBRARY TARGET PySide2::pyside2 PROPERTY IMPORTED_LOCATION_RELEASE)
++                get_property(PYSIDE_LIBRARY TARGET PySide2::pyside2 PROPERTY IMPORTED_IMPLIB)
+                 get_property(PYSIDE_INCLUDE_DIR TARGET PySide2::pyside2 PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
+         endif(NOT PYSIDE_LIBRARY AND TARGET PySide2::pyside2)
+ 
