@@ -1,22 +1,48 @@
-diff --git a/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake b/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
-index 7082116d3..943f44bd1 100644
---- a/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
-+++ b/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
-@@ -46,7 +46,7 @@ macro(SetupShibokenAndPyside)
-         # pyside2 changed it's cmake files, this is the dance we have
-         # to dance to be compatible with the old (<5.12) and the new versions (>=5.12)
-         if(NOT SHIBOKEN_LIBRARY AND TARGET Shiboken2::libshiboken)
--                get_property(SHIBOKEN_LIBRARY TARGET Shiboken2::libshiboken PROPERTY IMPORTED_LOCATION_RELEASE)
-+                get_property(SHIBOKEN_LIBRARY TARGET Shiboken2::libshiboken PROPERTY IMPORTED_IMPLIB_RELEASE)
-                 get_property(SHIBOKEN_INCLUDE_DIR TARGET Shiboken2::libshiboken PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
-         endif(NOT SHIBOKEN_LIBRARY AND TARGET Shiboken2::libshiboken)
+commit 5d8d29d6cd389d68529cca3b619d4465efad390c
+Author: looooo <sppedflyer@gmail.com>
+Date:   Fri Oct 18 23:17:31 2019 +0200
+
+    temporary cmake changes
+
+diff --git a/src/Gui/CMakeLists.txt b/src/Gui/CMakeLists.txt
+index 6c918b5e2a..f4dd140bc4 100644
+--- a/src/Gui/CMakeLists.txt
++++ b/src/Gui/CMakeLists.txt
+@@ -180,9 +180,15 @@ if(SHIBOKEN_INCLUDE_DIR)
+     include_directories(
+         ${SHIBOKEN_INCLUDE_DIR}
+     )
+-    list(APPEND FreeCADGui_LIBS
+-        ${SHIBOKEN_LIBRARY}
+-    )
++    if (TARGET Shiboken2::libshiboken)
++        list(APPEND FreeCADGui_LIBS
++            Shiboken2::libshiboken
++        )
++    else(TARGET Shiboken2::libshiboken)
++        list(APPEND FreeCADGui_LIBS
++            ${SHIBOKEN_LIBRARY}
++        )
++    endif(TARGET Shiboken2::libshiboken)
+ endif(SHIBOKEN_INCLUDE_DIR)
  
-@@ -59,7 +59,7 @@ macro(SetupShibokenAndPyside)
-         find_package(PySide2 QUIET)# REQUIRED
- 
-         if(NOT PYSIDE_LIBRARY AND TARGET PySide2::pyside2)
--                get_property(PYSIDE_LIBRARY TARGET PySide2::pyside2 PROPERTY IMPORTED_LOCATION_RELEASE)
-+                get_property(PYSIDE_LIBRARY TARGET PySide2::pyside2 PROPERTY IMPORTED_IMPLIB_RELEASE)
-                 get_property(PYSIDE_INCLUDE_DIR TARGET PySide2::pyside2 PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
-         endif(NOT PYSIDE_LIBRARY AND TARGET PySide2::pyside2)
- 
+ if(PYSIDE_INCLUDE_DIR)
+@@ -191,9 +197,15 @@ if(PYSIDE_INCLUDE_DIR)
+         ${PYSIDE_INCLUDE_DIR}/QtCore
+         ${PYSIDE_INCLUDE_DIR}/QtGui
+     )
+-    list(APPEND FreeCADGui_LIBS
+-        ${PYSIDE_LIBRARY}
+-    )
++    if (TARGET PySide2::pyside2)
++        list(APPEND FreeCADGui_LIBS
++            PySide2::pyside2
++        )
++    else(TARGET PySide2::pyside2)
++        list(APPEND FreeCADGui_LIBS
++            ${PYSIDE_LIBRARY}
++        )
++    endif(TARGET PySide2::pyside2)
+     if (BUILD_QT5)
+         include_directories(
+             ${PYSIDE_INCLUDE_DIR}/QtWidgets
