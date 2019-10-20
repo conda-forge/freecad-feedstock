@@ -4,6 +4,7 @@ cd build
 declare -a CMAKE_PLATFORM_FLAGS
 
 if [[ ${HOST} =~ .*linux.* ]]; then
+  echo "this is linux"
   # temporary workaround for vtk-cmake setup
   # should be applied @vtk-feedstock
   sed -i 's#/home/conda/feedstock_root/build_artifacts/vtk_.*_build_env/x86_64-conda_cos6-linux-gnu/sysroot/usr/lib.*;##g' ${PREFIX}/lib/cmake/vtk-8.2/Modules/vtkhdf5.cmake 
@@ -16,6 +17,7 @@ fi
 
 if [[ ${HOST} =~ .*darwin.* ]]; then
   # add hacks for osx here!
+  echo "this is osx"
 fi
 
 cmake -G "Ninja" \
