@@ -12,7 +12,7 @@ source:
         - pyside_library.patch
 
 build:
-    number: 60
+    number: 61
     skip: true  # [py<37]
 
 requirements:

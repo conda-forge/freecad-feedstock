@@ -15,10 +15,7 @@ fi
 
 
 if [[ ${HOST} =~ .*darwin.* ]]; then
-  # create link from MacOSX10.12 to MacOSX10.9
-  # this is necessarry because not all deps are built with 10.12
-  ln -s /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk
-  ln -s ${PREFIX}/lib/libfreeimage.3.dylib ${PREFIX}/lib/libfreeimage.dylib
+  # add hacks for osx here!
 fi
 
 cmake -G "Ninja" \
