@@ -1,108 +1,110 @@
 {% set name = "freecad" %}
-{% set version = "0.18.3" %}
+{% set version = "0.18.4" %}
 {% set sha256 = "7f86b9b31f3b5bdf64e0c3978f71916f7a427c09776a6f3143adb268df57471e" %}
 
 
 package:
-  name: {{ name }}
-  version: {{ version }}
+    name: {{ name }}
+    version: {{ version }}
 
 source:
-  git_url: https://github.com/FreeCAD/FreeCAD
-  git_tag: {{ version }}
-  patches:
-    - win_snprintf.patch  # [win]
+    git_url: https://github.com/FreeCAD/FreeCAD
+    git_tag: {{ version }}
+    patches:
+        - win_snprintf.patch  # [win]
 
 build:
-  number: 2
-  skip: true  # [py<37]
+    number: 0
+    skip: true  # [py<37]
 
 requirements:
-  build:
-    - {{ compiler("cxx") }}
-    - {{ cdt('mesa-libgl-devel') }}  # [linux]
-    - {{ cdt('mesa-dri-drivers') }}  # [linux]
-    - {{ cdt('libselinux') }}  # [linux]
-    - {{ cdt('libxdamage') }}  # [linux]
-    - {{ cdt('libxfixes') }}  # [linux]
-    - {{ cdt('libxxf86vm') }}  # [linux]
-    - {{ cdt('libxcb') }}  # [linux]
-    - {{ cdt('libxext') }}  # [linux]
-    - {{ cdt('xorg-x11-server-xvfb') }}  # [linux]
-    - {{ cdt('libxau') }}  # [linux]
-    - cmake
-    - ninja
-    - git
-  host:
-    - boost-cpp
-    - python
-    - qt
-    - occt
-    - xerces-c
-    - zlib
-    - vtk
-    - swig
-    - eigen
-    - pybind11
-    - coin3d
-    - pivy
-    - pyside2
-    - smesh
-    - netgen
-    - doxygen
-    - hdf5
-    - xorg-libxi  # [linux]
-    - xorg-libxmu  # [linux]
-    - xorg-libxt  # [linux]
-    - tbb-devel
-    - freetype
-  run:
-    - {{ pin_compatible("pyside2") }}
-    - vtk
-    - occt
-    - qt
-    - xerces-c
-    - zlib
-    - boost-cpp
-    - hdf5
-    - python
-    - coin3d
-    - pivy
-    - smesh
-    - netgen
-    - xorg-libxi  # [linux]
-    - xorg-libxmu  # [linux]
-    - xorg-libxt  # [linux]
-    - freetype
-    - numpy
-    - six
-    - pyyaml
+    build:
+        - {{ compiler("cxx") }}
+        - {{ cdt('mesa-libgl-devel') }}      # [linux]
+        - {{ cdt('mesa-dri-drivers') }}      # [linux]
+        - {{ cdt('mesa-libegl-devel') }}     # [linux]
+        - {{ cdt('libselinux') }}            # [linux]
+        - {{ cdt('libxdamage') }}            # [linux]
+        - {{ cdt('libxfixes') }}             # [linux]
+        - {{ cdt('libxxf86vm') }}            # [linux]
+        - {{ cdt('libxcb') }}                # [linux]
+        - {{ cdt('libxext') }}               # [linux]
+        - {{ cdt('xorg-x11-server-xvfb') }}  # [linux]
+        - {{ cdt('libxau') }}                # [linux]
+        - {{ cdt('libxi-devel') }}           # [linux]
+        - cmake
+        - ninja
+        - git
+    host:
+        - boost-cpp
+        - python
+        - qt
+        - occt
+        - xerces-c
+        - zlib
+        - vtk
+        - swig
+        - eigen
+        - pybind11
+        - coin3d
+        - pivy
+        - pyside2
+        - smesh
+        - netgen
+        - doxygen
+        - hdf5
+        - xorg-libxmu  # [linux]
+        - xorg-libxt  # [linux]
+        - tbb-devel
+        - freetype
+        - libspnav  # [linux]
+    run:
+        - {{ pin_compatible("pyside2") }}
+        - vtk
+        - occt
+        - qt
+        - xerces-c
+        - zlib
+        - boost-cpp
+        - hdf5
+        - python
+        - coin3d
+        - pivy
+        - smesh
+        - netgen
+        - xorg-libxmu  # [linux]
+        - xorg-libxt  # [linux]
+        - freetype
+        - numpy
+        - six
+        - pyyaml
+        - libspnav  # [linux]
 
 test:
-  commands:
-    - FreeCADCmd -t 0
+    commands:
+        - FreeCADCmd -t 0
 
 about:
-  home: https://www.freecadweb.org/
-  license: LGPL2.1
-  license_family: LGPL
-  license_file: LICENSE
-  summary: 'FreeCAD is a parametric 3D modeler made primarily to design real-life objects of any size. '
-  description: |
-    FreeCAD is a general purpose feature-based, parametric 3D modeler for
-    CAD, MCAD, CAx, CAE and PLM, aimed directly at mechanical engineering
-    and product design but also fits a wider range of uses in engineering,
-    such as architecture or other engineering specialties. It is 100% Open
-    Source (LGPL2+ license) and extremely modular, allowing for very
-    advanced extension and customization.
-    FreeCAD is based on OpenCASCADE, a powerful geometry kernel, features an
-    Open Inventor-compliant 3D scene representation model provided by the
-    Coin 3D library, and a broad Python API. The interface is built with Qt.
-    FreeCAD runs exactly the same way on Windows, Mac OSX, BSD and Linux
-    platforms.
+    home: https://www.freecadweb.org/
+    license: LGPL2.1
+    license_family: LGPL
+    license_file: LICENSE
+    summary: 'FreeCAD is a parametric 3D modeler made primarily to design real-life objects of any size. '
+    description: |
+        FreeCAD is a general purpose feature-based, parametric 3D modeler for
+        CAD, MCAD, CAx, CAE and PLM, aimed directly at mechanical engineering
+        and product design but also fits a wider range of uses in engineering,
+        such as architecture or other engineering specialties. It is 100% Open
+        Source (LGPL2+ license) and extremely modular, allowing for very
+        advanced extension and customization.
+        FreeCAD is based on OpenCASCADE, a powerful geometry kernel, features an
+        Open Inventor-compliant 3D scene representation model provided by the
+        Coin 3D library, and a broad Python API. The interface is built with Qt.
+        FreeCAD runs exactly the same way on Windows, Mac OSX, BSD and Linux
+        platforms.
     doc_url: https://www.freecadweb.org/wiki/Main_Page
     dev_url: https://github.com/FreeCAD/FreeCAD
 
 extra:
-  recipe-maintainers:
-    - looooo
+    recipe-maintainers:
+        - looooo

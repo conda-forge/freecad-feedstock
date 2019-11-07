@@ -1,17 +1,24 @@
 mkdir -p build
 cd build
 
+declare -a CMAKE_PLATFORM_FLAGS
 
-if [[ ${HOST} =~ .*darwin.* ]]; then
-  # create link from MacOSX10.12 to MacOSX10.9
-  # this is necessarry because not all deps are built with 10.12
-  ln -s /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk
+if [[ ${HOST} =~ .*linux.* ]]; then
+  echo "adding hacks for linux"
+  # temporary workaround for vtk-cmake setup
+  # should be applied @vtk-feedstock
+  sed -i 's#/home/conda/feedstock_root/build_artifacts/vtk_.*_build_env/x86_64-conda_cos6-linux-gnu/sysroot/usr/lib.*;##g' ${PREFIX}/lib/cmake/vtk-8.2/Modules/vtkhdf5.cmake 
+  # temporary workaround for qt-cmake:
+  sed -i 's|_qt5gui_find_extra_libs(EGL.*)|_qt5gui_find_extra_libs(EGL "EGL" "" "")|g' $PREFIX/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake
+  sed -i 's|_qt5gui_find_extra_libs(OPENGL.*)|_qt5gui_find_extra_libs(OPENGL "GL" "" "")|g' $PREFIX/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake
+  CMAKE_PLATFORM_FLAGS+=(-DCMAKE_TOOLCHAIN_FILE="${RECIPE_DIR}/cross-linux.cmake")
 fi
 
-# temporary workaround for vtk-cmake setup
-# should be applied @vtk-feedstock
-if [[ ${HOST} =~ .*linux.* ]]; then
-  sed -i 's#/home/conda/feedstock_root/build_artifacts/vtk_.*_build_env/x86_64-conda_cos6-linux-gnu/sysroot/usr/lib.*;##g' ${PREFIX}/lib/cmake/vtk-8.2/Modules/vtkhdf5.cmake 
+
+if [[ ${HOST} =~ .*darwin.* ]]; then
+  # add hacks for osx here!
+  echo "adding hacks for osx"
+  ln -s /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk
 fi
 
 cmake -G "Ninja" \
@@ -20,6 +27,7 @@ cmake -G "Ninja" \
       -D CMAKE_INSTALL_PREFIX:FILEPATH=$PREFIX \
       -D CMAKE_PREFIX_PATH:FILEPATH=$PREFIX \
       -D CMAKE_LIBRARY_PATH:FILEPATH=$PREFIX/lib \
+      -D CMAKE_INSTALL_LIBDIR:FILEPATH=$PREFIX/lib \
       -D CMAKE_INCLUDE_PATH:FILEPATH=$PREFIX/include \
       -D BUILD_QT5:BOOL=ON \
       -D FREECAD_USE_OCC_VARIANT="Official Version" \
@@ -37,7 +45,9 @@ cmake -G "Ninja" \
       -D BUILD_SHIP:BOOL=OFF \
       -D OCCT_CMAKE_FALLBACK:BOOL=OFF \
       -D FREECAD_USE_QT_DIALOG:BOOL=ON \
+      -D BUILD_DYNAMIC_LINK_PYTHON:BOOL=OFF \
       -D Boost_NO_BOOST_CMAKE:BOOL=ON \
+      ${CMAKE_PLATFORM_FLAGS[@]} \
       ..
 
 ninja install
