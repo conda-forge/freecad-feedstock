@@ -12,6 +12,7 @@ source:
     git_tag: {{ version }}
     patches:
         - win_snprintf.patch  # [win]
+        - py38.patch
 
 build:
     number: 0
