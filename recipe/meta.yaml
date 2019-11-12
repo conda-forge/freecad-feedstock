@@ -14,7 +14,7 @@ source:
         - win_snprintf.patch  # [win]
 
 build:
-    number: 0
+    number: 1
     skip: true  # [py<37]
 
 requirements:
@@ -79,6 +79,8 @@ requirements:
         - six
         - pyyaml
         - libspnav  # [linux]
+    run_constrained:
+        - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
 
 test:
     commands:
