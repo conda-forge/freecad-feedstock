@@ -23,8 +23,6 @@ cmake -G "Ninja" ^
       -D OCC_LIBRARIES:FILEPATH=%LIBRARY_PREFIX%/lib ^
       -D FREECAD_USE_OCC_VARIANT="Official Version" ^
       -D OCC_OCAF_LIBRARIES:FILEPATH=%LIBRARY_PREFIX%/lib ^
-      -D SWIG_DIR:FILEPATH=%LIBRARY_PREFIX%/share/swig/3.0.8 ^
-      -D SWIG_EXECUTABLE:FILEPATH=%LIBRARY_PREFIX%/bin/swig ^
       -D BUILD_REVERSEENGINEERING:BOOL=OFF ^
       -D USE_BOOST_PYTHON:BOOL=OFF ^
       -D FREECAD_USE_PYBIND11:BOOL=ON ^
@@ -45,3 +43,5 @@ ninja install
 if errorlevel 1 exit 1
 
 rmdir /s /q "%LIBRARY_PREFIX%\doc"
+copy "%LIBRARY_PREFIX%\bin\FreeCAD.exe" "%LIBRARY_PREFIX\bin\freecad.exe"
+copy "%LIBRARY_PREFIX%\bin\FreeCADCmd.exe" "%LIBRARY_PREFIX\bin\freecadcmd.exe"
