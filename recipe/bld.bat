@@ -43,5 +43,5 @@ ninja install
 if errorlevel 1 exit 1
 
 rmdir /s /q "%LIBRARY_PREFIX%\doc"
-copy "%LIBRARY_PREFIX%\bin\FreeCAD.exe" "%LIBRARY_PREFIX\bin\freecad.exe"
-copy "%LIBRARY_PREFIX%\bin\FreeCADCmd.exe" "%LIBRARY_PREFIX\bin\freecadcmd.exe"
+move %LIBRARY_PREFIX%\bin\FreeCAD.exe %LIBRARY_PREFIX\bin\freecad.exe
+move %LIBRARY_PREFIX%\bin\FreeCADCmd.exe %LIBRARY_PREFIX\bin\freecadcmd.exe
