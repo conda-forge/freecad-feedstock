@@ -36,6 +36,7 @@ cmake -G "Ninja" ^
       -D BUILD_DYNAMIC_LINK_PYTHON:BOOL=ON ^
       -D Boost_NO_BOOST_CMAKE:BOOL=ON ^
       -D FREECAD_USE_PCH:BOOL=OFF ^
+      -D FREECAD_USE_PCL:BOOL=ON ^
       ..
 
 if errorlevel 1 exit 1

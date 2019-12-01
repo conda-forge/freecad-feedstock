@@ -47,6 +47,7 @@ cmake -G "Ninja" \
       -D FREECAD_USE_QT_DIALOG:BOOL=ON \
       -D BUILD_DYNAMIC_LINK_PYTHON:BOOL=OFF \
       -D Boost_NO_BOOST_CMAKE:BOOL=ON \
+      -D FREECAD_USE_PCL:BOOL=ON \
       ${CMAKE_PLATFORM_FLAGS[@]} \
       ..
 
