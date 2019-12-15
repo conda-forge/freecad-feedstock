@@ -12,7 +12,7 @@ source:
         - freecad-python.patch
 
 build:
-    number: 75
+    number: 76
     skip: true  # [py<37]
 
 requirements:
@@ -58,6 +58,7 @@ requirements:
         - freetype
         - libspnav  # [linux]
         - pcl
+        - six
     run:
         - {{ pin_compatible("pyside2") }}
         - vtk
