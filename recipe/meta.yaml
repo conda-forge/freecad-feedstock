@@ -12,7 +12,7 @@ source:
         - freecad-python.patch
 
 build:
-    number: 76
+    number: 77
     skip: true  # [py<37]
 
 requirements:
