@@ -12,7 +12,7 @@ source:
         - freecad-sitepackges.patch
 
 build:
-    number: 80
+    number: 81
     skip: true  # [py<37]
 
 requirements:

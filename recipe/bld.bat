@@ -37,6 +37,7 @@ cmake -G "Ninja" ^
       -D Boost_NO_BOOST_CMAKE:BOOL=ON ^
       -D FREECAD_USE_PCH:BOOL=OFF ^
       -D FREECAD_USE_PCL:BOOL=ON ^
+      -D INSTALL_TO_SITEPACKAGES:BOOL=ON ^
       ..
 
 if errorlevel 1 exit 1
