@@ -9,10 +9,10 @@ source:
     git_url: https://github.com/FreeCAD/FreeCAD
     git_tag: master
     patches:
-        - freecad-python.patch
+        - freecad-sitepackges.patch
 
 build:
-    number: 79
+    number: 80
     skip: true  # [py<37]
 
 requirements:

@@ -1,0 +1,60 @@
+diff --git a/cMake/FreeCAD_Helpers/InitializeFreeCADBuildOptions.cmake b/cMake/FreeCAD_Helpers/InitializeFreeCADBuildOptions.cmake
+index 4d42e54755..7274639ea8 100644
+--- a/cMake/FreeCAD_Helpers/InitializeFreeCADBuildOptions.cmake
++++ b/cMake/FreeCAD_Helpers/InitializeFreeCADBuildOptions.cmake
+@@ -10,8 +10,9 @@ macro(InitializeFreeCADBuildOptions)
+     option(FREECAD_USE_EXTERNAL_KDL "Use system installed orocos-kdl instead of the bundled." OFF)
+     option(FREECAD_USE_FREETYPE "Builds the features using FreeType libs" ON)
+     option(FREECAD_BUILD_DEBIAN "Prepare for a build of a Debian package" OFF)
+-    option(BUILD_WITH_CONDA "Set ON if you build freecad with conda" OFF)
++    option(BUILD_WITH_CONDA "Set ON if you build FreeCAD with conda" OFF)
+     option(BUILD_DYNAMIC_LINK_PYTHON "If OFF extension-modules do not link against python-libraries" ON)
++    option(INSTALL_TO_SITEPACKAGES "If ON the freecad root namespace (python) is installed into python's site-packages" OFF)
+     option(OCCT_CMAKE_FALLBACK "disable usage of occt-config files" OFF)
+     if (WIN32 OR APPLE)
+         option(FREECAD_USE_QT_FILEDIALOG "Use Qt's file dialog instead of the native one." OFF)
+diff --git a/src/Ext/freecad/CMakeLists.txt b/src/Ext/freecad/CMakeLists.txt
+index 4d0420aac4..aeafc4aaf8 100644
+--- a/src/Ext/freecad/CMakeLists.txt
++++ b/src/Ext/freecad/CMakeLists.txt
+@@ -3,18 +3,18 @@ EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} -c
+ OUTPUT_VARIABLE python_libs OUTPUT_STRIP_TRAILING_WHITESPACE )
+ SET(PYTHON_MAIN_DIR ${python_libs})
+ 
+-SET(EXT_SRCS
+-    __init__.py
+-)
+-
+-ADD_CUSTOM_TARGET(freecad_COPY_SOURCE ALL
+-    SOURCES ${EXT_SRCS})
++set(NAMESPACE_INIT "${CMAKE_BINARY_DIR}/Ext/freecad/__init__.py")
++configure_file(__init__.py.template ${NAMESPACE_INIT})
+ 
+-fc_copy_sources(freecad_COPY_SOURCE "${CMAKE_BINARY_DIR}/Ext/freecad" ${EXT_SRCS})
++if (INSTALL_TO_SITEPACKAGES)
++    SET(SITE_PACKAGE_DIR ${PYTHON_MAIN_DIR}/freecad)
++else ()
++    SET(SITE_PACKAGE_DIR Ext/freecad)
++endif()
+ 
+ INSTALL(
+     FILES
+-        __init__.py
++        ${NAMESPACE_INIT}
+     DESTINATION
+-        Ext/freecad
+-)
+\ No newline at end of file
++        ${SITE_PACKAGE_DIR}
++)
+diff --git a/src/Ext/freecad/__init__.py b/src/Ext/freecad/__init__.py
+deleted file mode 100644
+index b6f98eb927..0000000000
+--- a/src/Ext/freecad/__init__.py
++++ /dev/null
+@@ -1,4 +0,0 @@
+-import pkgutil
+-__path__ = pkgutil.extend_path(__path__, __name__)
+-
+-import FreeCAD as app
+\ No newline at end of file
