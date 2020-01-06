@@ -12,6 +12,7 @@ source:
     git_tag: {{ version }}
     patches:
         - win_snprintf.patch  # [win]
+        - backports_for_occt74.patch
 
 build:
     number: 1
