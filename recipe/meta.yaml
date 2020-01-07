@@ -8,11 +8,9 @@ package:
 source:
     git_url: https://github.com/FreeCAD/FreeCAD
     git_tag: master
-    patches:
-        - freecad-sitepackges.patch
 
 build:
-    number: 84
+    number: 85
     skip: true  # [py<37]
 
 requirements:
