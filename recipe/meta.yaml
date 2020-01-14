@@ -11,7 +11,7 @@ source:
 
 build:
     number: 87
-    skip: true  # [py<37]
+    skip: true  # [(py<38 and not osx) or (osx and py!=37)]
 
 requirements:
     build:
