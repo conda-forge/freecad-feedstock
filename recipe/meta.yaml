@@ -1,5 +1,6 @@
 {% set name = "freecad" %}
 {% set version = "0.19.pre" %}
+{% set build_number = "91" %}
 
 package:
     name: {{ name }}
@@ -10,7 +11,7 @@ source:
     git_tag: master
 
 build:
-    number: 90
+    number: {{ build_number }}
     skip: true  # [py<38]
 
 requirements:
