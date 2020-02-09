@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
 {% set version = "0.19.pre" %}
-{% set build_number = "94" %}
+{% set build_number = "95" %}
 
 package:
     name: {{ name }}
