@@ -29,8 +29,7 @@ requirements:
         - {{ cdt('xorg-x11-server-xvfb') }}  # [linux]
         - {{ cdt('libxau') }}                # [linux]
         - {{ cdt('libxi-devel') }}           # [linux]
-        - cmake                              # [not linux]
-        - cmake  3.16.3                      # [linux]
+        - cmake
         - ninja
         - git
     host:
