@@ -14,7 +14,8 @@ source:
 
 build:
     number: {{ build_number }}
-    skip: true  # [py<38]
+    skip: true  # [py<38 and not linux]
+    skip: true  # [py<37 and linux]
 
 requirements:
     build:
