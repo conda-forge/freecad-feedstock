@@ -60,7 +60,6 @@ requirements:
         - pcl
         - six
         - ply
-        - expat 2.2.5  # [win]
     run:
         - {{ pin_compatible("pyside2") }}
         - vtk
