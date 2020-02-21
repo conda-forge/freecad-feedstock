@@ -10,20 +10,8 @@ jobs:
   strategy:
     maxParallel: 8
     matrix:
-      linux_occt7.3python3.7:
-        CONFIG: linux_occt7.3python3.7
-        UPLOAD_PACKAGES: True
-        DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_occt7.3python3.8:
-        CONFIG: linux_occt7.3python3.8
-        UPLOAD_PACKAGES: True
-        DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_occt7.4python3.7:
-        CONFIG: linux_occt7.4python3.7
-        UPLOAD_PACKAGES: True
-        DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_occt7.4python3.8:
-        CONFIG: linux_occt7.4python3.8
+      linux_python3.8:
+        CONFIG: linux_python3.8
         UPLOAD_PACKAGES: True
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
   steps:
