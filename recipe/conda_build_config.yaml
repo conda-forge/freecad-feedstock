@@ -4,6 +4,3 @@ channel_targets:
 - freecad dev
 MACOSX_DEPLOYMENT_TARGET:  # [osx]
 - '10.12'                  # [osx]
-occt:                      # [linux]
-  - '7.3'                  # [linux]
-  - '7.4'                  # [linux]
