@@ -1,7 +1,7 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '10.12'
 boost_cpp:
-- 1.70.0
+- '1.72'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -19,7 +19,7 @@ macos_machine:
 macos_min_version:
 - '10.9'
 occt:
-- '7.3'
+- '7.4'
 pin_run_as_build:
   boost-cpp:
     max_pin: x.x.x
