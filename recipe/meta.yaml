@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
 {% set version = "0.19.pre" %}
-{% set build_number = "103" %}
+{% set build_number = "104" %}
 
 package:
     name: {{ name }}
@@ -51,10 +51,7 @@ requirements:
         - netgen
         - doxygen
         - hdf5
-        - xorg-libxmu  # [linux]
         - xorg-libxt  # [linux]
-        - tbb-devel
-        - blas * openblas
         - freetype
         - libspnav  # [linux]
         - pcl
@@ -74,7 +71,6 @@ requirements:
         - pivy
         - smesh
         - netgen
-        - xorg-libxmu  # [linux]
         - xorg-libxt  # [linux]
         - freetype
         - numpy
