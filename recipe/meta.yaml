@@ -40,7 +40,7 @@ requirements:
         - occt
         - xerces-c
         - zlib
-        - vtk
+        - vtk 8.20 *108
         - swig
         - eigen
         - pybind11
