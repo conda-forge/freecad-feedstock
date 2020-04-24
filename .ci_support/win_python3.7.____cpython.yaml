@@ -1,5 +1,5 @@
 boost_cpp:
-- 1.70.0
+- '1.72'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -9,7 +9,7 @@ cxx_compiler:
 freetype:
 - 2.9.1
 hdf5:
-- 1.10.5
+- 1.10.6
 occt:
 - '7.4'
 pin_run_as_build:
