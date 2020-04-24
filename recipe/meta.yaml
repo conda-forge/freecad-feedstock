@@ -1,5 +1,5 @@
 {% set name = "freecad" %}
-{% set version = "0.18.4" %}
+{% set version = "0.19.alpha1" %}
 {% set sha256 = "7f86b9b31f3b5bdf64e0c3978f71916f7a427c09776a6f3143adb268df57471e" %}
 
 
@@ -8,13 +8,12 @@ package:
     version: {{ version }}
 
 source:
-    git_url: https://github.com/FreeCAD/FreeCAD
+    # temporary workaround as there is no alpha release available
+    git_url: https://github.com/looooo/FreeCAD  
     git_tag: {{ version }}
-    patches:
-        - win_snprintf.patch  # [win]
 
 build:
-    number: 1
+    number: 0
     skip: true  # [py<37]
 
 requirements:
@@ -53,11 +52,12 @@ requirements:
         - netgen
         - doxygen
         - hdf5
-        - xorg-libxmu  # [linux]
         - xorg-libxt  # [linux]
-        - tbb-devel
         - freetype
         - libspnav  # [linux]
+        - pcl
+        - six
+        - ply
     run:
         - {{ pin_compatible("pyside2") }}
         - vtk
@@ -72,13 +72,14 @@ requirements:
         - pivy
         - smesh
         - netgen
-        - xorg-libxmu  # [linux]
         - xorg-libxt  # [linux]
         - freetype
         - numpy
         - six
         - pyyaml
         - libspnav  # [linux]
+        - pcl
+        - ply
     run_constrained:
         - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
 

@@ -19,6 +19,14 @@ if [[ ${HOST} =~ .*darwin.* ]]; then
   # add hacks for osx here!
   echo "adding hacks for osx"
   ln -s /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk
+  
+  # install space-mouse
+  curl -o /tmp/3dFW.dmg -L 'http://www.3dconnexion.com/index.php?eID=sdl&ext=tx_iccsoftware&oid=a273bdbc-c289-e10d-816b-567043331c9e&filename=3DxWareMac_v10-4-1_r2428.dmg'
+  hdiutil attach -readonly /tmp/3dFW.dmg
+  sudo installer -package /Volumes/3Dconnexion\ Software/Install\ 3Dconnexion\ software.pkg -target /
+  diskutil eject /Volumes/3Dconnexion\ Software
+  CMAKE_PLATFORM_FLAGS+=(-DFREECAD_USE_3DCONNEXION:BOOL=ON)
+  CMAKE_PLATFORM_FLAGS+=(-D3DCONNEXIONCLIENT_FRAMEWORK:FILEPATH="/Library/Frameworks/3DconnexionClient.framework")
 fi
 
 cmake -G "Ninja" \
@@ -47,8 +55,14 @@ cmake -G "Ninja" \
       -D FREECAD_USE_QT_DIALOG:BOOL=ON \
       -D BUILD_DYNAMIC_LINK_PYTHON:BOOL=OFF \
       -D Boost_NO_BOOST_CMAKE:BOOL=ON \
+      -D FREECAD_USE_PCL:BOOL=ON \
+      -D INSTALL_TO_SITEPACKAGES:BOOL=ON \
       ${CMAKE_PLATFORM_FLAGS[@]} \
       ..
 
+echo "FREECAD_USE_3DCONNEXION=${FREECAD_USE_3DCONNEXION}"
+
 ninja install
-rm -r ${PREFIX}/doc     # smaller size of package!
+rm -r ${PREFIX}/share/doc/FreeCAD     # smaller size of package!
+mv ${PREFIX}/bin/FreeCAD ${PREFIX}/bin/freecad
+mv ${PREFIX}/bin/FreeCADCmd ${PREFIX}/bin/freecadcmd
