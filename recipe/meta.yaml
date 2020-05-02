@@ -58,6 +58,7 @@ requirements:
         - pcl
         - six
         - ply
+        - tbb-devel
     run:
         - {{ pin_compatible("pyside2") }}
         - vtk
