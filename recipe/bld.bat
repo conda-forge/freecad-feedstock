@@ -23,9 +23,7 @@ cmake -G "Ninja" ^
       -D OCC_LIBRARIES:FILEPATH=%LIBRARY_PREFIX%/lib ^
       -D FREECAD_USE_OCC_VARIANT="Official Version" ^
       -D OCC_OCAF_LIBRARIES:FILEPATH=%LIBRARY_PREFIX%/lib ^
-      -D SWIG_DIR:FILEPATH=%LIBRARY_PREFIX%/share/swig/3.0.8 ^
-      -D SWIG_EXECUTABLE:FILEPATH=%LIBRARY_PREFIX%/bin/swig ^
-      -D BUILD_REVERSEENGINEERING:BOOL=OFF ^
+      -D BUILD_REVERSEENGINEERING:BOOL=ON ^
       -D USE_BOOST_PYTHON:BOOL=OFF ^
       -D FREECAD_USE_PYBIND11:BOOL=ON ^
       -D SMESH_INCLUDE_DIR:FILEPATH=%LIBRARY_PREFIX%/include/smesh ^
@@ -38,6 +36,8 @@ cmake -G "Ninja" ^
       -D BUILD_DYNAMIC_LINK_PYTHON:BOOL=ON ^
       -D Boost_NO_BOOST_CMAKE:BOOL=ON ^
       -D FREECAD_USE_PCH:BOOL=OFF ^
+      -D FREECAD_USE_PCL:BOOL=ON ^
+      -D INSTALL_TO_SITEPACKAGES:BOOL=ON ^
       ..
 
 if errorlevel 1 exit 1
@@ -45,3 +45,5 @@ ninja install
 if errorlevel 1 exit 1
 
 rmdir /s /q "%LIBRARY_PREFIX%\doc"
+ren %LIBRARY_PREFIX%\bin\FreeCAD.exe freecad.exe
+ren %LIBRARY_PREFIX%\bin\FreeCADCmd.exe freecadcmd.exe
