@@ -5,11 +5,11 @@ channel_sources:
 channel_targets:
 - freecad dev
 cxx_compiler:
-- vs2015
+- vs2017
 freetype:
 - 2.9.1
 hdf5:
-- 1.10.5
+- 1.10.6
 occt:
 - '7.4'
 pin_run_as_build:
