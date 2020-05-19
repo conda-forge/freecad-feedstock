@@ -1,13 +1,19 @@
 mkdir build
 cd build
 
+if "%FEATURE_DEBUG%"=="1" (
+      set BUILD_TYPE="Debug"
+      echo "#! building debug package !#") else (
+      set BUILD_TYPE="Release")
+
+
 set "CFLAGS= "
 set "CXXFLAGS= "
 set "LDFLAGS_SHARED= ucrt.lib"
 
 cmake -G "Ninja" ^
       -D BUID_WITH_CONDA:BOOL=ON ^
-      -D CMAKE_BUILD_TYPE=Release ^
+      -D CMAKE_BUILD_TYPE=%BUILD_TYPE% ^
       -D FREECAD_LIBPACK_USE:BOOL=OFF ^
       -D CMAKE_INSTALL_PREFIX:FILEPATH=%LIBRARY_PREFIX% ^
       -D CMAKE_PREFIX_PATH:FILEPATH=%LIBRARY_PREFIX% ^

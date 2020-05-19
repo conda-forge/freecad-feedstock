@@ -1,6 +1,12 @@
 mkdir -p build
 cd build
 
+if [[ ${FEATURE_DEBUG} = 1 ]]; then
+      BUILD_TYPE="Debug"
+else
+      BUILD_TYPE="Release"
+fi
+
 declare -a CMAKE_PLATFORM_FLAGS
 
 if [[ ${HOST} =~ .*linux.* ]]; then
@@ -31,7 +37,7 @@ fi
 
 cmake -G "Ninja" \
       -D BUID_WITH_CONDA:BOOL=ON \
-      -D CMAKE_BUILD_TYPE=Release \
+      -D CMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -D CMAKE_INSTALL_PREFIX:FILEPATH=$PREFIX \
       -D CMAKE_PREFIX_PATH:FILEPATH=$PREFIX \
       -D CMAKE_LIBRARY_PATH:FILEPATH=$PREFIX/lib \
