@@ -5,7 +5,11 @@ channel_sources:
 channel_targets:
 - freecad dev
 cxx_compiler:
-- vs2017
+- gxx
+cxx_compiler_version:
+- '7'
+docker_image:
+- condaforge/linux-anvil-comp7
 freetype:
 - 2.9.1
 hdf5:
@@ -26,17 +30,17 @@ pin_run_as_build:
     max_pin: x.x
   vtk:
     max_pin: x.x.x
-  xerces-c:
-    max_pin: x.x.x
   zlib:
     max_pin: x.x
 python:
 - 3.8.* *_cpython
 qt:
 - '5.12'
+target_platform:
+- linux-64
 vtk:
 - 8.2.0
 xerces_c:
-- 3.2.2
+- '3.2'
 zlib:
 - '1.2'
