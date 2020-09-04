@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
 {% set version = "0.19.pre" %}
-{% set build_number = 143 %}
+{% set build_number = 144 %}
 {% set build_number = build_number + 500 %}  # [FEATURE_DEBUG]
 
 package:
@@ -10,8 +10,6 @@ package:
 source:
     git_url: https://github.com/FreeCAD/FreeCAD
     git_tag: master
-    patches:
-        - windows_python_interface.patch
         
 
 build:
