@@ -39,7 +39,7 @@ pin_run_as_build:
 python:
 - 3.8.* *_cpython
 qt:
-- '5.12'
+- '5.12.5'
 target_platform:
 - osx-64
 vtk:
