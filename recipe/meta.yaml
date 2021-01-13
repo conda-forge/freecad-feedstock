@@ -41,7 +41,7 @@ requirements:
         - occt
         - xerces-c
         - zlib
-        - vtk  >=9
+        - vtk
         - swig
         - eigen
         - pybind11
@@ -60,7 +60,7 @@ requirements:
         - tbb-devel
     run:
         - {{ pin_compatible("pyside2") }}
-        - vtk >=9
+        - vtk
         - occt
         - qt
         - xerces-c
