@@ -59,7 +59,7 @@ requirements:
         - ply
         - tbb-devel
     run:
-        - {{ pin_compatible("pyside2") }}
+        - pyside2
         - vtk
         - occt
         - qt
