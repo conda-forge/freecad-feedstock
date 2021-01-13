@@ -41,7 +41,7 @@ requirements:
         - occt
         - xerces-c
         - zlib
-        - vtk
+        - vtk  >=9
         - swig
         - eigen
         - pybind11
@@ -49,7 +49,6 @@ requirements:
         - pivy
         - pyside2
         - smesh
-        - netgen 6.2.1808*
         - doxygen
         - hdf5
         - xorg-libxt  # [linux]
@@ -61,7 +60,7 @@ requirements:
         - tbb-devel
     run:
         - {{ pin_compatible("pyside2") }}
-        - vtk
+        - vtk >=9
         - occt
         - qt
         - xerces-c
@@ -72,7 +71,6 @@ requirements:
         - coin3d
         - pivy
         - smesh
-        - netgen 6.2.1808*
         - xorg-libxt  # [linux]
         - freetype
         - numpy
