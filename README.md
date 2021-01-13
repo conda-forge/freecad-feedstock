@@ -5,9 +5,13 @@ Home: https://www.freecadweb.org/
 
 Package license: LGPL2.1
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/freecad-feedstock/blob/master/LICENSE.txt)
 
 Summary: FreeCAD is a parametric 3D modeler made primarily to design real-life objects of any size. 
+
+Development: https://github.com/FreeCAD/FreeCAD
+
+Documentation: https://www.freecadweb.org/wiki/Main_Page
 
 FreeCAD is a general purpose feature-based, parametric 3D modeler for
 CAD, MCAD, CAx, CAE and PLM, aimed directly at mechanical engineering
