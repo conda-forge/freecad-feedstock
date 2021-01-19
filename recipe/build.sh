@@ -13,7 +13,7 @@ if [[ ${HOST} =~ .*linux.* ]]; then
   echo "adding hacks for linux"
   # temporary workaround for vtk-cmake setup
   # should be applied @vtk-feedstock
-  sed '380,384d' /home/lo/miniconda3/conda-bld/debug_1611055642609/_h_env/lib/cmake/vtk-9.0/VTK-targets.cmake
+  sed '380,384d' ${PREFIX}/lib/cmake/vtk-9.0/VTK-targets.cmake
 
   # sed -i 's#/home/conda/feedstock_root/build_artifacts/vtk_.*_build_env/x86_64-conda_cos6-linux-gnu/sysroot/usr/lib.*;##g' ${PREFIX}/lib/cmake/vtk-8.2/Modules/vtkhdf5.cmake 
   # temporary workaround for qt-cmake:
