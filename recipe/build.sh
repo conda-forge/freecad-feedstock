@@ -27,6 +27,10 @@ if [[ ${HOST} =~ .*darwin.* ]]; then
   # add hacks for osx here!
   echo "adding hacks for osx"
 
+
+  # should be applied @vtk-feedstock
+  sed -i '381,383d' ${PREFIX}/lib/cmake/vtk-9.0/VTK-targets.cmake
+
   ln -s /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk
   ln -s /Applications/Xcode.app /Applications/Xcode_11.7.app
 
