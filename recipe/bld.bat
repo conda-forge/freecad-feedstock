@@ -44,6 +44,7 @@ cmake -G "Ninja" ^
       -D FREECAD_USE_PCH:BOOL=OFF ^
       -D FREECAD_USE_PCL:BOOL=ON ^
       -D INSTALL_TO_SITEPACKAGES:BOOL=ON ^
+      -D LZMA_LIBRARY="%LIBRARY_PREFIX%/lib/liblzma.lib" ^
       ..
 
 if errorlevel 1 exit 1
