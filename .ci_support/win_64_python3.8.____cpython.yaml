@@ -1,5 +1,5 @@
 boost_cpp:
-- '1.72'
+- 1.74.0
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -7,7 +7,7 @@ channel_targets:
 cxx_compiler:
 - vs2017
 freetype:
-- 2.9.1
+- '2'
 hdf5:
 - 1.10.6
 occt:
@@ -26,17 +26,17 @@ pin_run_as_build:
     max_pin: x.x
   vtk:
     max_pin: x.x.x
-  xerces-c:
-    max_pin: x.x.x
   zlib:
     max_pin: x.x
 python:
 - 3.8.* *_cpython
 qt:
 - '5.12'
+target_platform:
+- win-64
 vtk:
 - 8.2.0
 xerces_c:
-- 3.2.2
+- '3.2'
 zlib:
 - '1.2'
