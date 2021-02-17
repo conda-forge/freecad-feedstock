@@ -1,0 +1,42 @@
+boost_cpp:
+- 1.74.0
+channel_sources:
+- conda-forge/label/smesh_rc,conda-forge,defaults
+channel_targets:
+- freecad dev
+cxx_compiler:
+- vs2017
+freetype:
+- '2'
+hdf5:
+- 1.10.6
+occt:
+- '7.4'
+pin_run_as_build:
+  boost-cpp:
+    max_pin: x.x.x
+  freetype:
+    max_pin: x
+  occt:
+    max_pin: x.x
+  python:
+    min_pin: x.x
+    max_pin: x.x
+  qt:
+    max_pin: x.x
+  vtk:
+    max_pin: x.x.x
+  zlib:
+    max_pin: x.x
+python:
+- 3.8.* *_cpython
+qt:
+- '5.12'
+target_platform:
+- win-64
+vtk:
+- 9.0.1
+xerces_c:
+- '3.2'
+zlib:
+- '1.2'
