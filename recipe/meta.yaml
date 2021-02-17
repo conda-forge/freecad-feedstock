@@ -1,20 +1,20 @@
 {% set name = "freecad" %}
-{% set version = "0.19.3" %}
-{% set build_number = 0 %}
-{% set build_number = build_number + 500 %}  # [FEATURE_DEBUG]
+{% set version = "0.19.alpha3" %}
+
 
 package:
     name: {{ name }}
     version: {{ version }}
 
 source:
-    git_url: https://github.com/looooo/FreeCAD
+    # temporary workaround as there is no alpha release available
+    git_url: https://github.com/looooo/FreeCAD  
     git_tag: {{ version }}
         
 
 build:
     number: {{ build_number }}
-    skip: true  # [py < 38]
+    skip: true  # [py < 39]
 
 requirements:
     build:
