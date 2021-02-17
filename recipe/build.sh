@@ -1,13 +1,21 @@
 mkdir -p build
 cd build
 
+if [[ ${FEATURE_DEBUG} = 1 ]]; then
+      BUILD_TYPE="Debug"
+else
+      BUILD_TYPE="Release"
+fi
+
 declare -a CMAKE_PLATFORM_FLAGS
 
 if [[ ${HOST} =~ .*linux.* ]]; then
   echo "adding hacks for linux"
   # temporary workaround for vtk-cmake setup
   # should be applied @vtk-feedstock
-  sed -i 's#/home/conda/feedstock_root/build_artifacts/vtk_.*_build_env/x86_64-conda_cos6-linux-gnu/sysroot/usr/lib.*;##g' ${PREFIX}/lib/cmake/vtk-8.2/Modules/vtkhdf5.cmake 
+  sed -i '380,384d' ${PREFIX}/lib/cmake/vtk-9.0/VTK-targets.cmake
+
+  # sed -i 's#/home/conda/feedstock_root/build_artifacts/vtk_.*_build_env/x86_64-conda_cos6-linux-gnu/sysroot/usr/lib.*;##g' ${PREFIX}/lib/cmake/vtk-8.2/Modules/vtkhdf5.cmake 
   # temporary workaround for qt-cmake:
   sed -i 's|_qt5gui_find_extra_libs(EGL.*)|_qt5gui_find_extra_libs(EGL "EGL" "" "")|g' $PREFIX/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake
   sed -i 's|_qt5gui_find_extra_libs(OPENGL.*)|_qt5gui_find_extra_libs(OPENGL "GL" "" "")|g' $PREFIX/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake
@@ -18,10 +26,16 @@ fi
 if [[ ${HOST} =~ .*darwin.* ]]; then
   # add hacks for osx here!
   echo "adding hacks for osx"
+
+
+  # should be applied @vtk-feedstock
+  sed -i '381,383d' ${PREFIX}/lib/cmake/vtk-9.0/VTK-targets.cmake
+
   ln -s /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk
-  
+  ln -s /Applications/Xcode.app /Applications/Xcode_11.7.app
+
   # install space-mouse
-  curl -o /tmp/3dFW.dmg -L 'http://www.3dconnexion.com/index.php?eID=sdl&ext=tx_iccsoftware&oid=a273bdbc-c289-e10d-816b-567043331c9e&filename=3DxWareMac_v10-4-1_r2428.dmg'
+  curl -o /tmp/3dFW.dmg -L 'https://download.3dconnexion.com/drivers/mac/10-6-6_360DF97D-ED08-4ccf-A55E-0BF905E58476/3DxWareMac_v10-6-6_r3234.dmg'
   hdiutil attach -readonly /tmp/3dFW.dmg
   sudo installer -package /Volumes/3Dconnexion\ Software/Install\ 3Dconnexion\ software.pkg -target /
   diskutil eject /Volumes/3Dconnexion\ Software
@@ -31,7 +45,7 @@ fi
 
 cmake -G "Ninja" \
       -D BUID_WITH_CONDA:BOOL=ON \
-      -D CMAKE_BUILD_TYPE=Release \
+      -D CMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -D CMAKE_INSTALL_PREFIX:FILEPATH=$PREFIX \
       -D CMAKE_PREFIX_PATH:FILEPATH=$PREFIX \
       -D CMAKE_LIBRARY_PATH:FILEPATH=$PREFIX/lib \
@@ -56,6 +70,7 @@ cmake -G "Ninja" \
       -D BUILD_DYNAMIC_LINK_PYTHON:BOOL=OFF \
       -D Boost_NO_BOOST_CMAKE:BOOL=ON \
       -D FREECAD_USE_PCL:BOOL=ON \
+      -D FREECAD_USE_PCH:BOOL=ON \
       -D INSTALL_TO_SITEPACKAGES:BOOL=ON \
       ${CMAKE_PLATFORM_FLAGS[@]} \
       ..
