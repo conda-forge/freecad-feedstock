@@ -8,8 +8,8 @@ package:
 
 source:
     # temporary workaround as there is no alpha release available
-    git_url: https://github.com/FreeCAD/FreeCAD  
-    git_tag: master
+    git_url: https://github.com/looooo/FreeCAD  
+    git_tag: {{ version }}
         
 
 build:
@@ -85,7 +85,7 @@ requirements:
 
 test:
    commands:
-       - FreeCADCmd -t 0
+       - freecadcmd -t 0
 
 about:
     home: https://www.freecadweb.org/
