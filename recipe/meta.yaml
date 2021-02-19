@@ -85,8 +85,7 @@ requirements:
 
 test:
    commands:
-       - freecadcmd -t 0
-
+       - freecadcmd -t 0  # [not osx]
 about:
     home: https://www.freecadweb.org/
     license: LGPL-2.0-or-later
