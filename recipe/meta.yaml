@@ -84,9 +84,9 @@ requirements:
     run_constrained:
         - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
 
-#test:
-#    commands:
-#        - FreeCADCmd -t 0
+test:
+    commands:
+        - FreeCADCmd -t 0
 
 about:
     home: https://www.freecadweb.org/
