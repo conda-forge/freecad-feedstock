@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
-{% set version = "0.19.pre" %}
-{% set build_number = 171 %}
+{% set version = "0.19" %}
+{% set build_number = 0 %}
 {% set build_number = build_number + 500 %}  # [FEATURE_DEBUG]
 
 package:
@@ -9,7 +9,7 @@ package:
 
 source:
     git_url: https://github.com/FreeCAD/FreeCAD
-    git_tag: master
+    git_tag: 0.19
         
 
 build:
