@@ -1,17 +1,19 @@
 boost_cpp:
 - '1.72'
+cdt_name:
+- cos6
 channel_sources:
 - conda-forge,defaults
 channel_targets:
-- freecad dev
+- conda-forge main
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '7'
+- '9'
 docker_image:
-- condaforge/linux-anvil-comp7
+- quay.io/condaforge/linux-anvil-comp7
 freetype:
-- 2.9.1
+- '2'
 hdf5:
 - 1.10.6
 occt:
@@ -35,12 +37,15 @@ pin_run_as_build:
 python:
 - 3.8.* *_cpython
 qt:
-- '5.12.5'
+- '5.12'
 target_platform:
 - linux-64
 vtk:
 - 8.2.0
 xerces_c:
 - '3.2'
+zip_keys:
+- - cdt_name
+  - docker_image
 zlib:
 - '1.2'
