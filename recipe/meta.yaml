@@ -5,11 +5,11 @@
 
 package:
     name: {{ name }}
-    version: releases/FreeCAD-0-19
+    version: {{ version }}
 
 source:
     git_url: https://github.com/FreeCAD/FreeCAD
-    git_tag: b2ca86d8d72b636011a73394bf9bcdedb3b109b7
+    git_tag: releases/FreeCAD-0-19
         
 
 build:
