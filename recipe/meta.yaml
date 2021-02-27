@@ -9,7 +9,7 @@ package:
 source:
     # temporary workaround as there is no alpha release available
     git_url: https://github.com/FreeCAD/FreeCAD  
-    git_tag: {{ version }}
+    git_tag: releases/FreeCAD-0-19
         
 
 build:
