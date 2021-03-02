@@ -40,6 +40,8 @@ qt:
 - '5.12'
 target_platform:
 - linux-64
+tbb_devel:
+- '2020'
 vtk:
 - 9.0.1
 xerces_c:
