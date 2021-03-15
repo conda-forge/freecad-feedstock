@@ -1,3 +1,5 @@
+rm -rf C:/hostedtoolcache/windows/Python
+
 mkdir build
 cd build
 
