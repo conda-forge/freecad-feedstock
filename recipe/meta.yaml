@@ -10,6 +10,8 @@ package:
 source:
     git_url: https://github.com/FreeCAD/FreeCAD
     git_tag: master
+    patches:
+        - get_python_site_package_dir.patch
         
 
 build:
