@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
 {% set version = "0.20.pre" %}
-{% set build_number = 4 %}
+{% set build_number = 5 %}
 {% set build_number = build_number + 500 %}  # [FEATURE_DEBUG]
 
 package:
@@ -10,8 +10,6 @@ package:
 source:
     git_url: https://github.com/FreeCAD/FreeCAD
     git_tag: master
-    patches:
-        - get_python_site_package_dir.patch  # [osx]
 
 build:
     number: {{ build_number }}
