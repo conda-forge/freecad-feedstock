@@ -5,9 +5,13 @@ Home: https://www.freecadweb.org/
 
 Package license: LGPL2.1
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/freecad-feedstock/blob/master/LICENSE.txt)
 
 Summary: FreeCAD is a parametric 3D modeler made primarily to design real-life objects of any size. 
+
+Development: https://github.com/FreeCAD/FreeCAD
+
+Documentation: https://www.freecadweb.org/wiki/Main_Page
 
 FreeCAD is a general purpose feature-based, parametric 3D modeler for
 CAD, MCAD, CAx, CAE and PLM, aimed directly at mechanical engineering
@@ -40,24 +44,24 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_python3.8.____cpython</td>
+              <td>linux_64_python3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5916&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/freecad-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/freecad-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_python3.8.____cpython</td>
+              <td>osx_64_python3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5916&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/freecad-feedstock?branchName=master&jobName=osx&configuration=osx_64_python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/freecad-feedstock?branchName=master&jobName=osx&configuration=osx_64_python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_python3.8.____cpython</td>
+              <td>win_64_python3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5916&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/freecad-feedstock?branchName=master&jobName=win&configuration=win_64_python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/freecad-feedstock?branchName=master&jobName=win&configuration=win_64_python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr>

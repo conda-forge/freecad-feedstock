@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
 {% set version = "0.20.pre" %}
-{% set build_number = 5 %}
+{% set build_number = 7 %}
 {% set build_number = build_number + 500 %}  # [FEATURE_DEBUG]
 
 package:
@@ -13,7 +13,7 @@ source:
 
 build:
     number: {{ build_number }}
-    skip: true  # [py < 38]
+    skip: true  # [py < 39]
 
 requirements:
     build:
@@ -33,6 +33,7 @@ requirements:
         - cmake
         - ninja
         - git
+        - sed  # [unix]
     host:
         - boost-cpp
         - python
@@ -48,7 +49,6 @@ requirements:
         - pivy
         - pyside2
         - smesh
-        - netgen 6.2.1808*
         - doxygen
         - hdf5
         - xorg-libxt  # [linux]
@@ -59,7 +59,7 @@ requirements:
         - ply
         - tbb-devel
     run:
-        - {{ pin_compatible("pyside2") }}
+        - pyside2
         - vtk
         - occt
         - qt
@@ -71,7 +71,6 @@ requirements:
         - coin3d
         - pivy
         - smesh
-        - netgen 6.2.1808*
         - xorg-libxt  # [linux]
         - freetype
         - numpy

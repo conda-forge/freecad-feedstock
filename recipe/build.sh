@@ -13,7 +13,9 @@ if [[ ${HOST} =~ .*linux.* ]]; then
   echo "adding hacks for linux"
   # temporary workaround for vtk-cmake setup
   # should be applied @vtk-feedstock
-  sed -i 's#/home/conda/feedstock_root/build_artifacts/vtk_.*_build_env/x86_64-conda_cos6-linux-gnu/sysroot/usr/lib.*;##g' ${PREFIX}/lib/cmake/vtk-8.2/Modules/vtkhdf5.cmake 
+  sed -i '380,384d' ${PREFIX}/lib/cmake/vtk-9.0/VTK-targets.cmake
+
+  # sed -i 's#/home/conda/feedstock_root/build_artifacts/vtk_.*_build_env/x86_64-conda_cos6-linux-gnu/sysroot/usr/lib.*;##g' ${PREFIX}/lib/cmake/vtk-8.2/Modules/vtkhdf5.cmake 
   # temporary workaround for qt-cmake:
   sed -i 's|_qt5gui_find_extra_libs(EGL.*)|_qt5gui_find_extra_libs(EGL "EGL" "" "")|g' $PREFIX/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake
   sed -i 's|_qt5gui_find_extra_libs(OPENGL.*)|_qt5gui_find_extra_libs(OPENGL "GL" "" "")|g' $PREFIX/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake
@@ -24,8 +26,14 @@ fi
 if [[ ${HOST} =~ .*darwin.* ]]; then
   # add hacks for osx here!
   echo "adding hacks for osx"
+
+
+  # should be applied @vtk-feedstock
+  sed -i '381,383d' ${PREFIX}/lib/cmake/vtk-9.0/VTK-targets.cmake
+
   ln -s /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk
-  
+  ln -s /Applications/Xcode.app /Applications/Xcode_11.7.app
+
   # install space-mouse
   curl -o /tmp/3dFW.dmg -L 'https://download.3dconnexion.com/drivers/mac/10-6-6_360DF97D-ED08-4ccf-A55E-0BF905E58476/3DxWareMac_v10-6-6_r3234.dmg'
   hdiutil attach -readonly /tmp/3dFW.dmg
@@ -62,6 +70,7 @@ cmake -G "Ninja" \
       -D BUILD_DYNAMIC_LINK_PYTHON:BOOL=OFF \
       -D Boost_NO_BOOST_CMAKE:BOOL=ON \
       -D FREECAD_USE_PCL:BOOL=ON \
+      -D FREECAD_USE_PCH:BOOL=ON \
       -D INSTALL_TO_SITEPACKAGES:BOOL=ON \
       ${CMAKE_PLATFORM_FLAGS[@]} \
       ..
