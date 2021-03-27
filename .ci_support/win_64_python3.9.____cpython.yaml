@@ -1,7 +1,7 @@
 boost_cpp:
 - 1.74.0
 channel_sources:
-- conda-forge/label/smesh_rc,conda-forge,defaults
+- conda-forge,defaults
 channel_targets:
 - freecad dev
 cxx_compiler:
