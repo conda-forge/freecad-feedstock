@@ -1,5 +1,5 @@
 channel_sources:
-- conda-forge,defaults
+- freecad/label/dev,conda-forge,defaults
 channel_targets:
 - freecad dev
 MACOSX_DEPLOYMENT_TARGET:  # [osx]
