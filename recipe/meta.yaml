@@ -13,7 +13,8 @@ source:
 
 build:
     number: {{ build_number }}
-    skip: true  # [py < 39]
+    skip: true  # [py < 39 and unix]
+    skip: true  # [py < 38 and win]
 
 requirements:
     build:
