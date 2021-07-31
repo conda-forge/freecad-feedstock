@@ -10,6 +10,7 @@ fi
 declare -a CMAKE_PLATFORM_FLAGS
 
 if [[ ${HOST} =~ .*linux.* ]]; then
+  rm -rf ${PREFIX}/lib64
   echo "adding hacks for linux"
   # temporary workaround for vtk-cmake setup
   # should be applied @vtk-feedstock
