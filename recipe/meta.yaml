@@ -12,6 +12,7 @@ source:
     git_tag: master
     patches:
         - pcl112.patch
+        - occ_include_dir.patch  # [linux]
 
 build:
     number: {{ build_number }}
