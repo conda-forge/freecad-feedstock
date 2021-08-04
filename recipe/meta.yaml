@@ -10,8 +10,6 @@ package:
 source:
     git_url: https://github.com/FreeCAD/FreeCAD
     git_tag: master
-    patches:
-        - pcl112.patch
 
 build:
     number: {{ build_number }}
