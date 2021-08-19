@@ -1,0 +1,55 @@
+commit 196813abe2a349fb2b87133aa5c71febb971810e
+Author: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date:   Sun Jul 11 15:29:03 2021 +0200
+
+    improve search for VTK-9
+    
+    Improve the find_package calls with vtk-9 cmake config files.
+    In this version, the variable VTK_MODULES_ENABLED has been
+    replaced by VTK_AVAILABLE_COMPONENTS.
+    
+    The additional change of the components names, which have their
+    'vtk' prefix removed in vtk-9 is not covered by this patch for
+    compatibility reasons.
+    
+    See the forum thread noted below for a description of this:
+    https://forum.freecadweb.org/viewtopic.php?f=4&t=60068
+    
+    Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+
+diff --git a/cMake/FreeCAD_Helpers/SetupSalomeSMESH.cmake b/cMake/FreeCAD_Helpers/SetupSalomeSMESH.cmake
+index c83f832654..5cf36329df 100644
+--- a/cMake/FreeCAD_Helpers/SetupSalomeSMESH.cmake
++++ b/cMake/FreeCAD_Helpers/SetupSalomeSMESH.cmake
+@@ -27,13 +27,24 @@ macro(SetupSalomeSMESH)
+         # check which modules are available
+         if(UNIX OR WIN32)
+             find_package(VTK COMPONENTS vtkCommonCore REQUIRED NO_MODULE)
+-            list(APPEND VTK_COMPONENTS vtkIOMPIParallel vtkParallelMPI vtkhdf5 vtkFiltersParallelDIY2 vtkRenderingCore vtkInteractionStyle vtkRenderingFreeType vtkRenderingOpenGL2)
+-            foreach(_module ${VTK_COMPONENTS})
+-                list (FIND VTK_MODULES_ENABLED ${_module} _index)
+-                if (${_index} GREATER -1)
+-                    list(APPEND AVAILABLE_VTK_COMPONENTS ${_module})
+-                endif()
+-            endforeach()
++            if(${VTK_MAJOR_VERSION} LESS 9)
++                list(APPEND VTK_COMPONENTS vtkIOMPIParallel vtkParallelMPI vtkhdf5 vtkFiltersParallelDIY2 vtkRenderingCore vtkInteractionStyle vtkRenderingFreeType vtkRenderingOpenGL2)
++                foreach(_module ${VTK_COMPONENTS})
++                    list (FIND VTK_MODULES_ENABLED ${_module} _index)
++                    if(${_index} GREATER -1)
++                        list(APPEND AVAILABLE_VTK_COMPONENTS ${_module})
++                    endif()
++                endforeach()
++            else()
++                set(VTK_COMPONENTS "CommonCore;CommonDataModel;FiltersVerdict;IOXML;FiltersCore;FiltersGeneral;IOLegacy;FiltersExtraction;FiltersSources;FiltersGeometry")
++                list(APPEND VTK_COMPONENTS "IOMPIParallel;ParallelMPI;hdf5;FiltersParallelDIY2;RenderingCore;InteractionStyle;RenderingFreeType;RenderingOpenGL2")
++                foreach(_module ${VTK_COMPONENTS})
++                    list (FIND VTK_AVAILABLE_COMPONENTS ${_module} _index)
++                    if(${_index} GREATER -1)
++                        list(APPEND AVAILABLE_VTK_COMPONENTS ${_module})
++                    endif()
++                endforeach()
++            endif()
+         endif()
+ 
+         # don't check VERSION 6 as this would exclude VERSION 7
