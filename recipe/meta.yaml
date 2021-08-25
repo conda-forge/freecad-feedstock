@@ -11,7 +11,8 @@ source:
     git_url: https://github.com/FreeCAD/FreeCAD
     git_tag: master
     patches:
-        vtk_cmake.patch
+        vtk_cmake.patch  # [unix]
+        vtk_cmake_win.patch  # [win]
 
 build:
     number: {{ build_number }}
