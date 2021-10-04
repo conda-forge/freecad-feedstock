@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
 {% set version = "0.20.pre" %}
-{% set build_number = 37 %}
+{% set build_number = 38 %}
 {% set build_number = build_number + 500 %}  # [FEATURE_DEBUG]
 
 package:
@@ -71,7 +71,7 @@ requirements:
         - python
         - coin3d
         - pivy
-        - smesh
+        - {{ pin_compatible('smesh', max_pin='x.x.x') }}
         - xorg-libxt  # [linux]
         - freetype
         - numpy
