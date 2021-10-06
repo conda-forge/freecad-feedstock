@@ -49,7 +49,7 @@ requirements:
         - coin3d
         - pivy
         - pyside2
-        - smesh
+        - smesh >=9.7
         - doxygen
         - hdf5
         - xorg-libxt  # [linux]
