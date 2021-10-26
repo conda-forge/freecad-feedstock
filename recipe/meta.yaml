@@ -33,7 +33,8 @@ requirements:
         - {{ cdt('libxi-devel') }}           # [linux]
         - cmake
         - ninja
-        - git
+        - git  # [unix]
+        - m2-git  # [win]
         - sed  # [unix]
     host:
         - boost-cpp
