@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
 {% set version = "0.20.pre" %}
-{% set build_number = 46 %}
+{% set build_number = 47 %}
 {% set build_number = build_number + 500 %}  # [FEATURE_DEBUG]
 
 package:
@@ -33,8 +33,6 @@ requirements:
         - {{ cdt('libxi-devel') }}           # [linux]
         - cmake
         - ninja
-        - git  # [unix]
-        - m2-git  # [win]
         - sed  # [unix]
     host:
         - boost-cpp
