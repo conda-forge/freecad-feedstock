@@ -9,7 +9,7 @@ package:
 
 source:
     url: https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/{{ version }}/freecad_source.tar.gz
-    sha256: 20d4a3dedcf81543695e92bb015b063c5673e66fe9f41e03a2a75739d92ffdd1
+    sha256: 5f4449a1dd0e03bad2df414d649ed54846d402977373d193a1e56fbae2b75090
 
 build:
     number: {{ build_number }}
