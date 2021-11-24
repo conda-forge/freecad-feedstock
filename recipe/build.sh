@@ -72,6 +72,7 @@ cmake -G "Ninja" \
       -D FREECAD_USE_PCL:BOOL=ON \
       -D FREECAD_USE_PCH:BOOL=OFF \
       -D INSTALL_TO_SITEPACKAGES:BOOL=ON \
+      -D CMAKE_CXX_STANDARD=14 \
       ${CMAKE_PLATFORM_FLAGS[@]} \
       ..
 
