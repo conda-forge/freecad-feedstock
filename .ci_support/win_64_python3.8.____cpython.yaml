@@ -1,7 +1,7 @@
 boost_cpp:
 - 1.74.0
 channel_sources:
-- conda-forge,defaults
+- conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
@@ -34,6 +34,8 @@ qt:
 - '5.12'
 target_platform:
 - win-64
+tbb_devel:
+- '2020'
 vtk:
 - 9.0.1
 xerces_c:
