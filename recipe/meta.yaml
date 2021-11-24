@@ -1,17 +1,18 @@
 {% set name = "freecad" %}
-{% set version = "0.19.2" %}
-
+{% set version = "0.19.3" %}
+{% set build_number = 0 %}
+{% set build_number = build_number + 1000 %}  # [FEATURE_DEBUG]
 
 package:
     name: {{ name }}
     version: {{ version }}
 
 source:
-    git_url: https://github.com/FreeCAD/FreeCAD  
-    git_tag: {{ version }}
+    url: https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/{{ version }}/freecad_source.tar.gz
+    sha256: 20d4a3dedcf81543695e92bb015b063c5673e66fe9f41e03a2a75739d92ffdd1
 
 build:
-    number: 0
+    number: {{ build_number }}
     skip: true  # [py < 38]
 
 requirements:
@@ -31,7 +32,6 @@ requirements:
         - {{ cdt('libxi-devel') }}           # [linux]
         - cmake
         - ninja
-        - git
         - sed  # [unix]
     host:
         - boost-cpp
@@ -43,11 +43,11 @@ requirements:
         - vtk
         - swig
         - eigen
-        - pybind11
+        - pybind11 =2.7
         - coin3d
         - pivy
         - pyside2
-        - smesh
+        - smesh >=9.7
         - doxygen
         - hdf5
         - xorg-libxt  # [linux]
@@ -69,7 +69,7 @@ requirements:
         - python
         - coin3d
         - pivy
-        - smesh
+        - {{ pin_compatible('smesh', max_pin='x.x.x') }}
         - xorg-libxt  # [linux]
         - freetype
         - numpy
@@ -81,12 +81,13 @@ requirements:
     run_constrained:
         - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
 
-test:
-   commands:
-       - freecadcmd -t 0  # [not osx]
+#test:
+#    commands:
+#        - FreeCADCmd -t 0
+
 about:
     home: https://www.freecadweb.org/
-    license: LGPL-2.0-or-later
+    license: LGPL2.1
     license_family: LGPL
     license_file: LICENSE
     summary: 'FreeCAD is a parametric 3D modeler made primarily to design real-life objects of any size. '
