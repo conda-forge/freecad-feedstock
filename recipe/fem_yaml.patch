@@ -1,0 +1,25 @@
+commit 20e756306d9aa624fcbf465f0345d721673ce720
+Author: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date:   Wed Apr 28 22:08:19 2021 +0200
+
+    [Fem] fix femtest failure with yaml.load
+    
+    Solves an issue with using an outdated call to yaml.load
+    as described in
+    https://forum.freecadweb.org/viewtopic.php?f=10&t=57617
+    
+    Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+
+diff --git a/src/Mod/Fem/feminout/importYamlJsonMesh.py b/src/Mod/Fem/feminout/importYamlJsonMesh.py
+index 98862489dd..43820c14ac 100644
+--- a/src/Mod/Fem/feminout/importYamlJsonMesh.py
++++ b/src/Mod/Fem/feminout/importYamlJsonMesh.py
+@@ -162,7 +162,7 @@ def read(
+             or fileExtension.lower() == ".yml"
+     ) and has_yaml:
+         fp = pyopen(fileString, "rt")
+-        raw_mesh_data = yaml.load(fp)
++        raw_mesh_data = yaml.load(fp, Loader=yaml.SafeLoader)
+         fp.close()
+     else:
+         Console.PrintError(
