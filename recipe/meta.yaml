@@ -12,6 +12,7 @@ source:
     sha256: 5f4449a1dd0e03bad2df414d649ed54846d402977373d193a1e56fbae2b75090
     patches:
         - pcl.patch
+        - fem_yaml.patch
 
 build:
     number: {{ build_number }}
