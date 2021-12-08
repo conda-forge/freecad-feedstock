@@ -8,14 +8,30 @@ jobs:
     vmImage: ubuntu-latest
   strategy:
     matrix:
-      linux_64_python3.8.____cpython:
-        CONFIG: linux_64_python3.8.____cpython
+      linux_64_python3.8.____cpythonvtk_build_variantegl:
+        CONFIG: linux_64_python3.8.____cpythonvtk_build_variantegl
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-comp7
-      linux_64_python3.9.____cpython:
-        CONFIG: linux_64_python3.9.____cpython
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_python3.8.____cpythonvtk_build_variantosmesa:
+        CONFIG: linux_64_python3.8.____cpythonvtk_build_variantosmesa
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-comp7
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_python3.8.____cpythonvtk_build_variantqt:
+        CONFIG: linux_64_python3.8.____cpythonvtk_build_variantqt
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_python3.9.____cpythonvtk_build_variantegl:
+        CONFIG: linux_64_python3.9.____cpythonvtk_build_variantegl
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_python3.9.____cpythonvtk_build_variantosmesa:
+        CONFIG: linux_64_python3.9.____cpythonvtk_build_variantosmesa
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_python3.9.____cpythonvtk_build_variantqt:
+        CONFIG: linux_64_python3.9.____cpythonvtk_build_variantqt
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
   timeoutInMinutes: 360
 
   steps:

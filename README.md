@@ -3,7 +3,7 @@ About freecad
 
 Home: https://www.freecadweb.org/
 
-Package license: LGPL2.1
+Package license: LGPL-2.1-or-later
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/freecad-feedstock/blob/master/LICENSE.txt)
 
@@ -44,17 +44,45 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_python3.8.____cpython</td>
+              <td>linux_64_python3.8.____cpythonvtk_build_variantegl</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5916&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/freecad-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/freecad-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.8.____cpythonvtk_build_variantegl" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_python3.9.____cpython</td>
+              <td>linux_64_python3.8.____cpythonvtk_build_variantosmesa</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5916&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/freecad-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/freecad-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.8.____cpythonvtk_build_variantosmesa" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_python3.8.____cpythonvtk_build_variantqt</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5916&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/freecad-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.8.____cpythonvtk_build_variantqt" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_python3.9.____cpythonvtk_build_variantegl</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5916&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/freecad-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.9.____cpythonvtk_build_variantegl" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_python3.9.____cpythonvtk_build_variantosmesa</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5916&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/freecad-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.9.____cpythonvtk_build_variantosmesa" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_python3.9.____cpythonvtk_build_variantqt</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5916&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/freecad-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.9.____cpythonvtk_build_variantqt" alt="variant">
                 </a>
               </td>
             </tr><tr>

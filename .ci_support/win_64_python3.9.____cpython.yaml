@@ -24,8 +24,6 @@ pin_run_as_build:
     max_pin: x.x
   qt:
     max_pin: x.x
-  vtk:
-    max_pin: x.x.x
   zlib:
     max_pin: x.x
 python:
@@ -36,8 +34,8 @@ target_platform:
 - win-64
 tbb_devel:
 - '2020'
-vtk:
-- 9.0.1
+vtk_build_variant:
+- qt
 xerces_c:
 - '3.2'
 zlib:
