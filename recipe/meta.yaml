@@ -88,8 +88,8 @@ requirements:
         - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
 
 test:
-   commands:
-       - freecadcmd -t 0  # [unix]
+    commands:
+        - freecadcmd -t 0  # [unix]
 
 about:
     home: https://www.freecadweb.org/
