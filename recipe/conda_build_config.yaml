@@ -1,2 +1,6 @@
+vtk_build_variant:
+  - "qt"
+  - "osmesa"  # [linux64]
+  - "egl"  # [linux64]
 MACOSX_DEPLOYMENT_TARGET:  # [osx]
 - '10.12'                  # [osx]

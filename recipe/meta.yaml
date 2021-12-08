@@ -2,6 +2,8 @@
 {% set version = "0.19.3" %}
 {% set build_number = 0 %}
 {% set build_number = build_number + 1000 %}  # [FEATURE_DEBUG]
+{% set build_number = build_number + 2000 %}   # [vtk_build_variant == "osmesa"]
+{% set build_number = build_number + 3000 %}   # [vtk_build_variant == "qt"]
 
 package:
     name: {{ name }}
@@ -18,17 +20,17 @@ build:
 requirements:
     build:
         - {{ compiler("cxx") }}
-        - {{ cdt('mesa-libgl-devel') }}      # [linux]
-        - {{ cdt('mesa-dri-drivers') }}      # [linux]
-        - {{ cdt('mesa-libegl-devel') }}     # [linux]
-        - {{ cdt('libselinux') }}            # [linux]
-        - {{ cdt('libxdamage') }}            # [linux]
-        - {{ cdt('libxfixes') }}             # [linux]
-        - {{ cdt('libxxf86vm') }}            # [linux]
-        - {{ cdt('libxcb') }}                # [linux]
-        - {{ cdt('libxext') }}               # [linux]
-        - {{ cdt('xorg-x11-server-xvfb') }}  # [linux]
-        - {{ cdt('libxau') }}                # [linux]
+        - {{ cdt('mesa-libgl-devel') }}      # [linux and build_variant != "osmesa"]
+        - {{ cdt('mesa-dri-drivers') }}      # [linux and build_variant != "osmesa"]
+        - {{ cdt('mesa-libegl-devel') }}     # [linux and build_variant != "osmesa"]
+        - {{ cdt('libselinux') }}            # [linux and build_variant != "osmesa"]
+        - {{ cdt('libxdamage') }}            # [linux and build_variant != "osmesa"]
+        - {{ cdt('libxfixes') }}             # [linux and build_variant != "osmesa"]
+        - {{ cdt('libxxf86vm') }}            # [linux and build_variant != "osmesa"]
+        - {{ cdt('libxcb') }}                # [linux and build_variant != "osmesa"]
+        - {{ cdt('libxext') }}               # [linux and build_variant != "osmesa"]
+        - {{ cdt('xorg-x11-server-xvfb') }}  # [linux and build_variant != "osmesa"]
+        - {{ cdt('libxau') }}                # [linux and build_variant != "osmesa"]
         - {{ cdt('libxi-devel') }}           # [linux]
         - cmake
         - ninja
@@ -40,7 +42,9 @@ requirements:
         - occt
         - xerces-c
         - zlib
-        - vtk
+        - vtk * qt*  # [vtk_build_variant == "qt"]
+        - vtk * osmesa*  # [vtk_build_variant == "osmesa"]
+        - vtk * egl*  # [vtk_build_variant == "egl"]
         - swig
         - eigen
         - pybind11 =2.7
@@ -59,7 +63,9 @@ requirements:
         - tbb-devel
     run:
         - pyside2
-        - vtk
+        - vtk * qt*  # [vtk_build_variant == "qt"]
+        - vtk * osmesa*  # [vtk_build_variant == "osmesa"]
+        - vtk * egl*  # [vtk_build_variant == "egl"]
         - occt
         - qt
         - xerces-c
