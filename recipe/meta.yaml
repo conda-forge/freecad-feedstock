@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
 {% set version = "0.19.3" %}
-{% set build_number = 0 %}
+{% set build_number = 1 %}
 {% set build_number = build_number + 1000 %}  # [FEATURE_DEBUG]
 {% set build_number = build_number + 2000 %}   # [vtk_build_variant == "osmesa"]
 {% set build_number = build_number + 3000 %}   # [vtk_build_variant == "qt"]
@@ -32,6 +32,7 @@ requirements:
         - {{ cdt('xorg-x11-server-xvfb') }}  # [linux and build_variant != "osmesa"]
         - {{ cdt('libxau') }}                # [linux and build_variant != "osmesa"]
         - {{ cdt('libxi-devel') }}           # [linux]
+        - sysroot_linux-64 2.17              # [build_variant == "osmesa"]
         - cmake
         - ninja
         - sed  # [unix]
