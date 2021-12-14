@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
 {% set version = "0.19.3" %}
-{% set build_number = 2 %}
+{% set build_number = 3 %}
 {% set build_number = build_number + 1000 %}  # [FEATURE_DEBUG]
 
 package:
@@ -9,7 +9,7 @@ package:
 
 source:
     url: https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/{{ version }}/freecad_source.tar.gz
-    sha256: 2a4d2a8580b538d1fd187d2b6fe91044b1b3bfefd7570f1eba506b6cc430546e
+    sha256: 48b4993a56baa25a99132e93d394bcc6ec26abc3e6fa0893368c719fb4e1bc61
 
 build:
     number: {{ build_number }}
