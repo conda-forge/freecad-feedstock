@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
 {% set version = "0.20.pre" %}
-{% set build_number = 68 %}
+{% set build_number = 69 %}
 {% set build_number = build_number + 500 %}  # [FEATURE_DEBUG]
 
 package:
@@ -58,6 +58,7 @@ requirements:
         - six
         - ply
         - tbb-devel
+        - matplotlib
     run:
         - pyside2
         - vtk
