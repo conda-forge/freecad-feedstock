@@ -10,8 +10,6 @@ package:
 source:
     url: https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/freecad_source.tar.gz
     # sha256:
-    patches:
-        win_sketcher.patch  # [win]
 
 build:
     number: {{ build_number }}
