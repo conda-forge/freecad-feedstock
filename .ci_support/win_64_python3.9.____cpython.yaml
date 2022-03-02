@@ -1,9 +1,9 @@
 boost_cpp:
 - 1.74.0
 channel_sources:
-- freecad/label/dev,conda-forge,defaults
+- conda-forge
 channel_targets:
-- freecad dev
+- conda-forge main
 cxx_compiler:
 - vs2017
 freetype:

@@ -3,13 +3,13 @@ boost_cpp:
 cdt_name:
 - cos6
 channel_sources:
-- freecad/label/dev,conda-forge,defaults
+- conda-forge
 channel_targets:
-- freecad dev
+- conda-forge main
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '9'
+- '10'
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
 freetype:
