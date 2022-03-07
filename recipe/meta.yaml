@@ -83,7 +83,7 @@ requirements:
 
 test:
   commands:
-    - freecadcmd -v
+    - freecadcmd -v. # [win]
 
 about:
   home: https://www.freecadweb.org/
