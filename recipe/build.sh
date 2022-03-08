@@ -62,6 +62,7 @@ cmake -G "Ninja" \
       -D BUILD_FLAT_MESH:BOOL=ON \
       -D BUILD_WITH_CONDA:BOOL=ON \
       -D PYTHON_EXECUTABLE:FILEPATH=$PREFIX/bin/python \
+      -D Python3_EXECUTABLE:FILEPATH=%PREFIX%/python \
       -D BUILD_FEM_NETGEN:BOOL=ON \
       -D BUILD_PLOT:BOOL=OFF \
       -D BUILD_SHIP:BOOL=OFF \
@@ -72,7 +73,6 @@ cmake -G "Ninja" \
       -D FREECAD_USE_PCL:BOOL=ON \
       -D FREECAD_USE_PCH:BOOL=OFF \
       -D INSTALL_TO_SITEPACKAGES:BOOL=ON \
-      -D CMAKE_CXX_STANDARD=14 \
       ${CMAKE_PLATFORM_FLAGS[@]} \
       ..
 
