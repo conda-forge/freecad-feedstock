@@ -8,9 +8,11 @@ jobs:
   report:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+        name: Checkout
       - name: increase build number
         run:
-          python ../../recipe/increase_build_number.py
+          python recipe/increase_build_number.py
       - uses: actions/checkout@v2
       - name: Create report file
         run: date +%s > report.txt
