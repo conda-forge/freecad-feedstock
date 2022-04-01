@@ -13,7 +13,6 @@ jobs:
       - name: increase build number
         run:
           python recipe/increase_build_number.py
-      - uses: actions/checkout@v2
       - name: Create report file
         run: date +%s > report.txt
       - name: Commit report
