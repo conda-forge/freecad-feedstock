@@ -1,4 +1,4 @@
-name: Push commit
+name: increase build-number
 on:
   schedule:
    - cron: "0 6 * * 0"
