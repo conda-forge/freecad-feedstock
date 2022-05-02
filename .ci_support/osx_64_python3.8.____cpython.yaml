@@ -9,7 +9,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '12'
+- '13'
 freetype:
 - '2'
 hdf5:
@@ -43,7 +43,7 @@ target_platform:
 tbb_devel:
 - '2020'
 vtk:
-- 9.0.1
+- 9.1.0
 xerces_c:
 - '3.2'
 zlib:
