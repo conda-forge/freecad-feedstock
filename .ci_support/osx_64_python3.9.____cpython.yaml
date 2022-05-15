@@ -13,7 +13,7 @@ cxx_compiler_version:
 freetype:
 - '2'
 hdf5:
-- 1.10.6
+- 1.12.1
 macos_machine:
 - x86_64-apple-darwin13.4.0
 occt:
@@ -43,7 +43,7 @@ target_platform:
 tbb_devel:
 - '2020'
 vtk:
-- 9.0.1
+- 9.1.0
 xerces_c:
 - '3.2'
 zlib:
