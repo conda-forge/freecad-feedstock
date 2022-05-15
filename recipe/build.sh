@@ -13,7 +13,7 @@ if [[ ${HOST} =~ .*linux.* ]]; then
   echo "adding hacks for linux"
   # temporary workaround for vtk-cmake setup
   # should be applied @vtk-feedstock
-  sed -i '380,384d' ${PREFIX}/lib/cmake/vtk-9.0/VTK-targets.cmake
+  # sed -i '380,384d' ${PREFIX}/lib/cmake/vtk-9.0/VTK-targets.cmake
 
   # sed -i 's#/home/conda/feedstock_root/build_artifacts/vtk_.*_build_env/x86_64-conda_cos6-linux-gnu/sysroot/usr/lib.*;##g' ${PREFIX}/lib/cmake/vtk-8.2/Modules/vtkhdf5.cmake 
   # temporary workaround for qt-cmake:
@@ -29,7 +29,7 @@ if [[ ${HOST} =~ .*darwin.* ]]; then
 
 
   # should be applied @vtk-feedstock
-  sed -i '381,383d' ${PREFIX}/lib/cmake/vtk-9.0/VTK-targets.cmake
+  # sed -i '381,383d' ${PREFIX}/lib/cmake/vtk-9.0/VTK-targets.cmake
 
   ln -s /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk
   ln -s /Applications/Xcode.app /Applications/Xcode_11.7.app
