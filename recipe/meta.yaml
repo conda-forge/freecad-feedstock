@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
 {% set version = "0.20.pre" %}
-{% set build_number = 108 %}
+{% set build_number = 109 %}
 {% set build_number = build_number + 500 %}  # [FEATURE_DEBUG]
 
 package:
@@ -85,9 +85,9 @@ requirements:
     run_constrained:
         - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
 
-#test:
-#    commands:
-#        - FreeCADCmd -t 0
+test:
+    commands:
+        - FreeCADCmd -t 0
 
 about:
     home: https://www.freecadweb.org/
