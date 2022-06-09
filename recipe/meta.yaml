@@ -12,6 +12,7 @@ source:
     # sha256:
     patches:
         - patches/qtwebengine_disable_sandbox.patch  # [linux]
+        - patches/disable_git_info.patch
 
 build:
     number: {{ build_number }}
