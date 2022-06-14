@@ -9,7 +9,7 @@ cxx_compiler:
 freetype:
 - '2'
 hdf5:
-- 1.10.6
+- 1.12.1
 occt:
 - '7.5'
 pin_run_as_build:
