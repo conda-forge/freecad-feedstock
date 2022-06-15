@@ -1,0 +1,13 @@
+diff --git a/src/Tools/SubWCRev.py b/src/Tools/SubWCRev.py
+index 195d0facc3..3cf95ecd6c 100644
+--- a/src/Tools/SubWCRev.py
++++ b/src/Tools/SubWCRev.py
+@@ -459,7 +459,7 @@ def main():
+             inp = open("%s/src/Build/Version.h.in" % (bindir))
+             lines = inp.readlines()
+             inp.close()
+-            lines = i.writeVersion(lines)
++            #lines = i.writeVersion(lines)
+             out  = open("%s/src/Build/Version.h.out" % (bindir),"w");
+             out.writelines(lines)
+             out.write('\n')
