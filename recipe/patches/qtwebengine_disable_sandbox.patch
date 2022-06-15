@@ -1,0 +1,11 @@
+diff --git a/src/Mod/Start/Init.py b/src/Mod/Start/Init.py
+index 094d9698ff..54441751ad 100644
+--- a/src/Mod/Start/Init.py
++++ b/src/Mod/Start/Init.py
+@@ -24,3 +24,6 @@
+ #*                                                                         *
+ #*   Juergen Riegel 2002                                                   *
+ #***************************************************************************/
++
++import os
++os.environ["QTWEBENGINE_DISABLE_SANDBOX"] = "1"
