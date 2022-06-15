@@ -9,7 +9,7 @@ package:
 
 source:
     url: https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/0.20/freecad_source.tar.gz
-    # sha256:
+    sha256: fd223ff8e7b464f13e1c1a030c8e2f0019c40f8a11b10e49d307c528702ee4d6
     patches:
         - patches/qtwebengine_disable_sandbox.patch  # [linux]
         - patches/disable_git_info.patch
