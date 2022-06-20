@@ -34,8 +34,6 @@ qt:
 - '5.12'
 target_platform:
 - win-64
-tbb_devel:
-- '2020'
 vtk:
 - 9.1.0
 xerces_c:
