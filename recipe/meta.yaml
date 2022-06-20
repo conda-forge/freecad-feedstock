@@ -57,7 +57,6 @@ requirements:
         - pcl
         - six
         - ply
-        - tbb-devel
         - matplotlib
     run:
         - pyside2
