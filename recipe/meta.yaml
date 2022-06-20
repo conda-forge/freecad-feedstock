@@ -45,7 +45,7 @@ requirements:
         - vtk
         - swig
         - eigen
-        - pybind11 =2.7
+        - pybind11
         - coin3d
         - pivy
         - pyside2
