@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
 {% set version = "0.21.pre" %}
-{% set build_number = 5 %}
+{% set build_number = 6 %}
 {% set build_number = build_number + 500 %}  # [FEATURE_DEBUG]
 
 package:
@@ -16,8 +16,9 @@ source:
 
 build:
     number: {{ build_number }}
-    skip: true  # [py < 39 and unix]
+    skip: true  # [py < 310 and unix]
     skip: true  # [py < 38 and win]
+    skip: true  # [py == 39 and win]
 
 requirements:
     build:
@@ -49,7 +50,6 @@ requirements:
         - eigen
         - pybind11 =2.7
         - coin3d
-        - pivy
         - pyside2
         - smesh >=9.7
         - doxygen
@@ -85,9 +85,9 @@ requirements:
     run_constrained:
         - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
 
-#test:
-#    commands:
-#        - freecadcmd -t 0. # [not win]
+test:
+    commands:
+        - freecadcmd -t 0. # [not win]
 
 about:
     home: https://www.freecadweb.org/
