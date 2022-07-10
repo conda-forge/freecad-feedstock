@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
 {% set version = "0.21.pre" %}
-{% set build_number = 8 %}
+{% set build_number = 9 %}
 {% set build_number = build_number + 500 %}  # [FEATURE_DEBUG]
 
 package:
@@ -87,7 +87,7 @@ requirements:
 
 test:
     commands:
-        - freecadcmd -t 0. # [not win]
+        - freecadcmd -t 0 # [not win]
 
 about:
     home: https://www.freecadweb.org/
