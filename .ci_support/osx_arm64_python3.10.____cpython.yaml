@@ -15,7 +15,7 @@ freetype:
 hdf5:
 - 1.12.1
 macos_machine:
-- x86_64-apple-darwin13.4.0
+- arm64-apple-darwin20.0.0
 occt:
 - '7.6'
 pin_run_as_build:
@@ -39,7 +39,7 @@ python:
 qt:
 - '5.12'
 target_platform:
-- osx-64
+- osx-arm64
 vtk:
 - 9.1.0
 xerces_c:
