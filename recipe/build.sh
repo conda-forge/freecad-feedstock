@@ -23,7 +23,7 @@ if [[ ${HOST} =~ .*linux.* ]]; then
 fi
 
 
-if [[ ${HOST} =~ .*darwin.* ]]; then
+if [ ${HOST} =~ .*darwin.* ] && [ ${target_platform} != osx-64 ]; then
   # add hacks for osx here!
   echo "adding hacks for osx"
 
