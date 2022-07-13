@@ -41,6 +41,8 @@ if [ ${HOST} =~ .*darwin.* ] && [ ${target_platform} == osx-64 ]; then
   diskutil eject /Volumes/3Dconnexion\ Software
   CMAKE_PLATFORM_FLAGS+=(-DFREECAD_USE_3DCONNEXION:BOOL=ON)
   CMAKE_PLATFORM_FLAGS+=(-D3DCONNEXIONCLIENT_FRAMEWORK:FILEPATH="/Library/Frameworks/3DconnexionClient.framework")
+else
+  CMAKE_PLATFORM_FLAGS+=(-DCMAKE_CXX_COMPILER_FORCED:BOOL=ON)
 fi
 
 if [[ ${HOST} =~ .*darwin.* ]]; then
