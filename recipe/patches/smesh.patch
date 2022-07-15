@@ -1,8 +1,8 @@
 diff --git a/cMake/FindSMESH.cmake b/cMake/FindSMESH.cmake
-index 475e785cd6..e09d5ef4ce 100644
+index 475e785cd6..0f2214513f 100644
 --- a/cMake/FindSMESH.cmake
 +++ b/cMake/FindSMESH.cmake
-@@ -7,20 +7,16 @@
+@@ -7,20 +7,20 @@
  #
   
  
@@ -30,6 +30,19 @@ index 475e785cd6..e09d5ef4ce 100644
 +#  /usr/lib
 +#  /usr/local/lib
 +)
++
++MESSAGE(STATUS "############")
++MESSAGE(STATUS "SMESH_LIBRARY: ${SMESH_LIBRARY}")
++MESSAGE(STATUS "############")
  
  SET(SMESH_FOUND FALSE)
  IF(SMESH_LIBRARY)
+@@ -38,3 +38,7 @@ IF(SMESH_LIBRARY)
+   )
+ ENDIF(SMESH_LIBRARY)
+ 
++MESSAGE(STATUS "############")
++MESSAGE(STATUS "SMESH_FOUND: ${SMESH_FOUND}")
++MESSAGE(STATUS "SMESH_LIBRARIES: ${SMESH_LIBRARIES}")
++MESSAGE(STATUS "############")
+\ No newline at end of file
