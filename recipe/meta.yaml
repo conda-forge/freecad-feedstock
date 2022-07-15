@@ -13,6 +13,7 @@ source:
     patches:
         - patches/qtwebengine_disable_sandbox.patch  # [linux]
         - patches/disable_git_info.patch
+        - patches/smesh.patch
 
 build:
     number: {{ build_number }}
