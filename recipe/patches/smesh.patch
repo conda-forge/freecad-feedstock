@@ -46,3 +46,19 @@ index 475e785cd6..0f2214513f 100644
 +MESSAGE(STATUS "SMESH_LIBRARIES: ${SMESH_LIBRARIES}")
 +MESSAGE(STATUS "############")
 \ No newline at end of file
+diff --git a/cMake/FreeCAD_Helpers/SetupSalomeSMESH.cmake b/cMake/FreeCAD_Helpers/SetupSalomeSMESH.cmake
+index 5cf36329df..56835c0fe7 100644
+--- a/cMake/FreeCAD_Helpers/SetupSalomeSMESH.cmake
++++ b/cMake/FreeCAD_Helpers/SetupSalomeSMESH.cmake
+@@ -127,6 +127,11 @@ macro(SetupSalomeSMESH)
+                               "================\n")
+             endif()
+             include_directories(${SMESH_INCLUDE_DIR})
++            message(STATUS "######################")
++            message(STATUS "SMESH_INCLUDE_DIR: ${SMESH_INCLUDE_DIR}")
++            message(STATUS "SMESH_LIBRARIES: ${SMESH_LIBRARIES}")
++            message(STATUS "EXTERNAL_SMESH_LIBS: ${EXTERNAL_SMESH_LIBS}")
++            message(STATUS "######################")
+         endif()
+ 
+         set(SMESH_FOUND TRUE)
