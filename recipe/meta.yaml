@@ -14,6 +14,7 @@ source:
         - patches/qtwebengine_disable_sandbox.patch  # [linux]
         - patches/disable_git_info.patch
         - patches/smesh.patch
+        - patches/findcoin3d.patch  # [win]
 
 build:
     number: {{ build_number }}
