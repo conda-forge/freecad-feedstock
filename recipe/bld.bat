@@ -45,7 +45,8 @@ cmake -G "Ninja" ^
       -D FREECAD_USE_PCH:BOOL=OFF ^
       -D FREECAD_USE_PCL:BOOL=ON ^
       -D INSTALL_TO_SITEPACKAGES:BOOL=ON ^
-      -D LZMA_LIBRARY="%LIBRARY_PREFIX%/lib/liblzma.lib" ^
+      -D LZMA_LIBRARY:FILEPATH="%LIBRARY_PREFIX%/lib/liblzma.lib" ^
+      -D COIN3D_LIBRARY_RELEASE:FILEPATH="%LIBRARY_PREFIX%/lib/Coin4.lib" ^
       ..
 
 if errorlevel 1 exit 1
