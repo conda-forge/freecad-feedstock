@@ -1,0 +1,20 @@
+commit 00cef8b834b9476c406cef9a5f3f656d38cd354b
+Author: lorenz <looooo@users.noreply.github.com>
+Date:   Tue Jul 12 13:45:54 2022 +0200
+
+    cross compiling: avoid failing test-program
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3722f6b1f1..b0994f61d2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -13,6 +13,9 @@ if(CCACHE_PROGRAM)
+     set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CCACHE_PROGRAM}")
+ endif()
+ 
++# for cross compiling: https://stackoverflow.com/a/53635241
++set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
++
+ project(FreeCAD)
+ 
+ set(PACKAGE_VERSION_NAME "Vulcan")
