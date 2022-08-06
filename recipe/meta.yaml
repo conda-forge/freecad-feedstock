@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
 {% set version = "0.21.pre" %}
-{% set build_number = 20 %}
+{% set build_number = 21 %}
 {% set build_number = build_number + 500 %}  # [FEATURE_DEBUG]
 
 package:
@@ -56,7 +56,7 @@ requirements:
         - coin3d
         - pyside2
         - smesh >=9.7
-        - doxygen
+        - doxygen  # [build_platform != target_platform]
         - hdf5
         - freetype
         - libspnav  # [linux]
