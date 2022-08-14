@@ -17,7 +17,7 @@ hdf5:
 macos_machine:
 - x86_64-apple-darwin13.4.0
 occt:
-- '7.5'
+- '7.6'
 pin_run_as_build:
   boost-cpp:
     max_pin: x.x.x
@@ -37,7 +37,7 @@ pin_run_as_build:
 python:
 - 3.10.* *_cpython
 qt:
-- '5.12'
+- '5.15'
 target_platform:
 - osx-64
 vtk:

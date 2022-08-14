@@ -3,7 +3,7 @@ About freecad
 
 Home: https://www.freecadweb.org/
 
-Package license: LGPL-2.1-or-later
+Package license: LGPL2.1
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/freecad-feedstock/blob/main/LICENSE.txt)
 
