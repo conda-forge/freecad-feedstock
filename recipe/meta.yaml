@@ -10,6 +10,7 @@ package:
 source:
     url: https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/freecad_source.tar.gz
     fn: freecad_source_{{ build_number }}.tar.gz
+    sha256: 90bcb02f4900008073bb400b789e09342a54694651d0cef9e5623c1f23991b7c
     patches:
         - patches/qtwebengine_disable_sandbox.patch  # [linux]
         - patches/disable_git_info.patch
