@@ -1,0 +1,12 @@
+diff --git a/src/Gui/Application.cpp b/src/Gui/Application.cpp
+index 2b4676f600..915e767888 100644
+--- a/src/Gui/Application.cpp
++++ b/src/Gui/Application.cpp
+@@ -45,6 +45,7 @@
+ #include <Base/FileInfo.h>
+ #include <Base/Parameter.h>
+ #include <Base/Tools.h>
++#include <cctype>
+ 
+ #include <Language/Translator.h>
+ #include <Quarter/Quarter.h>
