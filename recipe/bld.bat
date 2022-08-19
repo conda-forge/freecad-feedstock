@@ -23,7 +23,6 @@ cmake -G "Ninja" ^
       -D CMAKE_LIBRARY_PATH:FILEPATH="%LIBRARY_PREFIX%/lib" ^
       -D CMAKE_INSTALL_LIBDIR:FILEPATH="%LIBRARY_PREFIX%/lib" ^
       -D BUILD_QT5:BOOL=ON ^
-      -D NGLIB_INCLUDE_DIR:FILEPATH="%LIBRARY_PREFIX%/include\smesh\Netgen" ^
       -D BUILD_FEM_NETGEN:BOOL=ON ^
       -D OCC_INCLUDE_DIR:FILEPATH="%LIBRARY_PREFIX%/include/opencascade" ^
       -D OCC_LIBRARY_DIR:FILEPATH="%LIBRARY_PREFIX%/lib" ^
@@ -46,7 +45,8 @@ cmake -G "Ninja" ^
       -D FREECAD_USE_PCH:BOOL=OFF ^
       -D FREECAD_USE_PCL:BOOL=ON ^
       -D INSTALL_TO_SITEPACKAGES:BOOL=ON ^
-      -D LZMA_LIBRARY="%LIBRARY_PREFIX%/lib/liblzma.lib" ^
+      -D LZMA_LIBRARY:FILEPATH="%LIBRARY_PREFIX%/lib/liblzma.lib" ^
+      -D COIN3D_LIBRARY_RELEASE:FILEPATH="%LIBRARY_PREFIX%/lib/Coin4.lib" ^
       ..
 
 if errorlevel 1 exit 1
