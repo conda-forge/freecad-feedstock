@@ -90,7 +90,7 @@ requirements:
 
 test:
     commands:
-        - freecadcmd -t 0
+        - freecadcmd -t 0. # [unix]
 
 about:
     home: https://www.freecadweb.org/
