@@ -9,11 +9,11 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '13'
+- '14'
 freetype:
 - '2'
 hdf5:
-- 1.12.1
+- 1.12.2
 macos_machine:
 - x86_64-apple-darwin13.4.0
 occt:
