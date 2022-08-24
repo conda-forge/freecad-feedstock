@@ -90,11 +90,11 @@ requirements:
 
 test:
     commands:
-        - freecadcmd -t 0 # [unix]
+        - freecadcmd -t 0  # [unix]
 
 about:
     home: https://www.freecadweb.org/
-    license: LGPL2.1
+    license: LGPL-2.1-or-later
     license_family: LGPL
     license_file: LICENSE
     summary: 'FreeCAD is a parametric 3D modeler made primarily to design real-life objects of any size. '
