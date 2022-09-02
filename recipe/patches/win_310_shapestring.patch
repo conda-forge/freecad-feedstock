@@ -1,0 +1,36 @@
+diff --git a/src/Mod/Part/App/AppPartPy.cpp b/src/Mod/Part/App/AppPartPy.cpp
+index c8db1b0b07..db2e4dd024 100644
+--- a/src/Mod/Part/App/AppPartPy.cpp
++++ b/src/Mod/Part/App/AppPartPy.cpp
+@@ -2028,8 +2028,15 @@ private:
+             pysize = PyUnicode_GetLength(p);
+ #if PY_VERSION_HEX < 0x03090000
+             unichars = PyUnicode_AS_UNICODE(p);
++#else
++#ifdef FC_OS_WIN32
++            //PyUNICODE is only 16 bits on Windows (wchar_t), so passing 32 bit UCS4
++            //will result in unknow glyph in even positions, and wrong characters in
++            //odd positions.
++            unichars = (Py_UNICODE*)PyUnicode_AsWideCharString(p, &pysize);
+ #else
+             unichars = (Py_UNICODE *)PyUnicode_AsUCS4Copy(p);
++#endif
+ #endif
+         }
+         else if (PyUnicode_Check(intext)) {
+@@ -2037,8 +2044,15 @@ private:
+ 
+ #if PY_VERSION_HEX < 0x03090000
+             unichars = PyUnicode_AS_UNICODE(intext);
++#else
++#ifdef FC_OS_WIN32
++            //PyUNICODE is only 16 bits on Windows (wchar_t), so passing 32 bit UCS4
++            //will result in unknow glyph in even positions, and wrong characters in
++            //odd positions.
++            unichars = (Py_UNICODE*)PyUnicode_AsWideCharString(intext, &pysize);
+ #else
+             unichars = (Py_UNICODE *)PyUnicode_AsUCS4Copy(intext);
++#endif
+ #endif
+         }
+         else {
