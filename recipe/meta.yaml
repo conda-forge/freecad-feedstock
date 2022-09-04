@@ -17,7 +17,6 @@ source:
         - patches/smesh.patch
         - patches/findcoin3d.patch  # [win]
         - patches/osx_arm64_cross_compiling.patch  # [osx and arm64]
-        - patches/win_310_shapestring.patch  # [win and py == 310]
 
 build:
     number: {{ build_number }}
