@@ -1,7 +1,16 @@
 diff --git a/cMake/FreeCAD_Helpers/SetupSalomeSMESH.cmake b/cMake/FreeCAD_Helpers/SetupSalomeSMESH.cmake
-index 860e7f13b5..6238267061 100644
+index 860e7f13b5..08c810811f 100644
 --- a/cMake/FreeCAD_Helpers/SetupSalomeSMESH.cmake
 +++ b/cMake/FreeCAD_Helpers/SetupSalomeSMESH.cmake
+@@ -12,7 +12,7 @@ macro(SetupSalomeSMESH)
+ 
+         #if we use smesh we definitely also need vtk, no matter of external or internal smesh
+         set (VTK_COMPONENTS
+-            vtkCommonCore
++            CommonCore
+             vtkCommonDataModel
+             vtkFiltersVerdict
+             vtkIOXML
 @@ -119,6 +119,10 @@ macro(SetupSalomeSMESH)
  
          else(NOT FREECAD_USE_EXTERNAL_SMESH)
