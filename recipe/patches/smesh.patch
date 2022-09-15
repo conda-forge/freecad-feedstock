@@ -1,64 +1,15 @@
-diff --git a/cMake/FindSMESH.cmake b/cMake/FindSMESH.cmake
-index 475e785cd6..0f2214513f 100644
---- a/cMake/FindSMESH.cmake
-+++ b/cMake/FindSMESH.cmake
-@@ -7,20 +7,20 @@
- #
-  
- 
--IF (CMAKE_COMPILER_IS_GNUCC)
--    FIND_PATH(SMESH_INCLUDE_DIR SMESH_Mesh.hxx
--    # These are default search paths, why specify them?
--    # /usr/include
--    # /usr/local/include
--    PATH_SUFFIXES smesh
--    )
--    FIND_LIBRARY(SMESH_LIBRARY SMESH
--    #  /usr/lib
--    #  /usr/local/lib
--    )
--ELSE (CMAKE_COMPILER_IS_GNUCC)
--    # Not yet implemented
--ENDIF (CMAKE_COMPILER_IS_GNUCC)
-+FIND_PATH(SMESH_INCLUDE_DIR SMESH_Mesh.hxx
-+# These are default search paths, why specify them?
-+# /usr/include
-+# /usr/local/include
-+PATH_SUFFIXES smesh
-+)
-+FIND_LIBRARY(SMESH_LIBRARY SMESH
-+#  /usr/lib
-+#  /usr/local/lib
-+)
-+
-+MESSAGE(STATUS "############")
-+MESSAGE(STATUS "SMESH_LIBRARY: ${SMESH_LIBRARY}")
-+MESSAGE(STATUS "############")
- 
- SET(SMESH_FOUND FALSE)
- IF(SMESH_LIBRARY)
-@@ -38,3 +38,7 @@ IF(SMESH_LIBRARY)
-   )
- ENDIF(SMESH_LIBRARY)
- 
-+MESSAGE(STATUS "############")
-+MESSAGE(STATUS "SMESH_FOUND: ${SMESH_FOUND}")
-+MESSAGE(STATUS "SMESH_LIBRARIES: ${SMESH_LIBRARIES}")
-+MESSAGE(STATUS "############")
-\ No newline at end of file
 diff --git a/cMake/FreeCAD_Helpers/SetupSalomeSMESH.cmake b/cMake/FreeCAD_Helpers/SetupSalomeSMESH.cmake
-index 5cf36329df..56835c0fe7 100644
+index 860e7f13b5..6238267061 100644
 --- a/cMake/FreeCAD_Helpers/SetupSalomeSMESH.cmake
 +++ b/cMake/FreeCAD_Helpers/SetupSalomeSMESH.cmake
-@@ -127,6 +127,11 @@ macro(SetupSalomeSMESH)
-                               "================\n")
-             endif()
-             include_directories(${SMESH_INCLUDE_DIR})
-+            message(STATUS "######################")
-+            message(STATUS "SMESH_INCLUDE_DIR: ${SMESH_INCLUDE_DIR}")
-+            message(STATUS "SMESH_LIBRARIES: ${SMESH_LIBRARIES}")
-+            message(STATUS "EXTERNAL_SMESH_LIBS: ${EXTERNAL_SMESH_LIBS}")
-+            message(STATUS "######################")
-         endif()
+@@ -119,6 +119,10 @@ macro(SetupSalomeSMESH)
  
-         set(SMESH_FOUND TRUE)
+         else(NOT FREECAD_USE_EXTERNAL_SMESH)
+             find_package(SMESH CONFIG)
++            # If this definition is not set, linker errors will occur against SMESH on 64 bit machines.
++            if(CMAKE_SIZEOF_VOID_P EQUAL 8)
++                add_definitions(-DSALOME_USE_64BIT_IDS)
++            endif(CMAKE_SIZEOF_VOID_P EQUAL 8)
+             if(NOT SMESH_FOUND)
+                 find_package(SMESH REQUIRED)
+                 if(NOT SMESH_FOUND)

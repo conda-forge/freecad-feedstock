@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
 {% set version = "0.21.pre" %}
-{% set build_number = 34 %}
+{% set build_number = 36 %}
 {% set build_number = build_number + 500 %}  # [FEATURE_DEBUG]
 
 package:
@@ -57,7 +57,7 @@ requirements:
         - pybind11
         - coin3d
         - pyside2
-        - smesh >=9.7
+        - smesh ==9.9
         - doxygen  # [build_platform == target_platform]
         - hdf5
         - freetype
