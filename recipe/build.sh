@@ -26,6 +26,9 @@ fi
 if [[ ${HOST} =~ .*darwin.* ]] && [[ ${target_platform} =~ osx-64 ]]; then
   # add hacks for osx here!
   echo "adding hacks for osx"
+  
+  # delete python3.11 from framework
+  rm -rf /Library/Frameworks/Python.framework/Versions/3.11
 
 
   # should be applied @vtk-feedstock
