@@ -1,0 +1,34 @@
+boost_cpp:
+- 1.78.0
+channel_sources:
+- freecad/label/dev,conda-forge,defaults
+channel_targets:
+- freecad dev
+cxx_compiler:
+- vs2019
+freetype:
+- '2'
+hdf5:
+- 1.12.2
+occt:
+- '7.6'
+pin_run_as_build:
+  boost-cpp:
+    max_pin: x.x.x
+  occt:
+    max_pin: x.x
+  python:
+    min_pin: x.x
+    max_pin: x.x
+python:
+- 3.11.* *_cpython
+qt:
+- '5.15'
+target_platform:
+- win-64
+vtk:
+- 9.2.2
+xerces_c:
+- '3.2'
+zlib:
+- '1.2'
