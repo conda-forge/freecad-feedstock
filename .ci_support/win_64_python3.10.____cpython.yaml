@@ -1,11 +1,11 @@
 boost_cpp:
-- 1.74.0
+- 1.78.0
 channel_sources:
 - freecad/label/dev,conda-forge,defaults
 channel_targets:
 - freecad dev
 cxx_compiler:
-- vs2017
+- vs2019
 freetype:
 - '2'
 hdf5:
@@ -15,18 +15,10 @@ occt:
 pin_run_as_build:
   boost-cpp:
     max_pin: x.x.x
-  freetype:
-    max_pin: x
   occt:
     max_pin: x.x
   python:
     min_pin: x.x
-    max_pin: x.x
-  qt:
-    max_pin: x.x
-  vtk:
-    max_pin: x.x.x
-  zlib:
     max_pin: x.x
 python:
 - 3.10.* *_cpython
