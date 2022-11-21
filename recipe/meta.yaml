@@ -48,7 +48,8 @@ requirements:
     host:
         - boost-cpp
         - python
-        - qt
+        - qt-main
+        - qt-webengine
         - occt
         - xerces-c
         - zlib
@@ -71,7 +72,8 @@ requirements:
         - pyside2
         - vtk
         - occt
-        - qt
+        - qt-main
+        - qt-webengine
         - xerces-c
         - zlib
         - boost-cpp
