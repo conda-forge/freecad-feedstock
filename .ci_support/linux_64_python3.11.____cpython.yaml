@@ -3,9 +3,9 @@ boost_cpp:
 cdt_name:
 - cos6
 channel_sources:
-- freecad/label/dev,conda-forge,defaults
+- conda-forge
 channel_targets:
-- freecad dev
+- conda-forge freecad-dev
 cxx_compiler:
 - gxx
 cxx_compiler_version:
