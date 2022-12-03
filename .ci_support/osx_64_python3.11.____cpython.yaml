@@ -5,7 +5,7 @@ boost_cpp:
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge freecad-dev
+- conda-forge freecad_rc
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
