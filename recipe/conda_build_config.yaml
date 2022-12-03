@@ -1,4 +1,4 @@
 channel_targets:
-- conda-forge freecad-dev
+- conda-forge freecad_rc
 MACOSX_DEPLOYMENT_TARGET:  # [osx]
 - '10.12'                  # [osx]
