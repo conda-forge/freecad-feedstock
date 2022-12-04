@@ -1,15 +1,11 @@
 diff --git a/src/Mod/Raytracing/CMakeLists.txt b/src/Mod/Raytracing/CMakeLists.txt
-index 9c707dec7e..a882841265 100644
+index 9c707dec7e..41be2d7f65 100644
 --- a/src/Mod/Raytracing/CMakeLists.txt
 +++ b/src/Mod/Raytracing/CMakeLists.txt
-@@ -9,6 +9,10 @@ set(Raytracing_Scripts
-     RaytracingExample.py
- )
- 
+@@ -1,3 +1,6 @@
 +if(WIN32)
 +    add_definitions(-DBOOST_DYN_LINK)
 +endif(WIN32)
-+
+ 
+ add_subdirectory(App)
  if(BUILD_GUI)
-     list (APPEND Raytracing_Scripts InitGui.py)
- endif(BUILD_GUI)
