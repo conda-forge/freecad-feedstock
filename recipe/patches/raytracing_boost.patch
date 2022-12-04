@@ -1,3 +1,15 @@
+diff --git a/src/Mod/Raytracing/App/CMakeLists.txt b/src/Mod/Raytracing/App/CMakeLists.txt
+index 97024d0fc8..c937422d87 100644
+--- a/src/Mod/Raytracing/App/CMakeLists.txt
++++ b/src/Mod/Raytracing/App/CMakeLists.txt
+@@ -21,6 +21,7 @@ set(Raytracing_LIBS
+     Part
+     ${OCC_LIBRARIES}
+     ${OCC_DEBUG_LIBRARIES}
++    ${Boost_LIBRARIES}
+     FreeCADApp
+ )
+ 
 diff --git a/src/Mod/Raytracing/CMakeLists.txt b/src/Mod/Raytracing/CMakeLists.txt
 index 9c707dec7e..41be2d7f65 100644
 --- a/src/Mod/Raytracing/CMakeLists.txt
