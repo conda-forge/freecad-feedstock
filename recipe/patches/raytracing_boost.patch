@@ -10,6 +10,18 @@ index 97024d0fc8..c937422d87 100644
      FreeCADApp
  )
  
+diff --git a/src/Mod/Raytracing/App/PreCompiled.h b/src/Mod/Raytracing/App/PreCompiled.h
+index e335cc7b4e..609dd9a24f 100644
+--- a/src/Mod/Raytracing/App/PreCompiled.h
++++ b/src/Mod/Raytracing/App/PreCompiled.h
+@@ -31,6 +31,7 @@
+ // standard
+ #include <cstdio>
+ #include <cassert>
++#include <Windows.h>
+ 
+ 
+ // STL
 diff --git a/src/Mod/Raytracing/CMakeLists.txt b/src/Mod/Raytracing/CMakeLists.txt
 index 9c707dec7e..41be2d7f65 100644
 --- a/src/Mod/Raytracing/CMakeLists.txt
