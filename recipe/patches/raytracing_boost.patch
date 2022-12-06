@@ -1,35 +1,21 @@
-diff --git a/src/Mod/Raytracing/App/CMakeLists.txt b/src/Mod/Raytracing/App/CMakeLists.txt
-index 97024d0fc8..c937422d87 100644
---- a/src/Mod/Raytracing/App/CMakeLists.txt
-+++ b/src/Mod/Raytracing/App/CMakeLists.txt
-@@ -21,6 +21,7 @@ set(Raytracing_LIBS
-     Part
-     ${OCC_LIBRARIES}
-     ${OCC_DEBUG_LIBRARIES}
-+    ${Boost_LIBRARIES}
-     FreeCADApp
- )
- 
-diff --git a/src/Mod/Raytracing/App/PreCompiled.h b/src/Mod/Raytracing/App/PreCompiled.h
-index e335cc7b4e..609dd9a24f 100644
---- a/src/Mod/Raytracing/App/PreCompiled.h
-+++ b/src/Mod/Raytracing/App/PreCompiled.h
-@@ -31,6 +31,7 @@
- // standard
- #include <cstdio>
- #include <cassert>
-+#include <Windows.h>
+diff --git a/src/Mod/Raytracing/App/LuxTools.cpp b/src/Mod/Raytracing/App/LuxTools.cpp
+index 86db2ee16f..22ddbcfd20 100644
+--- a/src/Mod/Raytracing/App/LuxTools.cpp
++++ b/src/Mod/Raytracing/App/LuxTools.cpp
+@@ -39,7 +39,6 @@
+ #include <Base/Sequencer.h>
+ #include <Base/Matrix.h>
+ #include <App/ComplexGeoData.h>
+-#include <boost/regex.hpp>
  
  
- // STL
+ #include "PovTools.h"
 diff --git a/src/Mod/Raytracing/CMakeLists.txt b/src/Mod/Raytracing/CMakeLists.txt
-index 9c707dec7e..41be2d7f65 100644
+index 9c707dec7e..9823b37878 100644
 --- a/src/Mod/Raytracing/CMakeLists.txt
 +++ b/src/Mod/Raytracing/CMakeLists.txt
-@@ -1,3 +1,6 @@
-+if(WIN32)
-+    add_definitions(-DBOOST_DYN_LINK)
-+endif(WIN32)
- 
+@@ -1,4 +1,3 @@
+-
  add_subdirectory(App)
  if(BUILD_GUI)
+     add_subdirectory(Gui)
