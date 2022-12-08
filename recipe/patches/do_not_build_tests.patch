@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 33cebdb85f..db1284cfb0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -92,6 +92,6 @@ CreatePackagingTargets()
+ 
+ PrintFinalReport()
+ 
+-if (BUILD_TEST)
++if (BUILD_TEST AND NOT BUILD_WITH_CONDA)
+     add_subdirectory(tests)
+ endif()
