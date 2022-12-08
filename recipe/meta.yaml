@@ -12,9 +12,10 @@ source:
     fn: freecad_source_{{ build_number }}.tar.gz
     # sha256:
     patches:
+        - patches/disable_git_info.patch
         - patches/qtwebengine_disable_sandbox.patch  # [linux]
         - patches/techdraw_boost.patch  # [win]
-        - patches/disable_git_info.patch
+        - patches/do_not_build_tests.patch  # [win]
         - patches/findcoin3d.patch  # [win]
         - patches/osx_arm64_cross_compiling.patch  # [osx and arm64]
 
