@@ -17,6 +17,7 @@ source:
         - patches/techdraw_boost.patch  # [win]
         - patches/do_not_build_tests.patch  # [win]
         - patches/findcoin3d.patch  # [win]
+        - patches/win_smesh_pch.patch  # [win]
         - patches/osx_arm64_cross_compiling.patch  # [osx and arm64]
 
 build:

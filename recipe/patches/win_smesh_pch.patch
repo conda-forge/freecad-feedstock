@@ -1,0 +1,12 @@
+diff --git a/src/Mod/Fem/App/PreCompiled.h b/src/Mod/Fem/App/PreCompiled.h
+index 8cd5f7a0b9..56750b5560 100644
+--- a/src/Mod/Fem/App/PreCompiled.h
++++ b/src/Mod/Fem/App/PreCompiled.h
+@@ -80,7 +80,6 @@
+ #include <SMDS_MeshGroup.hxx>
+ #include <SMESHDS_GroupBase.hxx>
+ #include <SMESHDS_Group.hxx>
+-#include <SMDS_PolyhedralVolumeOfNodes.hxx>
+ #include <SMDS_VolumeTool.hxx>
+ #include <StdMeshers_StartEndLength.hxx>
+ #include <StdMeshers_QuadraticMesh.hxx>
