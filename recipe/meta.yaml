@@ -15,6 +15,7 @@ source:
         - patches/disable_git_info.patch
         - patches/qtwebengine_disable_sandbox.patch  # [linux]
         # - patches/techdraw_boost.patch  # [win]
+        - patches/remove_boost_python_from_pch.patch  # [win]
         - patches/do_not_build_tests.patch  # [win]
         - patches/findcoin3d.patch  # [win]
         - patches/win_smesh_pch.patch  # [win]
