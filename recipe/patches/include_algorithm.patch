@@ -1,0 +1,13 @@
+diff --git a/src/Mod/TechDraw/App/DrawUtil.cpp b/src/Mod/TechDraw/App/DrawUtil.cpp
+index 617b3fc..f04673e 100644
+--- a/src/Mod/TechDraw/App/DrawUtil.cpp
++++ b/src/Mod/TechDraw/App/DrawUtil.cpp
+@@ -27,7 +27,7 @@
+ #include <cstdlib>
+ #include <cstring>
+ #include <sstream>
+-
++#include <algorithm>
+ #include <boost_regex.hpp>
+ 
+ #include <QChar>
