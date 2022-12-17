@@ -47,7 +47,7 @@ cmake -G "Ninja" ^
       -D INSTALL_TO_SITEPACKAGES:BOOL=ON ^
       -D LZMA_LIBRARY:FILEPATH="%LIBRARY_PREFIX%/lib/liblzma.lib" ^
       -D COIN3D_LIBRARY_RELEASE:FILEPATH="%LIBRARY_PREFIX%/lib/Coin4.lib" ^
-      -D BUILD_TEST:BOOL=OFF 
+      -D BUILD_TEST:BOOL=OFF ^
       ..
 
 if errorlevel 1 exit 1
