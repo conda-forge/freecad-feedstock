@@ -54,7 +54,7 @@ requirements:
         - pybind11
         - coin3d
         - pyside2
-        - smesh ==9.8
+        - smesh ==9.8.0.2
         - doxygen  # [build_platform == target_platform]
         - hdf5
         - freetype
