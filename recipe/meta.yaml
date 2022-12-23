@@ -19,7 +19,6 @@ source:
         - patches/do_not_build_tests.patch  # [win]
         - patches/findcoin3d.patch  # [win]
         - patches/win_smesh_pch.patch  # [win]
-        - patches/boost_regex.patch  # [win]
         - patches/osx_arm64_cross_compiling.patch  # [osx and arm64]
 
 build:
@@ -98,9 +97,9 @@ requirements:
     run_constrained:
         - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
 
-test:
-    commands:
-        - freecadcmd -t 0  # [not win]
+# test:
+#    commands:
+#        - freecadcmd -t 0  # [not win]
 
 about:
     home: https://www.freecadweb.org/
