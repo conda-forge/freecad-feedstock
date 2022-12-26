@@ -1,0 +1,31 @@
+commit 35fb8f63386467dbf3a96ba3f1d0a8f05f1fc0b6
+Author: Uwe <donovaly@users.noreply.github.com>
+Date:   Sat Oct 15 19:11:06 2022 +0200
+
+    [FEM] HypothesisPy.cpp: fox compiler warning
+    
+    - see https://forum.freecadweb.org/viewtopic.php?p=633192#p633192
+
+diff --git a/src/Mod/Fem/App/HypothesisPy.cpp b/src/Mod/Fem/App/HypothesisPy.cpp
+index aa59684612..9083a75f7f 100755
+--- a/src/Mod/Fem/App/HypothesisPy.cpp
++++ b/src/Mod/Fem/App/HypothesisPy.cpp
+@@ -22,6 +22,10 @@
+ 
+ #include "PreCompiled.h"
+ 
++// HypothesisPy.h must be included as first file to avoid compiler warning,
++// see: https://forum.freecadweb.org/viewtopic.php?p=633192#p633192
++#include "HypothesisPy.h"
++
+ #ifndef _PreComp_
+ # include <sstream>
+ 
+@@ -64,7 +68,6 @@
+ #include <Base/Interpreter.h>
+ #include <Mod/Part/App/TopoShapePy.h>
+ 
+-#include "HypothesisPy.h"
+ #include "FemMeshPy.h"
+ 
+ 
