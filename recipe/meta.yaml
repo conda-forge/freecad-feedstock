@@ -17,6 +17,7 @@ source:
         - patches/smesh.patch
         - patches/master1.patch
         - patches/master2.patch
+        - patches/test_numpy_fix.patch
         # - patches/findcoin3d.patch  # [win]
         - patches/osx_arm64_cross_compiling.patch  # [osx and arm64]
 
@@ -92,7 +93,7 @@ requirements:
 
 test:
     commands:
-        - freecadcmd -t 0
+        - freecadcmd -t 0  # [unix]
 
 about:
     home: https://www.freecadweb.org/
