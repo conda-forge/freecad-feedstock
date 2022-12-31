@@ -1,17 +1,11 @@
 boost_cpp:
-- 1.74.0
-cdt_name:
-- cos6
+- 1.78.0
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- gxx
-cxx_compiler_version:
-- '10'
-docker_image:
-- quay.io/condaforge/linux-anvil-cos7-x86_64
+- vs2019
 freetype:
 - '2'
 hdf5:
@@ -21,25 +15,17 @@ occt:
 pin_run_as_build:
   boost-cpp:
     max_pin: x.x.x
-  freetype:
-    max_pin: x
   occt:
     max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
-  qt:
-    max_pin: x.x
-  vtk:
-    max_pin: x.x.x
-  zlib:
-    max_pin: x.x
 python:
-- 3.7.* *_cpython
+- 3.11.* *_cpython
 qt:
 - '5.15'
 target_platform:
-- linux-64
+- win-64
 vtk:
 - 9.1.0
 xerces_c:
