@@ -22,10 +22,7 @@ source:
 
 build:
     number: {{ build_number }}
-    skip: true  # [py < 311 and unix]
-    skip: true  # [py < 38 and win]
-    skip: true  # [py == 39 and win]
-    skip: true  # [py == 310 and win]
+    skip: true  # [py < 311]
 
 requirements:
     build:
