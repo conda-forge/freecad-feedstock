@@ -42,7 +42,7 @@ requirements:
     - cmake
     - ninja
     - sed  # [unix]
-    - python                                 # [build_platform != target_platform]
+    - python
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
   host:
     - boost-cpp
