@@ -1,32 +1,26 @@
 boost_cpp:
-- 1.74.0
+- 1.78.0
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2017
+- vs2019
 freetype:
 - '2'
+graphviz:
+- '6'
 hdf5:
 - 1.12.2
-occt:
-- '7.6'
+numpy:
+- '1.20'
 pin_run_as_build:
   boost-cpp:
     max_pin: x.x.x
-  freetype:
+  graphviz:
     max_pin: x
-  occt:
-    max_pin: x.x
   python:
     min_pin: x.x
-    max_pin: x.x
-  qt:
-    max_pin: x.x
-  vtk:
-    max_pin: x.x.x
-  zlib:
     max_pin: x.x
 python:
 - 3.9.* *_cpython
@@ -35,8 +29,11 @@ qt:
 target_platform:
 - win-64
 vtk:
-- 9.1.0
+- 9.2.5
 xerces_c:
 - '3.2'
+zip_keys:
+- - python
+  - numpy
 zlib:
 - '1.2'
