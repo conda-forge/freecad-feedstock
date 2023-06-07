@@ -11,7 +11,7 @@ Summary: FreeCAD is a parametric 3D modeler made primarily to design real-life o
 
 Development: https://github.com/FreeCAD/FreeCAD
 
-Documentation: https://www.freecad.org/wiki/Main_Page
+Documentation: https://wiki.freecad.org/Main_Page
 
 FreeCAD is a general purpose feature-based, parametric 3D modeler for
 CAD, MCAD, CAx, CAE and PLM, aimed directly at mechanical engineering
