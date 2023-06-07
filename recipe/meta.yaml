@@ -113,7 +113,7 @@ about:
         Coin 3D library, and a broad Python API. The interface is built with Qt.
         FreeCAD runs exactly the same way on Windows, Mac OSX, BSD and Linux
         platforms.
-    doc_url: https://www.freecad.org/wiki/Main_Page
+    doc_url: https://wiki.freecad.org/Main_Page
     dev_url: https://github.com/FreeCAD/FreeCAD
 
 extra:
