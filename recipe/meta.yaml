@@ -96,7 +96,7 @@ test:
         - freecadcmd -t 0  # [unix]
 
 about:
-    home: https://www.freecadweb.org/
+    home: https://www.freecad.org/
     license: LGPL-2.1-or-later
     license_family: LGPL
     license_file: LICENSE
@@ -113,7 +113,7 @@ about:
         Coin 3D library, and a broad Python API. The interface is built with Qt.
         FreeCAD runs exactly the same way on Windows, Mac OSX, BSD and Linux
         platforms.
-    doc_url: https://www.freecadweb.org/wiki/Main_Page
+    doc_url: https://wiki.freecad.org/Main_Page
     dev_url: https://github.com/FreeCAD/FreeCAD
 
 extra:
