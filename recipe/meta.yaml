@@ -12,7 +12,7 @@ source:
     fn: freecad_source_{{ build_number }}.tar.gz
     # sha256:
     patches:
-        - patches/temporary_win.patch  # [win]
+        - patches/boost_regex.patch  # [win]
         - patches/disable_git_info.patch
         - patches/qtwebengine_disable_sandbox.patch  # [linux]
         - patches/do_not_build_tests.patch  # [win]

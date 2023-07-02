@@ -1,12 +1,11 @@
 diff --git a/src/boost_regex.hpp b/src/boost_regex.hpp
-index ed25454ac3..2ff3eb9ffe 100644
+index ac5b5fbced..372f25ce94 100644
 --- a/src/boost_regex.hpp
 +++ b/src/boost_regex.hpp
-@@ -7,6 +7,7 @@
- 
- // Workaround for boost >= 1.78
- #ifdef WIN32
-+#define NOMINMAX
- #include <Windows.h>
+@@ -10,6 +10,7 @@
+ #   define NOMINMAX
+ #  endif
+ #  include <Windows.h>
++#  undef BASETYPES
+ # endif
  #endif
- 
