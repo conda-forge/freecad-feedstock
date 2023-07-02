@@ -13,7 +13,7 @@ channel_targets:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '11'
+- '12'
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
 freetype:
@@ -22,6 +22,8 @@ hdf5:
 - 1.12.2
 occt:
 - '7.7'
+pcl:
+- 1.13.0
 pin_run_as_build:
   boost-cpp:
     max_pin: x.x.x
@@ -37,7 +39,7 @@ qt_main:
 target_platform:
 - linux-aarch64
 vtk:
-- 9.2.2
+- 9.2.5
 xerces_c:
 - '3.2'
 zlib:
