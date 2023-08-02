@@ -1,11 +1,12 @@
 diff --git a/src/Mod/Start/Init.py b/src/Mod/Start/Init.py
-index 094d9698ff..54441751ad 100644
+index ebe8d28707..a9863d4c3f 100644
 --- a/src/Mod/Start/Init.py
 +++ b/src/Mod/Start/Init.py
-@@ -24,3 +24,6 @@
- #*                                                                         *
- #*   Juergen Riegel 2002                                                   *
+@@ -22,3 +22,6 @@
  #***************************************************************************/
+ 
+ # FreeCAD init script of the Start module
 +
 +import os
 +os.environ["QTWEBENGINE_DISABLE_SANDBOX"] = "1"
+\ No newline at end of file
