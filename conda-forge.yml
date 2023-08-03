@@ -1,4 +1,10 @@
+build_platform:
+  linux_aarch64: linux_64
+  osx_arm64: osx_64
 provider:
+  linux: azure
+  linux_aarch64: azure
+  osx: azure
   win: azure
 conda_forge_output_validation: true
 github:
