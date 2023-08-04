@@ -90,7 +90,7 @@ requirements:
 
 test:
     commands:
-        - freecadcmd -t 0  # [unix]
+        - freecadcmd -t 0  # [unix and build_platform == target_platform]
 
 about:
     home: https://www.freecad.org/
