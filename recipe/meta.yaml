@@ -57,11 +57,11 @@ requirements:
         - doxygen  # [build_platform == target_platform]
         - hdf5
         - freetype
-        - libspnav # [linux]
+        - libspnav  # [linux]
         - pcl
         - six
         - ply
-        - matplotlib
+        - matplotlib-base
     run:
         - pyside2
         - vtk
