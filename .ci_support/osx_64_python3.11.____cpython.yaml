@@ -13,7 +13,7 @@ cxx_compiler_version:
 freetype:
 - '2'
 hdf5:
-- 1.12.2
+- 1.14.1
 macos_machine:
 - x86_64-apple-darwin13.4.0
 pcl:
