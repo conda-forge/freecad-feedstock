@@ -35,6 +35,7 @@ requirements:
         - {{ cdt('libxau') }}                # [linux]
         - {{ cdt('libxi-devel') }}           # [linux]
         - cmake
+        - swig
         - ninja
         - sed                                    # [unix]
         - python                                 # [build_platform != target_platform]
@@ -48,7 +49,6 @@ requirements:
         - xerces-c
         - zlib
         - vtk
-        - swig
         - eigen
         - pybind11
         - coin3d
