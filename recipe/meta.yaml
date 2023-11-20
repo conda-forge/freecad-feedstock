@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
 {% set version = "0.21.2" %}
-{% set build_number = 0 %}
+{% set build_number = 1 %}
 {% set build_number = build_number + 500 %}  # [FEATURE_DEBUG]
 
 package:
@@ -35,6 +35,7 @@ requirements:
         - {{ cdt('libxau') }}                # [linux]
         - {{ cdt('libxi-devel') }}           # [linux]
         - cmake
+        - swig
         - ninja
         - sed                                    # [unix]
         - python                                 # [build_platform != target_platform]
@@ -44,11 +45,10 @@ requirements:
         - python
         - qt-main
         - qt-webengine
-        - occt ==7.6.3
+        - occt
         - xerces-c
         - zlib
         - vtk
-        - swig
         - eigen
         - pybind11
         - coin3d
