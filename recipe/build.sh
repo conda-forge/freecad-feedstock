@@ -40,7 +40,7 @@ if [[ ${HOST} =~ .*darwin.* ]]; then
 
   CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
 fi
-cmake -G "Ninja" \
+cmake ${CMAKE_ARGS} -G "Ninja" \
       -D BUILD_WITH_CONDA:BOOL=ON \
       -D CMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -D CMAKE_INSTALL_PREFIX:FILEPATH="$PREFIX" \
