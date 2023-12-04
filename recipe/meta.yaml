@@ -18,6 +18,9 @@ source:
 
 build:
     number: {{ build_number }}
+    script_env:
+        - USE_QT6=1  # [py >= 312]
+        - USE_QT6=0  # [py < 312]
 
 requirements:
     build:
@@ -43,8 +46,11 @@ requirements:
     host:
         - libboost-devel
         - python
-        - qt-main
-        - qt-webengine
+        - qt-main  # [py < 312]
+        - qt-webengine  # [py < 312]
+        - pyside2  # [py < 312]
+        - qt6-main  # [py >= 312]
+        - pyside6  # [py >= 312]
         - occt
         - xerces-c
         - zlib
@@ -52,7 +58,6 @@ requirements:
         - eigen
         - pybind11
         - coin3d
-        - pyside2
         - smesh
         - doxygen  # [build_platform == target_platform]
         - hdf5
@@ -63,17 +68,19 @@ requirements:
         - ply
         - matplotlib-base
     run:
-        - pyside2
+        - qt-main  # [py < 312]
+        - pyside2  # [py < 312]
+        - qt6-main  # [py >= 312]
+        - pyside6  # [py >= 312]
         - vtk
         - {{ pin_compatible('occt', max_pin='x.x.x') }}
-        - qt
+        - {{ pin_compatible('coin3d', max_pin='x.x') }}
+        - {{ pin_compatible('smesh', max_pin='x.x.x') }}
         - xerces-c
         - zlib
         - hdf5
         - python
-        - coin3d
         - pivy
-        - {{ pin_compatible('smesh', max_pin='x.x.x') }}
         - freetype
         - numpy
         - six
