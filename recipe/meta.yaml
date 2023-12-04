@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
-{% set version = "0.21.2" %}
-{% set build_number = 1 %}
+{% set version = "0.22.pre" %}
+{% set build_number = 5 %}
 {% set build_number = build_number + 500 %}  # [FEATURE_DEBUG]
 
 package:
@@ -8,9 +8,9 @@ package:
     version: {{ version }}
 
 source:
-    url: https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/{{ version }}/freecad_source.tar.gz
+    url: https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/freecad_source.tar.gz
     fn: freecad_source_{{ build_number }}.tar.gz
-    sha256: 608ccf38beae82ff751dc44b523b7dd9e1f9d2af9073df19bfbe030cf02012cf
+    # sha256:
     patches:
         - patches/disable_git_info.patch
         - patches/qtwebengine_disable_sandbox.patch  # [linux]
