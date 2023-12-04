@@ -1,5 +1,7 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '10.13'
+MACOSX_SDK_VERSION:
+- '11.0'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -26,6 +28,8 @@ pin_run_as_build:
     max_pin: x.x
 python:
 - 3.8.* *_cpython
+qt6_main:
+- '6.5'
 qt_main:
 - '5.15'
 target_platform:

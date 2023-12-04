@@ -1,7 +1,11 @@
+BUILD:
+- aarch64-conda_cos7-linux-gnu
 MACOSX_SDK_VERSION:
 - '11.0'
+cdt_arch:
+- aarch64
 cdt_name:
-- cos6
+- cos7
 channel_sources:
 - conda-forge
 channel_targets:
@@ -27,13 +31,13 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.11.* *_cpython
+- 3.12.* *_cpython
 qt6_main:
 - '6.5'
 qt_main:
 - '5.15'
 target_platform:
-- linux-64
+- linux-aarch64
 vtk:
 - 9.2.6
 xerces_c:

@@ -1,5 +1,7 @@
 BUILD:
 - aarch64-conda_cos7-linux-gnu
+MACOSX_SDK_VERSION:
+- '11.0'
 cdt_arch:
 - aarch64
 cdt_name:
@@ -30,6 +32,8 @@ pin_run_as_build:
     max_pin: x.x
 python:
 - 3.10.* *_cpython
+qt6_main:
+- '6.5'
 qt_main:
 - '5.15'
 target_platform:
