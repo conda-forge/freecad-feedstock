@@ -67,6 +67,7 @@ requirements:
         - six
         - ply
         - matplotlib-base
+        - yaml-cpp
     run:
         - qt-main  # [py < 312]
         - pyside2  # [py < 312]
@@ -90,6 +91,7 @@ requirements:
         - ply
         - gmsh
         - graphviz
+        - yaml-cpp
     run_constrained:
         - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("11.0") }}   # [osx and arm64]
         - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.13") }}  # [osx and x86_64]
