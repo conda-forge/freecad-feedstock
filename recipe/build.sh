@@ -42,7 +42,9 @@ fi
 if [[ ${HOST} =~ .*darwin.* ]]; then
   CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
 fi
-
+if [[ ${USE_QT6} = "1" ]]; 
+  CMAKE_PLATFORM_FLAGS+=(-DFREECAD_BUILD_WEB=OFF)
+fi
 cmake -G "Ninja" \
       -D BUILD_WITH_CONDA:BOOL=ON \
       -D CMAKE_BUILD_TYPE=${BUILD_TYPE} \
