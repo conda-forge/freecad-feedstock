@@ -13,7 +13,7 @@ cxx_compiler_version:
 freetype:
 - '2'
 hdf5:
-- 1.14.2
+- 1.14.3
 macos_machine:
 - arm64-apple-darwin20.0.0
 occt:
@@ -30,12 +30,8 @@ python:
 - 3.12.* *_cpython
 qt6_main:
 - '6.6'
-qt_main:
-- '5.15'
 target_platform:
 - osx-arm64
-vtk:
-- 9.2.6
 xerces_c:
 - '3.2'
 zlib:
