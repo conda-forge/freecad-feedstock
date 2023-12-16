@@ -1,23 +1,21 @@
-BUILD:
-- aarch64-conda_cos7-linux-gnu
-cdt_arch:
-- aarch64
-cdt_name:
-- cos7
+MACOSX_DEPLOYMENT_TARGET:
+- '11.0'
+MACOSX_SDK_VERSION:
+- '11.0'
 channel_sources:
-- conda-forge
+- conda-forge/label/pivy_rc, conda-forge, defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- gxx
+- clangxx
 cxx_compiler_version:
-- '12'
-docker_image:
-- quay.io/condaforge/linux-anvil-cos7-x86_64
+- '16'
 freetype:
 - '2'
 hdf5:
-- 1.14.2
+- 1.14.3
+macos_machine:
+- arm64-apple-darwin20.0.0
 occt:
 - 7.7.2
 pcl:
@@ -29,13 +27,11 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.8.* *_cpython
-qt_main:
-- '5.15'
+- 3.12.* *_cpython
+qt6_main:
+- '6.6'
 target_platform:
-- linux-aarch64
-vtk:
-- 9.2.6
+- osx-arm64
 xerces_c:
 - '3.2'
 zlib:

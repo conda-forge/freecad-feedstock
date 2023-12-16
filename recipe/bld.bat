@@ -8,6 +8,13 @@ if "%FEATURE_DEBUG%"=="1" (
       echo "#! building debug package !#") else (
       set BUILD_TYPE="Release")
 
+set "CMAKE_PLATFORM_FLAGS="
+
+if "%USE_QT6%"=="1" (
+  set "CMAKE_PLATFORM_FLAGS=%CMAKE_PLATFORM_FLAGS% -DBUILD_WEB=OFF"
+  set "CMAKE_PLATFORM_FLAGS=%CMAKE_PLATFORM_FLAGS% -DBUILD_START=OFF"
+  set "CMAKE_PLATFORM_FLAGS=%CMAKE_PLATFORM_FLAGS% -DFREECAD_QT_VERSION=6")
+)
 
 set "CFLAGS= "
 set "CXXFLAGS= "
@@ -49,6 +56,7 @@ cmake -G "Ninja" ^
       -D LZMA_LIBRARY:FILEPATH="%LIBRARY_PREFIX%/lib/liblzma.lib" ^
       -D COIN3D_LIBRARY_RELEASE:FILEPATH="%LIBRARY_PREFIX%/lib/Coin4.lib" ^
       -D ENABLE_DEVELOPER_TESTS:BOOL=OFF ^
+      %CMAKE_PLATFORM_FLAGS% ^
       ..
 
 if errorlevel 1 exit 1
