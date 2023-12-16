@@ -42,7 +42,7 @@ fi
 if [[ ${HOST} =~ .*darwin.* ]]; then
   CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
 fi
-if [[ ${USE_QT6} = "1" ]]; 
+if [[ ${USE_QT6} = "1" ]]; then
   CMAKE_PLATFORM_FLAGS+=(-DBUILD_WEB=OFF)
   CMAKE_PLATFORM_FLAGS+=(-DBUILD_START=OFF)
 fi
