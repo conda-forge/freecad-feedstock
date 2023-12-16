@@ -3,7 +3,7 @@ MACOSX_DEPLOYMENT_TARGET:
 MACOSX_SDK_VERSION:
 - '11.0'
 channel_sources:
-- conda-forge
+- conda-forge/label/pivy_rc, conda-forge, defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
