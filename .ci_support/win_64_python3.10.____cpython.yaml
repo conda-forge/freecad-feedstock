@@ -7,7 +7,9 @@ cxx_compiler:
 freetype:
 - '2'
 hdf5:
-- 1.14.2
+- 1.14.3
+libboost_devel:
+- '1.82'
 occt:
 - 7.7.2
 pcl:

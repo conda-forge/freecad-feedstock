@@ -11,7 +11,9 @@ cxx_compiler_version:
 freetype:
 - '2'
 hdf5:
-- 1.14.2
+- 1.14.3
+libboost_devel:
+- '1.82'
 macos_machine:
 - arm64-apple-darwin20.0.0
 occt:
