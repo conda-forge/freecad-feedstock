@@ -28,6 +28,7 @@ requirements:
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
         - pybind11                               # [build_platform != target_platform]
         - {{ compiler("cxx") }}
+        - {{ stdlib("c") }}
         - {{ cdt('mesa-libgl-devel') }}      # [linux]
         - {{ cdt('mesa-dri-drivers') }}      # [linux]
         - {{ cdt('mesa-libegl-devel') }}     # [linux]
@@ -96,7 +97,10 @@ requirements:
         - graphviz
         - yaml-cpp
     run_constrained:
+<<<<<<< HEAD
         - {{ stdlib("c") }}
+=======
+>>>>>>> 036373b (Rebuild for libboost 1.84)
 
 test:
     commands:
