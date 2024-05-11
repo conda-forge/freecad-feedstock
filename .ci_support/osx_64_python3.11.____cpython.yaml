@@ -1,5 +1,9 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '10.13'
+c_stdlib:
+- macosx_deployment_target
+c_stdlib_version:
+- '10.13'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -13,13 +17,13 @@ freetype:
 hdf5:
 - 1.14.3
 libboost_devel:
-- '1.82'
+- '1.84'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 occt:
 - 7.7.2
 pcl:
-- 1.13.1
+- 1.14.0
 pin_run_as_build:
   occt:
     max_pin: x.x
