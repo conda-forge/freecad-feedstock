@@ -97,10 +97,7 @@ requirements:
         - graphviz
         - yaml-cpp
     run_constrained:
-<<<<<<< HEAD
         - {{ stdlib("c") }}
-=======
->>>>>>> 036373b (Rebuild for libboost 1.84)
 
 test:
     commands:
