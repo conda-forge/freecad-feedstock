@@ -13,7 +13,6 @@ source:
     # sha256:
     patches:
         - patches/disable_git_info.patch
-        - patches/qtwebengine_disable_sandbox.patch  # [linux]
         - patches/osx_arm64_cross_compiling.patch    # [osx and arm64]
 
 build:
