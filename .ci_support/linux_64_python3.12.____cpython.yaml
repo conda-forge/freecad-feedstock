@@ -39,7 +39,7 @@ qt6_main:
 target_platform:
 - linux-64
 vtk:
-- 9.2.6
+- 9.3.0
 xerces_c:
 - '3.2'
 zip_keys:
