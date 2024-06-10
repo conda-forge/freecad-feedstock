@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
 {% set version = "0.22.pre" %}
-{% set build_number = 5 %}
+{% set build_number = 69 %}
 {% set build_number = build_number + 500 %}  # [FEATURE_DEBUG]
 
 package:
