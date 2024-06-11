@@ -18,8 +18,7 @@ source:
 build:
     number: {{ build_number }}
     script_env:
-        - USE_QT6=1  # [py >= 312]
-        - USE_QT6=0  # [py < 312]
+        - USE_QT6=1
     skip: true  # [py < 312]
 
 requirements:
@@ -50,11 +49,8 @@ requirements:
     host:
         - libboost-devel
         - python
-        - qt-main  # [py < 312]
-        - qt-webengine  # [py < 312]
-        - pyside2  # [py < 312]
-        - qt6-main  # [py >= 312]
-        - pyside6  # [py >= 312]
+        - qt6-main
+        - pyside6
         - occt
         - xerces-c
         - zlib
@@ -73,10 +69,8 @@ requirements:
         - matplotlib-base
         - yaml-cpp
     run:
-        - qt-main  # [py < 312]
-        - pyside2  # [py < 312]
-        - qt6-main  # [py >= 312]
-        - pyside6  # [py >= 312]
+        - qt6-main
+        - pyside6
         - vtk
         - {{ pin_compatible('occt', max_pin='x.x.x') }}
         - {{ pin_compatible('coin3d', max_pin='x.x') }}
