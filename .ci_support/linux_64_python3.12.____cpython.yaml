@@ -3,9 +3,9 @@ MACOSX_SDK_VERSION:
 c_stdlib:
 - sysroot
 c_stdlib_version:
-- '2.12'
+- '2.17'
 cdt_name:
-- cos6
+- cos7
 channel_sources:
 - conda-forge/label/pivy_rc, conda-forge
 channel_targets:
@@ -23,7 +23,7 @@ hdf5:
 libboost_devel:
 - '1.84'
 occt:
-- 7.7.2
+- 7.8.1
 pcl:
 - 1.14.0
 pin_run_as_build:
@@ -39,7 +39,7 @@ qt6_main:
 target_platform:
 - linux-64
 vtk:
-- 9.3.0
+- 9.2.6
 xerces_c:
 - '3.2'
 zip_keys:
