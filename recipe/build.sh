@@ -9,7 +9,7 @@ fi
 
 declare -a CMAKE_PLATFORM_FLAGS
 
-if [[ ${HOST} =~ .*linux.* ]]; then
+if [[ ${HOST} =~ .*linux.* && ${USE_QT6} = "0" ]]; then
   echo "adding hacks for linux"
 
   # temporary workaround for qt-cmake:
@@ -19,7 +19,7 @@ if [[ ${HOST} =~ .*linux.* ]]; then
 fi
 
 
-if [[ ${HOST} =~ .*darwin.* ]]; then
+if [[ ${HOST} =~ .*darwin.* && ${USE_QT6} = "0" ]]; then
   # add hacks for osx here!
   echo "adding hacks for osx"
   
@@ -37,10 +37,13 @@ if [[ ${HOST} =~ .*darwin.* ]]; then
   diskutil eject /Volumes/3Dconnexion\ Software
   CMAKE_PLATFORM_FLAGS+=(-DFREECAD_USE_3DCONNEXION:BOOL=ON)
   CMAKE_PLATFORM_FLAGS+=(-D3DCONNEXIONCLIENT_FRAMEWORK:FILEPATH="/Library/Frameworks/3DconnexionClient.framework")
+fi
 
+if [[ ${HOST} =~ .*darwin.* ]]; then
   CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
 fi
-cmake ${CMAKE_ARGS} -G "Ninja" \
+
+cmake -G "Ninja" \
       -D BUILD_WITH_CONDA:BOOL=ON \
       -D CMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -D CMAKE_INSTALL_PREFIX:FILEPATH="$PREFIX" \
@@ -68,6 +71,7 @@ cmake ${CMAKE_ARGS} -G "Ninja" \
       -D FREECAD_USE_PCL:BOOL=ON \
       -D FREECAD_USE_PCH:BOOL=OFF \
       -D INSTALL_TO_SITEPACKAGES:BOOL=ON \
+      -D QT_HOST_PATH="${PREFIX}" \
       ${CMAKE_PLATFORM_FLAGS[@]} \
       ..
 
