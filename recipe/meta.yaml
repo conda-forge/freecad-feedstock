@@ -69,18 +69,11 @@ requirements:
         - matplotlib-base
         - yaml-cpp
     run:
-        - qt6-main
         - pyside6
         - vtk
-        - {{ pin_compatible('occt', max_pin='x.x.x') }}
-        - {{ pin_compatible('coin3d', max_pin='x.x') }}
-        - {{ pin_compatible('smesh', max_pin='x.x.x') }}
         - xerces-c
-        - zlib
-        - hdf5
         - python
         - pivy
-        - freetype
         - numpy
         - six
         - pyyaml
