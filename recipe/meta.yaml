@@ -58,7 +58,6 @@ requirements:
         - eigen
         - pybind11
         - coin3d
-        - smesh
         - doxygen  # [build_platform == target_platform]
         - hdf5
         - freetype
