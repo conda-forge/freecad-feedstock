@@ -1,7 +1,5 @@
-rm -rf C:/hostedtoolcache/windows/Python
-
-mkdir build
-cd build
+rem this is not needed anymore?
+rem rm -rf C:/hostedtoolcache/windows/Python
 
 if "%FEATURE_DEBUG%"=="1" (
       set BUILD_TYPE="Debug"
@@ -13,7 +11,7 @@ set "CFLAGS= "
 set "CXXFLAGS= "
 set "LDFLAGS_SHARED= ucrt.lib"
 
-cmake -G "Ninja" ^
+cmake -G "Ninja" -B build -S . ^
       -D BUILD_WITH_CONDA:BOOL=ON ^
       -D CMAKE_BUILD_TYPE=%BUILD_TYPE% ^
       -D FREECAD_LIBPACK_USE:BOOL=OFF ^
@@ -49,10 +47,11 @@ cmake -G "Ninja" ^
       -D LZMA_LIBRARY:FILEPATH="%LIBRARY_PREFIX%/lib/liblzma.lib" ^
       -D COIN3D_LIBRARY_RELEASE:FILEPATH="%LIBRARY_PREFIX%/lib/Coin4.lib" ^
       -D ENABLE_DEVELOPER_TESTS:BOOL=OFF ^
-      ..
+      -D FREECAD_USE_SHIBOKEN:BOOL=OFF ^
+      -D FREECAD_USE_PYSIDE:BOOL=OFF
 
 if errorlevel 1 exit 1
-ninja install
+ninja -C build install
 if errorlevel 1 exit 1
 
 rmdir /s /q "%LIBRARY_PREFIX%\doc"
