@@ -52,6 +52,7 @@ requirements:
         - qt6-main
         - pyside6
         - occt
+        - smesh
         - xerces-c
         - zlib
         - vtk
