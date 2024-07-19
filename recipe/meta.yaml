@@ -46,6 +46,7 @@ requirements:
         - sed                                    # [unix]
         - python                                 # [build_platform != target_platform]
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+        - doxygen
     host:
         - libboost-devel
         - python
@@ -58,7 +59,6 @@ requirements:
         - eigen
         - pybind11
         - coin3d
-        - doxygen  # [build_platform == target_platform]
         - hdf5
         - freetype
         - libspnav  # [linux]
@@ -67,21 +67,18 @@ requirements:
         - ply
         - matplotlib-base
         - yaml-cpp
+        - pivy
     run:
-        - pyside6
-        - vtk
-        - xerces-c
         - python
+        - pyside6
         - pivy
         - numpy
         - six
         - pyyaml
-        - libspnav  # [linux]
-        - pcl
         - ply
-        - gmsh
         - graphviz
-        - yaml-cpp
+        # - gmsh
+        # - libspnav  # [linux]
 
 test:
     commands:
