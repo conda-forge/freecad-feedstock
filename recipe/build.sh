@@ -1,6 +1,3 @@
-mkdir -p build
-cd build
-
 if [[ ${FEATURE_DEBUG} = 1 ]]; then
       BUILD_TYPE="Debug"
 else
@@ -43,7 +40,7 @@ if [[ ${HOST} =~ .*darwin.* ]]; then
   CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
 fi
 
-cmake -G "Ninja" \
+cmake -G "Ninja" -B build -S . \
       -D BUILD_WITH_CONDA:BOOL=ON \
       -D CMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -D CMAKE_INSTALL_PREFIX:FILEPATH="$PREFIX" \
@@ -72,12 +69,13 @@ cmake -G "Ninja" \
       -D FREECAD_USE_PCH:BOOL=OFF \
       -D INSTALL_TO_SITEPACKAGES:BOOL=ON \
       -D QT_HOST_PATH="${PREFIX}" \
-      ${CMAKE_PLATFORM_FLAGS[@]} \
-      ..
+      -D FREECAD_USE_SHIBOKEN:BOOL=OFF,
+      -D FREECAD_USE_PYSIDE:BOOL=OFF,
+      ${CMAKE_PLATFORM_FLAGS[@]}
 
 echo "FREECAD_USE_3DCONNEXION=${FREECAD_USE_3DCONNEXION}"
 
-ninja install
+ninja -C build install
 rm -r ${PREFIX}/share/doc/FreeCAD     # smaller size of package!
 mv ${PREFIX}/bin/FreeCAD ${PREFIX}/bin/freecad
 mv ${PREFIX}/bin/FreeCADCmd ${PREFIX}/bin/freecadcmd
