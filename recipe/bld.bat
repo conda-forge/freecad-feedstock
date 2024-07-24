@@ -8,7 +8,7 @@ if "%FEATURE_DEBUG%"=="1" (
 
 
 set "CFLAGS= "
-set "CXXFLAGS= "
+set "CXXFLAGS= -DBOOST_PROGRAM_OPTIONS_DYN_LINK=1"
 set "LDFLAGS_SHARED= ucrt.lib"
 
 cmake -G "Ninja" -B build -S . ^
@@ -40,7 +40,6 @@ cmake -G "Ninja" -B build -S . ^
       -D Python3_EXECUTABLE:FILEPATH="%PREFIX%/python" ^
       -D BUILD_DYNAMIC_LINK_PYTHON:BOOL=ON ^
       -D Boost_NO_BOOST_CMAKE:BOOL=ON ^
-      -D BOOST_PROGRAM_OPTIONS_DYN_LINK=1 ^
       -D FREECAD_USE_PCH:BOOL=OFF ^
       -D FREECAD_USE_CCACHE:BOOL=OFF ^
       -D FREECAD_USE_PCL:BOOL=ON ^
