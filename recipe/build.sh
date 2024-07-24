@@ -43,12 +43,16 @@ fi
 # Ensure the build uses the correct Qt tools
 if [[ "${target_platform}" =~ osx-arm64 && ${USE_QT6} = "1" ]]; then
     rm -f "${PREFIX}/lib/qt6/moc"
+    rm -f "${PREFIX}/lib/qt6/uic"
     ln -s "${BUILD_PREFIX}/lib/qt6/moc" "${PREFIX}/lib/qt6/moc"
+    ln -s "${BUILD_PREFIX}/lib/qt6/uic" "${PREFIX}/lib/qt6/uic"
     
     # Additional debugging information
     echo "Adjusted Qt tools for osx-arm64 with build variant qt6"
     echo "Removed: ${PREFIX}/lib/qt6/moc"
     echo "Linked to: ${BUILD_PREFIX}/lib/qt6/moc"
+    echo "Removed: ${PREFIX}/lib/qt6/uic"
+    echo "Linked to: ${BUILD_PREFIX}/lib/qt6/uic"
 else
     echo "Skipping Qt tools adjustment. Target platform: ${target_platform}, Build variant: $build_variant"
 fi
