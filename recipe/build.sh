@@ -44,9 +44,11 @@ fi
 if [[ "${target_platform}" =~ osx-arm64 && ${USE_QT6} = "1" ]]; then
     rm -f "${PREFIX}/lib/qt6/moc"
     rm -f "${PREFIX}/lib/qt6/uic"
+    rm -f "${PREFIX}/lib/qt6/rcc"
     rm -f "${PREFIX}/lib/qt6/bin/lrelease"
     ln -s "${BUILD_PREFIX}/lib/qt6/moc" "${PREFIX}/lib/qt6/moc"
     ln -s "${BUILD_PREFIX}/lib/qt6/uic" "${PREFIX}/lib/qt6/uic"
+    ln -s "${BUILD_PREFIX}/lib/qt6/rcc" "${PREFIX}/lib/qt6/rcc"
     ln -s "${BUILD_PREFIX}/lib/qt6/bin/lrelease" "${PREFIX}/lib/qt6/bin/lrelease"
     
     # Additional debugging information
@@ -55,6 +57,8 @@ if [[ "${target_platform}" =~ osx-arm64 && ${USE_QT6} = "1" ]]; then
     echo "Linked to: ${BUILD_PREFIX}/lib/qt6/moc"
     echo "Removed: ${PREFIX}/lib/qt6/uic"
     echo "Linked to: ${BUILD_PREFIX}/lib/qt6/uic"
+    echo "Removed: ${PREFIX}/lib/qt6/rcc"
+    echo "Linked to: ${BUILD_PREFIX}/lib/qt6/rcc"
     echo "Removed: ${PREFIX}/lib/qt6/bin/lrelease"
     echo "Linked to: ${BUILD_PREFIX}/lib/qt6/bin/lrelease"
 else
