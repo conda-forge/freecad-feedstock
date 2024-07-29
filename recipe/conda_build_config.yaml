@@ -2,6 +2,13 @@ channel_sources:
   - conda-forge/label/pivy_rc, conda-forge
 channel_targets:
   - freecad qt6
-MACOSX_SDK_VERSION:
-  - '11.0'
-
+MACOSX_SDK_VERSION:   # [osx]
+  - '11.0'            # [osx]
+c_compiler:           # [win]
+  - clang             # [win]
+c_compiler_version:   # [win]
+  - 18                # [win]
+cxx_compiler:         # [win]
+  - clangxx           # [win]
+cxx_compiler_version: # [win]
+  - 18                # [win]
