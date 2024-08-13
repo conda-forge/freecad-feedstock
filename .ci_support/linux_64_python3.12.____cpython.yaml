@@ -25,8 +25,6 @@ occt:
 pcl:
 - 1.14.1
 pin_run_as_build:
-  occt:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
