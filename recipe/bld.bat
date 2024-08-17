@@ -1,3 +1,5 @@
+@echo on
+
 rem this is not needed anymore?
 rem rm -rf C:/hostedtoolcache/windows/Python
 
@@ -49,10 +51,10 @@ cmake -G "Ninja" -B build -S . ^
       -D ENABLE_DEVELOPER_TESTS:BOOL=OFF ^
       -D FREECAD_USE_SHIBOKEN:BOOL=OFF ^
       -D FREECAD_USE_PYSIDE:BOOL=OFF
+if %ERRORLEVEL% neq 0 exit 1
 
-if errorlevel 1 exit 1
 ninja -C build install
-if errorlevel 1 exit 1
+if %ERRORLEVEL% neq 0 exit 1
 
 rmdir /s /q "%LIBRARY_PREFIX%\doc"
 ren %LIBRARY_PREFIX%\bin\FreeCAD.exe freecad.exe
