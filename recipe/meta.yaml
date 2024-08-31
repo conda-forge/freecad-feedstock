@@ -18,7 +18,7 @@ build:
     number: {{ build_number }}
     script_env:
         - USE_QT6=1
-    skip: true  # [py < 312]
+    skip: true  # [py < 312 or unix]
 
 requirements:
     build:
