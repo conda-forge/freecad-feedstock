@@ -17,8 +17,8 @@ source:
 build:
     number: {{ build_number }}
     script_env:
-        - USE_QT6=1
-    skip: true  # [py < 312 or unix]
+        - USE_QT6=1                           # [qt == 6]
+        - USE_QT6=0                           # [qt == 5]
 
 requirements:
     build:
@@ -45,13 +45,16 @@ requirements:
         - sed                                    # [unix]
         - python                                 # [build_platform != target_platform]
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-        - qt6-main                               # [build_platform != target_platform]
+        - qt6-main                               # [qt == 6 and build_platform != target_platform]
+        - qt-main                                # [qt == 5 and build_platform != target_platform]
         - doxygen
     host:
         - libboost-devel
         - python
-        - qt6-main
-        - pyside6
+        - qt6-main                               # [qt == 6]
+        - pyside6                                # [qt == 6]
+        - qt-main                                # [qt == 5]
+        - pyside2                                # [qt == 5]
         - occt
         - smesh
         - xerces-c
@@ -71,7 +74,8 @@ requirements:
         - pivy
     run:
         - python
-        - pyside6
+        - pyside6                                # [qt == 6]
+        - pyside2                                # [qt == 5]
         - pivy
         - numpy
         - six
