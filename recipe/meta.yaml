@@ -21,6 +21,7 @@ source:
 
 build:
     number: {{ build_number }}
+    string: py{{ CONDA_PY }}qt{{ qt }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
     script_env:
     {% if qt|int >=6 %}
         - USE_QT6=1
