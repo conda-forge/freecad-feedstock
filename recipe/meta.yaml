@@ -3,6 +3,11 @@
 {% set build_number = 69 %}
 {% set build_number = build_number + 500 %}  # [FEATURE_DEBUG]
 
+# make linter happy
+{% if qt is undefined %}
+{% set qt = "6" %}
+{% endif %}
+
 package:
     name: {{ name }}
     version: {{ version }}
@@ -16,10 +21,13 @@ source:
 
 build:
     number: {{ build_number }}
-    skip: true  # [qt == "5" and py>311]
     script_env:
-        - USE_QT6=1                           # [qt == "6"]
-        - USE_QT6=0                           # [qt == "5"]
+    {% if qt|int >=6 %}
+        - USE_QT6=1
+    {% else %}
+        - USE_QT6=0
+    skip: true  # [py>311]
+    {% endif %}
 
 requirements:
     build:
@@ -46,16 +54,22 @@ requirements:
         - sed                                    # [unix]
         - python                                 # [build_platform != target_platform]
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-        - qt6-main                               # [qt == "6" and build_platform != target_platform]
-        - qt-main                                # [qt == "5" and build_platform != target_platform]
+      {% if qt|int >=6 %}
+        - qt6-main                               # [build_platform != target_platform]
+      {% else %}
+        - qt-main                                # [build_platform != target_platform]
+      {% endif %}
         - doxygen
     host:
         - libboost-devel
         - python
-        - qt6-main                               # [qt == "6"]
-        - pyside6                                # [qt == "6"]
-        - qt-main                                # [qt == "5"]
-        - pyside2                                # [qt == "5"]
+      {% if qt|int >=6 %}
+        - qt6-main
+        - pyside6
+      {% else %}
+        - qt-main
+        - pyside2
+      {% endif %}
         - occt
         - smesh
         - xerces-c
@@ -75,8 +89,11 @@ requirements:
         - pivy
     run:
         - python
-        - pyside6                                # [qt == "6"]
-        - pyside2                                # [qt == "5"]
+      {% if qt|int >=6 %}
+        - pyside6
+      {% else %}
+        - pyside2
+      {% endif %}
         - pivy
         - numpy
         - six
