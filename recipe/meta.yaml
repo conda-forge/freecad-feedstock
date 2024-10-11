@@ -16,6 +16,7 @@ source:
 
 build:
     number: {{ build_number }}
+    skip: true  # [qt == "5" and py>311]
     script_env:
         - USE_QT6=1                           # [qt == "6"]
         - USE_QT6=0                           # [qt == "5"]
