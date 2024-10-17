@@ -1,15 +1,15 @@
 MACOSX_DEPLOYMENT_TARGET:
-- '11.0'
+- '10.13'
 MACOSX_SDK_VERSION:
 - '11.0'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
-- '11.0'
+- '10.13'
 channel_sources:
 - conda-forge
 channel_targets:
-- freecad qt6
+- conda-forge main
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
@@ -19,9 +19,9 @@ freetype:
 hdf5:
 - 1.14.3
 libboost_devel:
-- '1.84'
+- '1.86'
 macos_machine:
-- arm64-apple-darwin20.0.0
+- x86_64-apple-darwin13.4.0
 occt:
 - 7.8.1
 pcl:
@@ -32,14 +32,10 @@ pin_run_as_build:
     max_pin: x.x
 python:
 - 3.12.* *_cpython
-qt:
-- '6'
 qt6_main:
 - '6.7'
-qt_main:
-- '5.15'
 target_platform:
-- osx-arm64
+- osx-64
 vtk:
 - 9.3.0
 xerces_c:

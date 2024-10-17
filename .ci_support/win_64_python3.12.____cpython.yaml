@@ -3,7 +3,7 @@ c_stdlib:
 channel_sources:
 - conda-forge
 channel_targets:
-- freecad qt6
+- conda-forge main
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
@@ -13,7 +13,7 @@ freetype:
 hdf5:
 - 1.14.3
 libboost_devel:
-- '1.84'
+- '1.86'
 occt:
 - 7.8.1
 pcl:
@@ -23,13 +23,9 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.10.* *_cpython
-qt:
-- '6'
+- 3.12.* *_cpython
 qt6_main:
 - '6.7'
-qt_main:
-- '5.15'
 target_platform:
 - win-64
 vtk:
