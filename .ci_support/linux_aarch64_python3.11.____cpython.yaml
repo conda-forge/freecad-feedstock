@@ -1,27 +1,29 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '11.0'
-MACOSX_SDK_VERSION:
-- '11.0'
+BUILD:
+- aarch64-conda_cos7-linux-gnu
 c_stdlib:
-- macosx_deployment_target
+- sysroot
 c_stdlib_version:
-- '11.0'
+- '2.17'
+cdt_arch:
+- aarch64
+cdt_name:
+- cos7
 channel_sources:
 - conda-forge
 channel_targets:
-- freecad qt6
+- conda-forge main
 cxx_compiler:
-- clangxx
+- gxx
 cxx_compiler_version:
-- '17'
+- '13'
+docker_image:
+- quay.io/condaforge/linux-anvil-cos7-x86_64
 freetype:
 - '2'
 hdf5:
 - 1.14.3
 libboost_devel:
-- '1.84'
-macos_machine:
-- arm64-apple-darwin20.0.0
+- '1.86'
 occt:
 - 7.8.1
 pcl:
@@ -31,18 +33,17 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.10.* *_cpython
-qt:
-- '6'
+- 3.11.* *_cpython
 qt6_main:
 - '6.7'
-qt_main:
-- '5.15'
 target_platform:
-- osx-arm64
+- linux-aarch64
 vtk:
 - 9.3.0
 xerces_c:
 - '3.2'
+zip_keys:
+- - c_stdlib_version
+  - cdt_name
 zlib:
 - '1'
