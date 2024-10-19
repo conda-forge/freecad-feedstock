@@ -8,6 +8,3 @@ cxx_compiler:         # [win]
   - clangxx           # [win]
 cxx_compiler_version: # [win]
   - 18                # [win]
-qt:
-  - "6"
-  - "5"
