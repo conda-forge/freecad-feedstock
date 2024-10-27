@@ -5,9 +5,7 @@ channel_sources:
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- clangxx
-cxx_compiler_version:
-- '18'
+- vs2019
 freetype:
 - '2'
 hdf5:
