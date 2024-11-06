@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
 {% set version = "0.21.2" %}
-{% set build_number = 1 %}
+{% set build_number = 2 %}
 {% set build_number = build_number + 500 %}  # [FEATURE_DEBUG]
 
 package:
@@ -25,6 +25,7 @@ requirements:
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
         - pybind11                               # [build_platform != target_platform]
         - {{ compiler("cxx") }}
+        - {{ stdlib("c") }}
         - {{ cdt('mesa-libgl-devel') }}      # [linux]
         - {{ cdt('mesa-dri-drivers') }}      # [linux]
         - {{ cdt('mesa-libegl-devel') }}     # [linux]
@@ -87,8 +88,6 @@ requirements:
         - gmsh
         - graphviz
     run_constrained:
-        - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("11.0") }}   # [osx and arm64]
-        - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.13") }}  # [osx and x86_64]
 
 test:
     commands:
