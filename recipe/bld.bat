@@ -1,7 +1,7 @@
 @echo on
 
-rem this is not needed anymore?
-rem rm -rf C:/hostedtoolcache/windows/Python
+rem this is needed again
+rm -rf C:/hostedtoolcache/windows/Python
 
 if "%FEATURE_DEBUG%"=="1" (
       set BUILD_TYPE="Debug"
