@@ -1,7 +1,7 @@
 @echo on
 
 rem this is needed again
-rmdir C:/hostedtoolcache/windows/Python
+rmdir /S C:/hostedtoolcache/windows/Python
 
 if "%FEATURE_DEBUG%"=="1" (
       set BUILD_TYPE="Debug"
