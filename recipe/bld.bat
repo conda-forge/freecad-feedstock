@@ -1,7 +1,7 @@
-rm -rf C:/hostedtoolcache/windows/Python
+@echo on
 
-mkdir build
-cd build
+rem this is needed again
+rmdir /S C:/hostedtoolcache/windows/Python
 
 if "%FEATURE_DEBUG%"=="1" (
       set BUILD_TYPE="Debug"
@@ -10,10 +10,10 @@ if "%FEATURE_DEBUG%"=="1" (
 
 
 set "CFLAGS= "
-set "CXXFLAGS= "
+set "CXXFLAGS= -DBOOST_PROGRAM_OPTIONS_DYN_LINK=1"
 set "LDFLAGS_SHARED= ucrt.lib"
 
-cmake -G "Ninja" ^
+cmake -G "Ninja" -B build -S . ^
       -D BUILD_WITH_CONDA:BOOL=ON ^
       -D CMAKE_BUILD_TYPE=%BUILD_TYPE% ^
       -D FREECAD_LIBPACK_USE:BOOL=OFF ^
@@ -22,7 +22,7 @@ cmake -G "Ninja" ^
       -D CMAKE_INCLUDE_PATH:FILEPATH="%LIBRARY_PREFIX%/include" ^
       -D CMAKE_LIBRARY_PATH:FILEPATH="%LIBRARY_PREFIX%/lib" ^
       -D CMAKE_INSTALL_LIBDIR:FILEPATH="%LIBRARY_PREFIX%/lib" ^
-      -D BUILD_FEM_NETGEN:BOOL=ON ^
+      -D BUILD_FEM_NETGEN:BOOL=OFF ^
       -D OCC_INCLUDE_DIR:FILEPATH="%LIBRARY_PREFIX%/include/opencascade" ^
       -D OCC_LIBRARY_DIR:FILEPATH="%LIBRARY_PREFIX%/lib" ^
       -D OCC_LIBRARIES:FILEPATH="%LIBRARY_PREFIX%/lib" ^
@@ -49,11 +49,12 @@ cmake -G "Ninja" ^
       -D LZMA_LIBRARY:FILEPATH="%LIBRARY_PREFIX%/lib/liblzma.lib" ^
       -D COIN3D_LIBRARY_RELEASE:FILEPATH="%LIBRARY_PREFIX%/lib/Coin4.lib" ^
       -D ENABLE_DEVELOPER_TESTS:BOOL=OFF ^
-      ..
+      -D FREECAD_USE_SHIBOKEN:BOOL=OFF ^
+      -D FREECAD_USE_PYSIDE:BOOL=OFF
+if %ERRORLEVEL% neq 0 exit 1
 
-if errorlevel 1 exit 1
-ninja install
-if errorlevel 1 exit 1
+ninja -C build install
+if %ERRORLEVEL% neq 0 exit 1
 
 rmdir /s /q "%LIBRARY_PREFIX%\doc"
 ren %LIBRARY_PREFIX%\bin\FreeCAD.exe freecad.exe
