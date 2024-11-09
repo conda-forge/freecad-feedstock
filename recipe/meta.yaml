@@ -42,8 +42,6 @@ requirements:
         - swig
         - ninja
         - sed                                    # [unix]
-        - python                                 # [build_platform != target_platform]
-        - cross-python_{{ target_platform }}     # [build_platform != target_platform]
         - qt6-main                               # [build_platform != target_platform]
         - noqt5                                  # [build_platform != target_platform]
         - doxygen
