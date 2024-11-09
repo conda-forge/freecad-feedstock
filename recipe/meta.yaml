@@ -16,6 +16,8 @@ source:
 
 build:
     number: {{ build_number }}
+    # debug
+    skip: true  # [not win]
     script_env:
         - USE_QT6=1
 
