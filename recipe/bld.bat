@@ -2,8 +2,10 @@
 
 if "%FEATURE_DEBUG%"=="1" (
       set BUILD_TYPE="Debug"
-      echo "#! building debug package !#") else (
-      set BUILD_TYPE="Release")
+      echo "#! building debug package !#"
+) else (
+      set BUILD_TYPE="Release"
+)
 
 
 set "CFLAGS= "
