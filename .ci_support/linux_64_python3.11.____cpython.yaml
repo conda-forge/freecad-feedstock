@@ -3,7 +3,7 @@ c_stdlib:
 c_stdlib_version:
 - '2.17'
 cdt_name:
-- cos7
+- conda
 channel_sources:
 - conda-forge
 channel_targets:
@@ -38,8 +38,5 @@ vtk:
 - 9.3.1
 xerces_c:
 - '3.2'
-zip_keys:
-- - c_stdlib_version
-  - cdt_name
 zlib:
 - '1'
