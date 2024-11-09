@@ -1,8 +1,5 @@
 @echo on
 
-rem this is needed again
-rmdir /S C:/hostedtoolcache/windows/Python
-
 if "%FEATURE_DEBUG%"=="1" (
       set BUILD_TYPE="Debug"
       echo "#! building debug package !#") else (
@@ -38,6 +35,7 @@ cmake -G "Ninja" -B build -S . ^
       -D BUILD_FLAT_MESH:BOOL=ON ^
       -D BUILD_SHIP:BOOL=OFF ^
       -D OCCT_CMAKE_FALLBACK:BOOL=ON ^
+      -D Python_EXECUTABLE:FILEPATH="%PREFIX%/python" ^
       -D PYTHON_EXECUTABLE:FILEPATH="%PREFIX%/python" ^
       -D Python3_EXECUTABLE:FILEPATH="%PREFIX%/python" ^
       -D BUILD_DYNAMIC_LINK_PYTHON:BOOL=ON ^
