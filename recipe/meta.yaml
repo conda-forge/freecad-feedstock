@@ -46,28 +46,28 @@ requirements:
         - noqt5                                  # [build_platform != target_platform]
         - doxygen
     host:
+        - coin3d
+        - eigen
+        - freetype
+        - hdf5
         - libboost-devel
+        - libspnav          # [linux]
+        - matplotlib-base
+        - noqt5
+        - occt
+        - pcl
+        - pivy
+        - ply
+        - pybind11
+        - pyside6
         - python
         - qt6-main
-        - noqt5
-        - pyside6
-        - occt
-        - smesh
-        - xerces-c
-        - zlib
-        - vtk
-        - eigen
-        - pybind11
-        - coin3d
-        - hdf5
-        - freetype
-        - libspnav  # [linux]
-        - pcl
         - six
-        - ply
-        - matplotlib-base
+        - smesh
+        - vtk
+        - xerces-c
         - yaml-cpp
-        - pivy
+        - zlib
     run:
         - python
         - pyside6
