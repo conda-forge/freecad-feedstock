@@ -69,16 +69,16 @@ requirements:
         - yaml-cpp
         - zlib
     run:
+        - graphviz
+        - gmsh
+        - libspnav  # [linux]
+        - numpy
         - python
         - pyside6
         - pivy
-        - numpy
-        - six
         - pyyaml
         - ply
-        - graphviz
-        - gmsh
-        # - libspnav  # [linux]
+        - six
 
 test:
     commands:
