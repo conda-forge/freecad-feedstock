@@ -1,5 +1,9 @@
 @echo on
 
+:: free up extra disk space, compare
+:: https://github.com/conda-forge/conda-smithy/issues/1949
+rmdir /s /q C:\hostedtoolcache\windows
+
 if "%FEATURE_DEBUG%"=="1" (
       set BUILD_TYPE="Debug"
       echo "#! building debug package !#"
