@@ -3,7 +3,7 @@ c_stdlib:
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge main
+- conda-forge freecad_rc
 cxx_compiler:
 - vs2022
 freetype:
