@@ -17,7 +17,7 @@ cxx_compiler_version:
 freetype:
 - '2'
 hdf5:
-- 1.14.3
+- 1.14.4
 libboost_devel:
 - '1.86'
 macos_machine:
