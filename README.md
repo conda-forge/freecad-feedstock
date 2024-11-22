@@ -201,14 +201,14 @@ Current release info
 Installing freecad
 ==================
 
-Installing `freecad` from the `conda-forge/label/freecad_rc` channel can be achieved by adding `conda-forge/label/freecad_rc` to your channels with:
+Installing `freecad` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
-conda config --add channels conda-forge/label/freecad_rc
+conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge/label/freecad_rc` channel has been enabled, `freecad` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `freecad` can be installed with `conda`:
 
 ```
 conda install freecad
@@ -223,26 +223,26 @@ mamba install freecad
 It is possible to list all of the versions of `freecad` available on your platform with `conda`:
 
 ```
-conda search freecad --channel conda-forge/label/freecad_rc
+conda search freecad --channel conda-forge
 ```
 
 or with `mamba`:
 
 ```
-mamba search freecad --channel conda-forge/label/freecad_rc
+mamba search freecad --channel conda-forge
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search freecad --channel conda-forge/label/freecad_rc
+mamba repoquery search freecad --channel conda-forge
 
 # List packages depending on `freecad`:
-mamba repoquery whoneeds freecad --channel conda-forge/label/freecad_rc
+mamba repoquery whoneeds freecad --channel conda-forge
 
 # List dependencies of `freecad`:
-mamba repoquery depends freecad --channel conda-forge/label/freecad_rc
+mamba repoquery depends freecad --channel conda-forge
 ```
 
 
