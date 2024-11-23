@@ -1,9 +1,13 @@
 BUILD:
 - aarch64-conda_cos7-linux-gnu
+c_stdlib:
+- sysroot
+c_stdlib_version:
+- '2.17'
 cdt_arch:
 - aarch64
 cdt_name:
-- cos7
+- conda
 channel_sources:
 - conda-forge
 channel_targets:
@@ -11,9 +15,9 @@ channel_targets:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '12'
+- '13'
 docker_image:
-- quay.io/condaforge/linux-anvil-cos7-x86_64
+- quay.io/condaforge/linux-anvil-x86_64:alma9
 freetype:
 - '2'
 hdf5:
@@ -23,17 +27,15 @@ libboost_devel:
 occt:
 - 7.7.2
 pcl:
-- 1.13.1
+- 1.14.0
 pin_run_as_build:
-  occt:
-    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
 python:
 - 3.10.* *_cpython
 qt_main:
-- '5.15'
+- 5.15.13
 target_platform:
 - linux-aarch64
 vtk:
@@ -41,4 +43,4 @@ vtk:
 xerces_c:
 - '3.2'
 zlib:
-- '1.2'
+- '1'
