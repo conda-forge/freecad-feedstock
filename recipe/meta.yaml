@@ -15,7 +15,7 @@ source:
 
 build:
     number: {{ build_number }}
-    skip: true  # [py < 312]
+    skip: true  # [py > 311]
 
 requirements:
     build:
