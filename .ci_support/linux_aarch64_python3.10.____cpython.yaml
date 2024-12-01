@@ -1,11 +1,7 @@
-BUILD:
-- aarch64-conda_cos7-linux-gnu
 c_stdlib:
 - sysroot
 c_stdlib_version:
 - '2.17'
-cdt_arch:
-- aarch64
 cdt_name:
 - conda
 channel_sources:
@@ -23,11 +19,11 @@ freetype:
 hdf5:
 - 1.14.3
 libboost_devel:
-- '1.82'
+- '1.84'
 occt:
-- 7.7.2
+- 7.8.1
 pcl:
-- 1.14.0
+- 1.14.1
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -35,11 +31,11 @@ pin_run_as_build:
 python:
 - 3.10.* *_cpython
 qt_main:
-- 5.15.13
+- '5.15'
 target_platform:
 - linux-aarch64
 vtk:
-- 9.2.6
+- 9.3.0
 xerces_c:
 - '3.2'
 zlib:
