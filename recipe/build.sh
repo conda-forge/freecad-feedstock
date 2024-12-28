@@ -1,3 +1,5 @@
+USE_QT6="1"
+
 if [[ ${FEATURE_DEBUG} = 1 ]]; then
       BUILD_TYPE="Debug"
 else
