@@ -1,0 +1,34 @@
+c_stdlib:
+- vs
+channel_sources:
+- conda-forge
+channel_targets:
+- conda-forge main
+cxx_compiler:
+- vs2022
+freetype:
+- '2'
+hdf5:
+- 1.14.3
+libboost_devel:
+- '1.86'
+occt:
+- 7.8.1
+pcl:
+- 1.14.1
+pin_run_as_build:
+  python:
+    min_pin: x.x
+    max_pin: x.x
+python:
+- 3.11.* *_cpython
+qt6_main:
+- '6.7'
+target_platform:
+- win-64
+vtk:
+- 9.3.1
+xerces_c:
+- '3.2'
+zlib:
+- '1'
