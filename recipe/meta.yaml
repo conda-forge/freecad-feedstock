@@ -65,6 +65,7 @@ requirements:
         - smesh
         - vtk
         - xerces-c
+        - xorg-libx11
         - yaml-cpp
         - zlib
     run:
