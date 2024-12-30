@@ -63,7 +63,7 @@ requirements:
         - qt6-main
         - six
         - smesh
-        - tbb  # [win]
+        - tbb-devel  # [win]
         - vtk
         - xerces-c
         - xorg-xproto   # [linux]
