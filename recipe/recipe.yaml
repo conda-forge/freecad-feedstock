@@ -16,9 +16,12 @@ source:
       - if: osx and arm64
         then:
           - patches/osx_arm64_cross_compiling.patch
+      - patches/py313.patch
 
 build:
   number: ${{ build_number }}
+  skip:
+    - if: match(python, "!=3.13")
 
 requirements:
   build:
