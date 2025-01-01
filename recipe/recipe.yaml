@@ -59,6 +59,9 @@ requirements:
     - if: linux
       then:
         - libspnav
+    - if: win
+      then:
+        - tbb-devel
     - coin3d
     - eigen
     - freetype
