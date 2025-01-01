@@ -12,6 +12,7 @@ source:
     sha256: b5af251615eeab3905b2aa5fbd432cf90c57b86f9ba2a50ca23c9cc1703f81d9
     patches:
         - patches/osx_arm64_cross_compiling.patch    # [osx and arm64]
+        - patches/py313.patch
 
 build:
     number: {{ build_number }}
