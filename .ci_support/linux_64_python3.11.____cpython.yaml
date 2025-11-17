@@ -23,7 +23,7 @@ libboost_devel:
 occt:
 - 7.8.1
 pcl:
-- 1.15.0
+- 1.15.1
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -35,8 +35,8 @@ qt6_main:
 target_platform:
 - linux-64
 vtk:
-- 9.3.1
+- 9.5.1
 xerces_c:
-- '3.2'
+- '3.3'
 zlib:
 - '1'
