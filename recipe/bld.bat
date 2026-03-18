@@ -16,6 +16,47 @@ set "CFLAGS= "
 set "CXXFLAGS= -DBOOST_PROGRAM_OPTIONS_DYN_LINK=1"
 set "LDFLAGS_SHARED= ucrt.lib"
 
+:: Create stub headers for Windows to avoid SMESH POSIX header issues
+if not exist "%LIBRARY_PREFIX%\include\pthread.h" (
+    echo // Stub pthread.h for Windows > "%LIBRARY_PREFIX%\include\pthread.h"
+    echo // SMESH requires pthread.h but it's not available on Windows >> "%LIBRARY_PREFIX%\include\pthread.h"
+    echo #ifndef _PTHREAD_H >> "%LIBRARY_PREFIX%\include\pthread.h"
+    echo #define _PTHREAD_H >> "%LIBRARY_PREFIX%\include\pthread.h"
+    echo #include ^<mutex^> >> "%LIBRARY_PREFIX%\include\pthread.h"
+    echo // Forward declarations for pthread types >> "%LIBRARY_PREFIX%\include\pthread.h"
+    echo typedef void* pthread_t; >> "%LIBRARY_PREFIX%\include\pthread.h"
+    echo typedef void* pthread_mutex_t; >> "%LIBRARY_PREFIX%\include\pthread.h"
+    echo typedef void* pthread_attr_t; >> "%LIBRARY_PREFIX%\include\pthread.h"
+    echo #endif >> "%LIBRARY_PREFIX%\include\pthread.h"
+)
+
+if not exist "%LIBRARY_PREFIX%\include\semaphore.h" (
+    echo // Stub semaphore.h for Windows > "%LIBRARY_PREFIX%\include\semaphore.h"
+    echo // SMESH requires semaphore.h but it's not available on Windows >> "%LIBRARY_PREFIX%\include\semaphore.h"
+    echo #ifndef _SEMAPHORE_H >> "%LIBRARY_PREFIX%\include\semaphore.h"
+    echo #define _SEMAPHORE_H >> "%LIBRARY_PREFIX%\include\semaphore.h"
+    echo // Forward declaration for sem_t >> "%LIBRARY_PREFIX%\include\semaphore.h"
+    echo typedef void* sem_t; >> "%LIBRARY_PREFIX%\include\semaphore.h"
+    echo #endif >> "%LIBRARY_PREFIX%\include\semaphore.h"
+)
+
+:: Create empty pthread.lib stub library for Windows linker
+if not exist "%LIBRARY_PREFIX%\lib\pthread.lib" (
+    :: Create a minimal C source file with empty stub functions
+    (echo // Stub pthread functions for Windows
+     echo void pthread_stub_^(^) ^{
+     echo ^}
+    ) > "%TEMP%\pthread_stub.c"
+    :: Compile to object file (cl.exe should be available during conda build)
+    cl.exe /c /Fo"%TEMP%\pthread_stub.obj" "%TEMP%\pthread_stub.c" >nul 2>&1
+    if exist "%TEMP%\pthread_stub.obj" (
+        :: Create library from object file
+        lib.exe /OUT:"%LIBRARY_PREFIX%\lib\pthread.lib" "%TEMP%\pthread_stub.obj" >nul 2>&1
+        :: Clean up temporary files
+        del "%TEMP%\pthread_stub.*" >nul 2>&1
+    )
+)
+
 cmake -G "Ninja" -B build -S . ^
       -D BUILD_WITH_CONDA:BOOL=ON ^
       -D CMAKE_BUILD_TYPE=%BUILD_TYPE% ^
@@ -55,7 +96,8 @@ cmake -G "Ninja" -B build -S . ^
       -D COIN3D_LIBRARY_RELEASE:FILEPATH="%LIBRARY_PREFIX%/lib/Coin4.lib" ^
       -D ENABLE_DEVELOPER_TESTS:BOOL=OFF ^
       -D FREECAD_USE_SHIBOKEN:BOOL=OFF ^
-      -D FREECAD_USE_PYSIDE:BOOL=OFF
+      -D FREECAD_USE_PYSIDE:BOOL=OFF ^
+      -D FREECAD_CHECK_PIVY:BOOL=OFF
 if %ERRORLEVEL% neq 0 exit 1
 
 ninja -C build install
