@@ -1,0 +1,128 @@
+# Rattler-build recipe (conda recipe v1 / CEP 13 style)
+# Build: rattler-build build -m ../conda_build_config.yaml .
+# See: https://rattler.build/latest/converting_from_conda_build/
+
+context:
+  name: freecad
+  version: "1.1.0"
+  sha256: 3d041561aa129755eea51dfc0e1cdf43f2623ab06538e0860a91dbef1ae433d7
+  # Increment for rebuilds of the same version. Optional: set FEATURE_DEBUG=1 and bump in CI for +500 if needed.
+  build_number: 0
+
+package:
+  name: ${{ name }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/FreeCAD/FreeCAD/releases/download/${{ version }}/freecad_source_${{ version }}.tar.gz
+  sha256: ${{ sha256 }}
+  patches:
+    - if: osx and arm64
+      then:
+        - patches/osx_arm64_cross_compiling.patch
+
+build:
+  number: ${{ build_number }}
+  # Default: build.sh (Unix) / build.bat (Windows) next to this file
+  script: build
+  env:
+    USE_QT6: "1"
+
+requirements:
+  build:
+    - if: build_platform != target_platform
+      then:
+        - python
+        - cross-python_${{ target_platform }}
+        - pybind11
+        - qt6-main
+        - noqt5
+    - ${{ compiler("cxx") }}
+    - ${{ stdlib("c") }}
+    - cmake
+    - swig
+    - ninja
+    - if: unix
+      then:
+        - sed
+    - doxygen
+  host:
+    - coin3d
+    - eigen
+    - freetype
+    - hdf5
+    - libboost-devel
+    - if: linux
+      then:
+        - libspnav
+    - matplotlib-base
+    - noqt5
+    - occt
+    - pcl
+    - pivy >=0.6.10
+    - ply
+    - pybind11
+    - pyside6
+    - python
+    - qt6-main
+    - six
+    - smesh >=9.9
+    - if: win
+      then:
+        - tbb-devel
+    - vtk
+    - xerces-c
+    - if: linux
+      then:
+        - xorg-xproto
+        - libgl-devel
+        - libegl-devel
+        - xorg-libxi
+    - yaml-cpp
+    - zlib
+  run:
+    - graphviz
+    - gmsh
+    - if: linux
+      then:
+        - libspnav
+    - numpy
+    - python
+    - pyside6
+    - pivy >=0.6.10
+    - pyyaml
+    - ply
+    - six
+    - smesh >=9.9
+
+tests:
+  - if: unix and (build_platform == target_platform)
+    then:
+      script:
+        - freecadcmd -t 0 || true
+
+about:
+  homepage: https://www.freecad.org/
+  license: LGPL-2.1-or-later
+  license_family: LGPL
+  license_file: LICENSE
+  summary: "FreeCAD is a parametric 3D modeler made primarily to design real-life objects of any size."
+  description: |
+    FreeCAD is a general purpose feature-based, parametric 3D modeler for
+    CAD, MCAD, CAx, CAE and PLM, aimed directly at mechanical engineering
+    and product design but also fits a wider range of uses in engineering,
+    such as architecture or other engineering specialties. It is 100% Open
+    Source (LGPL2+ license) and extremely modular, allowing for very
+    advanced extension and customization.
+    FreeCAD is based on OpenCASCADE, a powerful geometry kernel, features an
+    Open Inventor-compliant 3D scene representation model provided by the
+    Coin 3D library, and a broad Python API. The interface is built with Qt.
+    FreeCAD runs exactly the same way on Windows, Mac OSX, BSD and Linux
+    platforms.
+  documentation: https://wiki.freecad.org/Main_Page
+  repository: https://github.com/FreeCAD/FreeCAD
+
+extra:
+  recipe-maintainers:
+    - adrianinsaval
+    - looooo
