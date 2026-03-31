@@ -6,42 +6,13 @@ fi
 
 declare -a CMAKE_PLATFORM_FLAGS
 
-if [[ ${HOST} =~ .*linux.* && ${USE_QT6} = "0" ]]; then
-  echo "adding hacks for linux"
-
-  # temporary workaround for qt-cmake:
-  sed -i 's|_qt5gui_find_extra_libs(EGL.*)|_qt5gui_find_extra_libs(EGL "EGL" "" "")|g' $PREFIX/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake
-  sed -i 's|_qt5gui_find_extra_libs(OPENGL.*)|_qt5gui_find_extra_libs(OPENGL "GL" "" "")|g' $PREFIX/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake
-  CMAKE_PLATFORM_FLAGS+=(-DCMAKE_TOOLCHAIN_FILE="${RECIPE_DIR}/cross-linux.cmake")
-fi
-
-
-if [[ ${HOST} =~ .*darwin.* && ${USE_QT6} = "0" ]]; then
-  # add hacks for osx here!
-  echo "adding hacks for osx"
-  
-  ln -s /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk
-  ln -s /Applications/Xcode.app /Applications/Xcode_11.7.app
-
-  # install space-mouse
-  if [[ ${target_platform} =~ osx-64 ]]; then
-    /usr/bin/curl -o /tmp/3dFW.dmg -L 'https://download.3dconnexion.com/drivers/mac/10-6-6_360DF97D-ED08-4ccf-A55E-0BF905E58476/3DxWareMac_v10-6-6_r3234.dmg'
-  else
-    /usr/bin/curl -o /tmp/3dFW.dmg -L 'https://download.3dconnexion.com/drivers/mac/10-7-0_B564CC6A-6E81-42b0-82EC-418EA823B81A/3DxWareMac_v10-7-0_r3411.dmg'
-  fi
-  hdiutil attach -readonly /tmp/3dFW.dmg
-  sudo installer -package /Volumes/3Dconnexion\ Software/Install\ 3Dconnexion\ software.pkg -target /
-  diskutil eject /Volumes/3Dconnexion\ Software
-  CMAKE_PLATFORM_FLAGS+=(-DFREECAD_USE_3DCONNEXION:BOOL=ON)
-  CMAKE_PLATFORM_FLAGS+=(-D3DCONNEXIONCLIENT_FRAMEWORK:FILEPATH="/Library/Frameworks/3DconnexionClient.framework")
-fi
 
 if [[ ${HOST} =~ .*darwin.* ]]; then
   CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
 fi
 
 # Ensure the build uses the correct Qt tools
-if [[ "${target_platform}" =~ osx-arm64 && ${USE_QT6} = "1" ]]; then
+if [[ "${target_platform}" =~ osx-arm64 ]]; then
     rm -f "${PREFIX}/lib/qt6/moc"
     rm -f "${PREFIX}/lib/qt6/uic"
     rm -f "${PREFIX}/lib/qt6/rcc"

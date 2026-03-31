@@ -25,8 +25,7 @@ build:
   number: ${{ build_number }}
   # Default: build.sh (Unix) / build.bat (Windows) next to this file
   script: build
-  env:
-    USE_QT6: "1"
+  
 
 requirements:
   build:
@@ -52,9 +51,6 @@ requirements:
     - freetype
     - hdf5
     - libboost-devel
-    - if: linux
-      then:
-        - libspnav
     - matplotlib-base
     - noqt5
     - occt
@@ -74,6 +70,7 @@ requirements:
     - xerces-c
     - if: linux
       then:
+        - libspnav
         - xorg-xproto
         - libgl-devel
         - libegl-devel
