@@ -19,70 +19,59 @@ build:
         - USE_QT6=1
 
 requirements:
-    build:
-        - python                                 # [build_platform != target_platform]
-        - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-        - pybind11                               # [build_platform != target_platform]
-        - {{ compiler("cxx") }}
-        - {{ stdlib("c") }}
-        - {{ cdt('mesa-libgl-devel') }}      # [linux]
-        - {{ cdt('mesa-dri-drivers') }}      # [linux]
-        - {{ cdt('mesa-libegl-devel') }}     # [linux]
-        - {{ cdt('libselinux') }}            # [linux]
-        - {{ cdt('libxdamage') }}            # [linux]
-        - {{ cdt('libxfixes') }}             # [linux]
-        - {{ cdt('libxxf86vm') }}            # [linux]
-        - {{ cdt('libxcb') }}                # [linux]
-        - {{ cdt('libxext') }}               # [linux]
-        - {{ cdt('xorg-x11-server-xvfb') }}  # [linux]
-        - {{ cdt('libxau') }}                # [linux]
-        - {{ cdt('libxi-devel') }}           # [linux]
-        - cmake
-        - swig
-        - ninja
-        - sed                                    # [unix]
-        - qt6-main                               # [build_platform != target_platform]
-        - noqt5                                  # [build_platform != target_platform]
-        - doxygen
-        - lark                                   # [build_platform != target_platform]
-    host:
-        - coin3d
-        - eigen
-        - freetype
-        - hdf5
-        - libboost-devel
-        - libspnav          # [linux]
-        - lark              # [build_platform == target_platform]
-        - matplotlib-base
-        - noqt5
-        - occt
-        - pivy >=0.6.10
-        - pcl
-        - ply
-        - pybind11
-        - pyside6
-        - python
-        - qt6-main
-        - six
-        - smesh >=9.9
-        - tbb-devel  # [win]
-        - vtk
-        - xerces-c
-        - xorg-xproto   # [linux]
-        - yaml-cpp
-        - zlib
-    run:
-        - graphviz
-        - gmsh
-        - libspnav  # [linux]
-        - numpy
-        - python
-        - pyside6
-        - pivy >=0.6.10
-        - pyyaml
-        - ply
-        - six
-        - smesh >=9.9
+  build:
+    - python                                     # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}         # [build_platform != target_platform]
+    - pybind11                                   # [build_platform != target_platform]
+    - {{ compiler("cxx") }}
+    - {{ stdlib("c") }}
+    - cmake
+    - swig
+    - ninja
+    - sed                                        # [unix]
+    - qt6-main                                   # [build_platform != target_platform]
+    - noqt5                                      # [build_platform != target_platform]
+    - doxygen
+  host:
+    - coin3d
+    - eigen
+    - freetype
+    - hdf5
+    - libboost-devel
+    - libspnav              # [linux]
+    - matplotlib-base
+    - noqt5
+    - occt
+    - pcl
+    - pivy >=0.6.10
+    - ply
+    - pybind11
+    - pyside6
+    - python
+    - qt6-main
+    - six
+    - smesh >=9.9
+    - tbb-devel      # [win]
+    - vtk
+    - xerces-c
+    - xorg-xproto       # [linux]
+    - yaml-cpp
+    - zlib
+    - libgl-devel                            # [linux]
+    - libegl-devel                           # [linux]
+    - xorg-libxi                             # [linux]
+  run:
+    - graphviz
+    - gmsh
+    - libspnav      # [linux]
+    - numpy
+    - python
+    - pyside6
+    - pivy >=0.6.10
+    - pyyaml
+    - ply
+    - six
+    - smesh >=9.9
 
 test:
     commands:
