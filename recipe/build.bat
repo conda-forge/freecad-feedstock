@@ -11,6 +11,7 @@ if "%FEATURE_DEBUG%"=="1" (
       set BUILD_TYPE="Release"
 )
 
+set PYSIDE_TYPESYSTEMS="%LIBRARY_PREFIX%\share\PySide6\typesystems"
 
 set "CFLAGS= "
 set "CXXFLAGS= -DBOOST_PROGRAM_OPTIONS_DYN_LINK=1"

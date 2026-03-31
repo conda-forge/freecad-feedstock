@@ -11,6 +11,8 @@ if [[ ${HOST} =~ .*darwin.* ]]; then
   CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
 fi
 
+export PYSIDE_TYPESYSTEMS="${PREFIX}/share/PySide6/typesystems"
+
 # Ensure the build uses the correct Qt tools
 if [[ "${target_platform}" =~ osx-arm64 ]]; then
     rm -f "${PREFIX}/lib/qt6/moc"
