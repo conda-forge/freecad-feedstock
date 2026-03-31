@@ -7,7 +7,7 @@ Home: https://www.freecad.org/
 
 Package license: LGPL-2.1-or-later
 
-Summary: FreeCAD is a parametric 3D modeler made primarily to design real-life objects of any size. 
+Summary: FreeCAD is a parametric 3D modeler made primarily to design real-life objects of any size.
 
 Development: https://github.com/FreeCAD/FreeCAD
 
@@ -24,7 +24,6 @@ Open Inventor-compliant 3D scene representation model provided by the
 Coin 3D library, and a broad Python API. The interface is built with Qt.
 FreeCAD runs exactly the same way on Windows, Mac OSX, BSD and Linux
 platforms.
-
 
 Current build status
 ====================
