@@ -11,8 +11,6 @@ if [[ ${HOST} =~ .*darwin.* ]]; then
   CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
 fi
 
-export PYSIDE_TYPESYSTEMS="${PREFIX}/share/PySide6/typesystems"
-
 # Ensure the build uses the correct Qt tools
 if [[ "${target_platform}" =~ osx-arm64 ]]; then
     rm -f "${PREFIX}/lib/qt6/moc"
@@ -39,6 +37,7 @@ else
 fi
 
 cmake -G "Ninja" -B build -S . \
+      -D PYSIDE_TYPESYSTEMS:FILEPATH="$PREFIX/share/PySide6/typesystems" \
       -D BUILD_WITH_CONDA:BOOL=ON \
       -D CMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -D CMAKE_INSTALL_PREFIX:FILEPATH="$PREFIX" \

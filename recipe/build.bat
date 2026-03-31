@@ -11,7 +11,7 @@ if "%FEATURE_DEBUG%"=="1" (
       set BUILD_TYPE="Release"
 )
 
-set PYSIDE_TYPESYSTEMS="%LIBRARY_PREFIX%\share\PySide6\typesystems"
+set
 
 set "CFLAGS= "
 set "CXXFLAGS= -DBOOST_PROGRAM_OPTIONS_DYN_LINK=1"
@@ -59,6 +59,7 @@ if not exist "%LIBRARY_PREFIX%\lib\pthread.lib" (
 )
 
 cmake -G "Ninja" -B build -S . ^
+      -D PYSIDE_TYPESYSTEMS:FILEPATH="%LIBRARY_PREFIX%\share\PySide6\typesystems" ^
       -D BUILD_WITH_CONDA:BOOL=ON ^
       -D CMAKE_BUILD_TYPE=%BUILD_TYPE% ^
       -D FREECAD_LIBPACK_USE:BOOL=OFF ^
