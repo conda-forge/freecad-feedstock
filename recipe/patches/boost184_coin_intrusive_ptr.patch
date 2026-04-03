@@ -1,43 +1,35 @@
---- a/src/Gui/ViewProvider.h
-+++ b/src/Gui/ViewProvider.h
-@@ -64,6 +64,13 @@
- 
- class SoGroup;
- 
-+class SoBase;
-+
-+// Boost >= 1.84: constexpr ~intrusive_ptr needs ADL-visible hooks for the pointer type.
-+// All Coin scene graph nodes inherit SoBase; CoinPtr<T> uses boost::intrusive_ptr<T>.
-+void GuiExport intrusive_ptr_add_ref(SoBase* p);
-+void GuiExport intrusive_ptr_release(SoBase* p);
-+
- 
- namespace Gui
- {
---- a/src/Gui/ViewProvider.cpp
-+++ b/src/Gui/ViewProvider.cpp
-@@ -33,6 +33,7 @@
- #include <Inventor/nodes/SoSeparator.h>
- #include <Inventor/nodes/SoSwitch.h>
- #include <Inventor/nodes/SoTransform.h>
-+#include <Inventor/SoBase.h>
- 
- 
- #include <Base/BoundBox.h>
-@@ -65,6 +66,16 @@
- using namespace std;
- using namespace Gui;
- 
-+void intrusive_ptr_add_ref(SoBase* p)
-+{
-+    p->ref();
-+}
-+
-+void intrusive_ptr_release(SoBase* p)
-+{
-+    p->unref();
-+}
-+
- 
- namespace Gui
- {
+--- a/src/Gui/ViewProvider.h
++++ b/src/Gui/ViewProvider.h
+@@ -64,6 +64,13 @@
+ 
+ class SoGroup;
+ 
++class SoBase;
++
++// Boost >= 1.84: constexpr ~intrusive_ptr needs ADL-visible hooks for the pointer type.
++// All Coin scene graph nodes inherit SoBase; CoinPtr<T> uses boost::intrusive_ptr<T>.
++void GuiExport intrusive_ptr_add_ref(SoBase* p);
++void GuiExport intrusive_ptr_release(SoBase* p);
++
+ 
+ namespace Gui
+ {
+--- a/src/Gui/ViewProvider.cpp
++++ b/src/Gui/ViewProvider.cpp
+@@ -65,6 +65,16 @@
+ using namespace std;
+ using namespace Gui;
+ 
++void intrusive_ptr_add_ref(SoBase* p)
++{
++    p->ref();
++}
++
++void intrusive_ptr_release(SoBase* p)
++{
++    p->unref();
++}
++
+ 
+ namespace Gui
+ {
