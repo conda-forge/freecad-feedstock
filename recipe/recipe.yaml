@@ -17,6 +17,8 @@ source:
   url: https://github.com/FreeCAD/FreeCAD/releases/download/${{ version }}/freecad_source_${{ version }}.tar.gz
   sha256: ${{ sha256 }}
   patches:
+    # Boost >= 1.84: ADL hooks for boost::intrusive_ptr<CoinPtr> (SoBase ref/unref).
+    - patches/boost184_coin_intrusive_ptr.patch
     - if: osx and arm64
       then:
         - patches/osx_arm64_cross_compiling.patch
