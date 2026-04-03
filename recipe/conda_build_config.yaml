@@ -4,5 +4,4 @@ cxx_compiler:         # [win]
   - vs2022            # [win]
 MACOSX_SDK_VERSION:  # [osx]
   - 15.5             # [osx]
-qt6_main:
-  - '6.11'
+

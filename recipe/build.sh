@@ -5,26 +5,6 @@ else
 fi
 
 
-# Patch PySide6 CMake files
-CONFIG_DIR="$PREFIX/lib/cmake/PySide6"
-
-if [ ! -d "$CONFIG_DIR" ]; then
-  echo "ERROR: PySide6 CMake directory not found: $CONFIG_DIR"
-  exit 1
-fi
-
-echo "Patching PySide6 CMake files in $CONFIG_DIR ..."
-
-for f in "$CONFIG_DIR"/PySide6Config*.cmake; do
-  [ -e "$f" ] || continue
-  sed -i.bak \
-    -e 's|\$PREFIX/typesystems|\$PREFIX/share/PySide6/typesystems|g' \
-    -e 's|\$PREFIX/glue|\$PREFIX/share/PySide6/glue|g' \
-    "$f"
-done
-
-echo "Done."
-
 
 declare -a CMAKE_PLATFORM_FLAGS
 

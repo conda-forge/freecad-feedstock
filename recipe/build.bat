@@ -18,29 +18,6 @@ set "CXXFLAGS= -DBOOST_PROGRAM_OPTIONS_DYN_LINK=1"
 set "LDFLAGS_SHARED= ucrt.lib"
 
 
-:: Patch PySide6 CMake files
-$ErrorActionPreference = "Stop"
-
-$dir = "$env:LIBRARY_PREFIX\lib\cmake\PySide6"
-
-if (!(Test-Path $dir)) {
-    Write-Error "PySide6 CMake directory not found: $dir"
-    exit 1
-}
-
-Write-Host "Patching PySide6 CMake files in $dir ..."
-
-Get-ChildItem "$dir\PySide6Config*.cmake" | ForEach-Object {
-    $content = Get-Content $_.FullName
-
-    $content = $content -replace '\$PREFIX/typesystems', '$PREFIX/share/PySide6/typesystems'
-    $content = $content -replace '\$PREFIX/glue', '$PREFIX/share/PySide6/glue'
-
-    Set-Content -Path $_.FullName -Value $content
-}
-
-Write-Host "Done."
-
 :: Create stub headers for Windows to avoid SMESH POSIX header issues
 if not exist "%LIBRARY_PREFIX%\include\pthread.h" (
     echo // Stub pthread.h for Windows > "%LIBRARY_PREFIX%\include\pthread.h"
