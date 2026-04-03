@@ -20,7 +20,7 @@
  #include <Inventor/nodes/SoSeparator.h>
  #include <Inventor/nodes/SoSwitch.h>
  #include <Inventor/nodes/SoTransform.h>
-+#include <Inventor/nodes/SoBase.h>
++#include <Inventor/SoBase.h>
  
  
  #include <Base/BoundBox.h>
