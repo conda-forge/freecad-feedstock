@@ -29,7 +29,7 @@ pin_run_as_build:
 python:
 - 3.11.* *_cpython
 qt6_main:
-- '6.11'
+- '6.10'
 target_platform:
 - linux-64
 vtk:
