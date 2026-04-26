@@ -37,7 +37,7 @@ qt6_main:
 target_platform:
 - osx-64
 vtk:
-- 9.6.1
+- 9.6.0
 xerces_c:
 - '3.3'
 zlib:
