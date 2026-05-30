@@ -1,3 +1,4 @@
 MACOSX_SDK_VERSION:  # [osx]
   - 15.5             # [osx]
-
+vtk:
+  - 9.6.0
