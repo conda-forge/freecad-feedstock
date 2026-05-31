@@ -1,0 +1,110 @@
+@echo on
+
+:: free up extra disk space, compare
+:: https://github.com/conda-forge/conda-smithy/issues/1949
+rmdir /s /q C:\hostedtoolcache\windows
+
+if "%FEATURE_DEBUG%"=="1" (
+      set BUILD_TYPE="Debug"
+      echo "#! building debug package !#"
+) else (
+      set BUILD_TYPE="Release"
+)
+
+set
+
+set "CFLAGS= "
+set "CXXFLAGS= -DBOOST_PROGRAM_OPTIONS_DYN_LINK=1"
+set "LDFLAGS_SHARED= ucrt.lib"
+
+
+:: Create stub headers for Windows to avoid SMESH POSIX header issues
+if not exist "%LIBRARY_PREFIX%\include\pthread.h" (
+    echo // Stub pthread.h for Windows > "%LIBRARY_PREFIX%\include\pthread.h"
+    echo // SMESH requires pthread.h but it's not available on Windows >> "%LIBRARY_PREFIX%\include\pthread.h"
+    echo #ifndef _PTHREAD_H >> "%LIBRARY_PREFIX%\include\pthread.h"
+    echo #define _PTHREAD_H >> "%LIBRARY_PREFIX%\include\pthread.h"
+    echo #include ^<mutex^> >> "%LIBRARY_PREFIX%\include\pthread.h"
+    echo // Forward declarations for pthread types >> "%LIBRARY_PREFIX%\include\pthread.h"
+    echo typedef void* pthread_t; >> "%LIBRARY_PREFIX%\include\pthread.h"
+    echo typedef void* pthread_mutex_t; >> "%LIBRARY_PREFIX%\include\pthread.h"
+    echo typedef void* pthread_attr_t; >> "%LIBRARY_PREFIX%\include\pthread.h"
+    echo #endif >> "%LIBRARY_PREFIX%\include\pthread.h"
+)
+
+if not exist "%LIBRARY_PREFIX%\include\semaphore.h" (
+    echo // Stub semaphore.h for Windows > "%LIBRARY_PREFIX%\include\semaphore.h"
+    echo // SMESH requires semaphore.h but it's not available on Windows >> "%LIBRARY_PREFIX%\include\semaphore.h"
+    echo #ifndef _SEMAPHORE_H >> "%LIBRARY_PREFIX%\include\semaphore.h"
+    echo #define _SEMAPHORE_H >> "%LIBRARY_PREFIX%\include\semaphore.h"
+    echo // Forward declaration for sem_t >> "%LIBRARY_PREFIX%\include\semaphore.h"
+    echo typedef void* sem_t; >> "%LIBRARY_PREFIX%\include\semaphore.h"
+    echo #endif >> "%LIBRARY_PREFIX%\include\semaphore.h"
+)
+
+:: Create empty pthread.lib stub library for Windows linker
+if not exist "%LIBRARY_PREFIX%\lib\pthread.lib" (
+    :: Create a minimal C source file with empty stub functions
+    (echo // Stub pthread functions for Windows
+     echo void pthread_stub_^(^) ^{
+     echo ^}
+    ) > "%TEMP%\pthread_stub.c"
+    :: Compile to object file (cl.exe should be available during conda build)
+    cl.exe /c /Fo"%TEMP%\pthread_stub.obj" "%TEMP%\pthread_stub.c" >nul 2>&1
+    if exist "%TEMP%\pthread_stub.obj" (
+        :: Create library from object file
+        lib.exe /OUT:"%LIBRARY_PREFIX%\lib\pthread.lib" "%TEMP%\pthread_stub.obj" >nul 2>&1
+        :: Clean up temporary files
+        del "%TEMP%\pthread_stub.*" >nul 2>&1
+    )
+)
+
+cmake -G "Ninja" -B build -S . ^
+      -D BUILD_WITH_CONDA:BOOL=ON ^
+      -D CMAKE_BUILD_TYPE=%BUILD_TYPE% ^
+      -D FREECAD_LIBPACK_USE:BOOL=OFF ^
+      -D CMAKE_INSTALL_PREFIX:FILEPATH="%LIBRARY_PREFIX%" ^
+      -D CMAKE_PREFIX_PATH:FILEPATH="%LIBRARY_PREFIX%" ^
+      -D CMAKE_INCLUDE_PATH:FILEPATH="%LIBRARY_PREFIX%/include" ^
+      -D CMAKE_LIBRARY_PATH:FILEPATH="%LIBRARY_PREFIX%/lib" ^
+      -D CMAKE_INSTALL_LIBDIR:FILEPATH="%LIBRARY_PREFIX%/lib" ^
+      -D BUILD_FEM_NETGEN:BOOL=ON ^
+      -D OCC_INCLUDE_DIR:FILEPATH="%LIBRARY_PREFIX%/include/opencascade" ^
+      -D OCC_LIBRARY_DIR:FILEPATH="%LIBRARY_PREFIX%/lib" ^
+      -D OCC_LIBRARIES:FILEPATH="%LIBRARY_PREFIX%/lib" ^
+      -D FREECAD_USE_OCC_VARIANT="Official Version" ^
+      -D OCC_OCAF_LIBRARIES:FILEPATH="%LIBRARY_PREFIX%/lib" ^
+      -D BUILD_REVERSEENGINEERING:BOOL=ON ^
+      -D USE_BOOST_PYTHON:BOOL=OFF ^
+      -D FREECAD_USE_PYBIND11:BOOL=ON ^
+      -D SMESH_INCLUDE_DIR:FILEPATH="%LIBRARY_PREFIX%/include/smesh" ^
+      -D SMESH_LIBRARY:FILEPATH="%LIBRARY_PREFIX%/lib/SMESH.lib" ^
+      -D FREECAD_USE_EXTERNAL_SMESH:BOOL=ON ^
+      -D FREECAD_USE_EXTERNAL_FMT:BOOL=OFF ^
+      -D BUILD_FLAT_MESH:BOOL=ON ^
+      -D BUILD_SHIP:BOOL=OFF ^
+      -D OCCT_CMAKE_FALLBACK:BOOL=ON ^
+      -D Python_EXECUTABLE:FILEPATH="%PREFIX%/python" ^
+      -D PYTHON_EXECUTABLE:FILEPATH="%PREFIX%/python" ^
+      -D Python3_EXECUTABLE:FILEPATH="%PREFIX%/python" ^
+      -D BUILD_DYNAMIC_LINK_PYTHON:BOOL=ON ^
+      -D Boost_NO_BOOST_CMAKE:BOOL=ON ^
+      -D FREECAD_USE_PCH:BOOL=OFF ^
+      -D FREECAD_RELEASE_PDB:BOOL=OFF ^
+      -D FREECAD_USE_CCACHE:BOOL=OFF ^
+      -D FREECAD_USE_PCL:BOOL=ON ^
+      -D INSTALL_TO_SITEPACKAGES:BOOL=ON ^
+      -D LZMA_LIBRARY:FILEPATH="%LIBRARY_PREFIX%/lib/liblzma.lib" ^
+      -D COIN3D_LIBRARY_RELEASE:FILEPATH="%LIBRARY_PREFIX%/lib/Coin4.lib" ^
+      -D ENABLE_DEVELOPER_TESTS:BOOL=OFF ^
+      -D FREECAD_USE_SHIBOKEN:BOOL=OFF ^
+      -D FREECAD_USE_PYSIDE:BOOL=OFF ^
+      -D FREECAD_CHECK_PIVY:BOOL=OFF
+if %ERRORLEVEL% neq 0 exit 1
+
+ninja -C build install
+if %ERRORLEVEL% neq 0 exit 1
+
+rmdir /s /q "%LIBRARY_PREFIX%\doc"
+ren %LIBRARY_PREFIX%\bin\FreeCAD.exe freecad.exe
+ren %LIBRARY_PREFIX%\bin\FreeCADCmd.exe freecadcmd.exe
