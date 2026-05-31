@@ -7,7 +7,7 @@ context:
   version: "1.1.0"
   sha256: 3d041561aa129755eea51dfc0e1cdf43f2623ab06538e0860a91dbef1ae433d7
   # Increment for rebuilds of the same version. Optional: set FEATURE_DEBUG=1 and bump in CI for +500 if needed.
-  build_number: 0
+  build_number: 1
 
 package:
   name: ${{ name }}

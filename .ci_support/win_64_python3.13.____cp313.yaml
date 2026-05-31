@@ -29,7 +29,7 @@ target_platform:
 tbb_devel:
 - '2022'
 vtk:
-- 9.6.0
+- 9.6.1
 xerces_c:
 - '3.3'
 zlib:
