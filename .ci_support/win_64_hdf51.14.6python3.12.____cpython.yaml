@@ -13,7 +13,7 @@ hdf5:
 libboost_devel:
 - '1.90'
 occt:
-- 7.9.3
+- 8.0.0
 pcl:
 - 1.15.1
 pin_run_as_build:
@@ -29,7 +29,7 @@ target_platform:
 tbb_devel:
 - '2023'
 vtk:
-- 9.6.2
+- 9.7.0
 xerces_c:
 - '3.3'
 zlib:

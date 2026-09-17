@@ -9,7 +9,7 @@ channel_targets:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '14'
+- '15'
 docker_image:
 - quay.io/condaforge/linux-anvil-x86_64:alma10
 freetype:
@@ -19,7 +19,7 @@ hdf5:
 libboost_devel:
 - '1.90'
 occt:
-- 7.9.3
+- 8.0.0
 pcl:
 - 1.15.1
 pin_run_as_build:
@@ -33,7 +33,7 @@ qt6_main:
 target_platform:
 - linux-aarch64
 vtk:
-- 9.6.2
+- 9.7.0
 xerces_c:
 - '3.3'
 zlib:
