@@ -19,6 +19,7 @@ source:
   patches:
     # Boost >= 1.84: ADL hooks for boost::intrusive_ptr<CoinPtr> (SoBase ref/unref).
     - patches/boost184_coin_intrusive_ptr.patch
+    - patches/fix-occt-8-TopTools-ListOfShape-include.patch
     - if: osx and arm64
       then:
         - patches/osx_arm64_cross_compiling.patch

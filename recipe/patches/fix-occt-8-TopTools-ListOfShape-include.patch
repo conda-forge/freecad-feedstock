@@ -1,0 +1,11 @@
+diff --git a/src/Mod/Part/App/FCBRepAlgoAPI_BooleanOperation.h b/src/Mod/Part/App/FCBRepAlgoAPI_BooleanOperation.h
+--- a/src/Mod/Part/App/FCBRepAlgoAPI_BooleanOperation.h
++++ b/src/Mod/Part/App/FCBRepAlgoAPI_BooleanOperation.h
+@@ -28,6 +28,7 @@
+ #ifndef FCREPALGOAPIBOOLEANOPERATION_H
+ #define FCREPALGOAPIBOOLEANOPERATION_H
+ #include <BRepAlgoAPI_BooleanOperation.hxx>
++#include <TopTools_ListOfShape.hxx>
+ #include <Message_ProgressRange.hxx>
+ 
+ class FCBRepAlgoAPIHelper
