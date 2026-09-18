@@ -14,7 +14,7 @@ package:
   version: ${{ version }}
 
 source:
-  url: https://github.com/FreeCAD/FreeCAD/releases/download/weekly-{{ version }}/freecad_source_weekly-{{ version }}.tar.gz
+  url: https://github.com/FreeCAD/FreeCAD/releases/download/weekly-${{ version }}/freecad_source_weekly-${{ version }}.tar.gz
   sha256: ${{ sha256 }}
   patches:
     # Boost >= 1.84: ADL hooks for boost::intrusive_ptr<CoinPtr> (SoBase ref/unref).
