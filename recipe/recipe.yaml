@@ -38,6 +38,8 @@ requirements:
         - pybind11
         - qt6-main
         - noqt5
+        - lark
+
     - ${{ compiler("cxx") }}
     - ${{ stdlib("c") }}
     - cmake
@@ -52,6 +54,7 @@ requirements:
     - eigen
     - freetype
     - hdf5
+    - lark
     - libboost-devel
     - matplotlib-base
     - noqt5
