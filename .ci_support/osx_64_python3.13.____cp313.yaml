@@ -13,7 +13,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '19'
+- '21'
 freetype:
 - '2'
 hdf5:
@@ -23,7 +23,7 @@ libboost_devel:
 macos_machine:
 - x86_64-apple-darwin13.4.0
 occt:
-- 7.9.3
+- 8.0.1
 pcl:
 - 1.15.1
 pin_run_as_build:

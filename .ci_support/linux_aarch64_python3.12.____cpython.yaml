@@ -9,9 +9,9 @@ channel_targets:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '14'
+- '15'
 docker_image:
-- quay.io/condaforge/linux-anvil-x86_64:alma10
+- quay.io/condaforge/linux-anvil-aarch64:alma10
 freetype:
 - '2'
 hdf5:
@@ -19,7 +19,7 @@ hdf5:
 libboost_devel:
 - '1.90'
 occt:
-- 7.9.3
+- 8.0.1
 pcl:
 - 1.15.1
 pin_run_as_build:

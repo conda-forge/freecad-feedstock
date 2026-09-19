@@ -13,7 +13,7 @@ hdf5:
 libboost_devel:
 - '1.90'
 occt:
-- 7.9.3
+- 8.0.1
 pcl:
 - 1.15.1
 pin_run_as_build:
