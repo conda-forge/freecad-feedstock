@@ -53,6 +53,7 @@ requirements:
     - coin3d
     - eigen
     - freetype
+    - gtest
     - hdf5
     - lark
     - libboost-devel
