@@ -23,7 +23,7 @@ libboost_devel:
 macos_machine:
 - x86_64-apple-darwin13.4.0
 occt:
-- 8.0.0
+- 8.0.1
 pcl:
 - 1.15.1
 pin_run_as_build:
