@@ -8,7 +8,10 @@ fi
 
 declare -a CMAKE_PLATFORM_FLAGS
 
+# Qt host tools (moc, uic, rcc) must run on the build machine
+QT_HOST_PREFIX="${PREFIX}"
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
+  QT_HOST_PREFIX="${BUILD_PREFIX}"
   CMAKE_PLATFORM_FLAGS+=(-D FREECAD_CHECK_PYSIDE:BOOL=OFF)
 fi
 
@@ -70,7 +73,7 @@ cmake -G "Ninja" -B build -S . \
       -D FREECAD_USE_PCL:BOOL=ON \
       -D FREECAD_USE_PCH:BOOL=OFF \
       -D INSTALL_TO_SITEPACKAGES:BOOL=ON \
-      -D QT_HOST_PATH="${PREFIX}" \
+      -D QT_HOST_PATH="${QT_HOST_PREFIX}" \
       -D FREECAD_USE_SHIBOKEN:BOOL=OFF \
       -D FREECAD_USE_PYSIDE:BOOL=OFF \
       -D FREECAD_CHECK_PIVY:BOOL=OFF \
