@@ -21,9 +21,6 @@ source:
     - patches/boost184_coin_intrusive_ptr.patch
     # build-time python cannot import target-arch PySide6 when cross compiling
     - patches/cross_compiling_skip_pyside6_import_check.patch
-    - if: osx and arm64
-      then:
-        - patches/osx_arm64_cross_compiling.patch
 
 build:
   number: ${{ build_number }}
