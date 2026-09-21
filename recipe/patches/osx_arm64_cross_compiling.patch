@@ -5,16 +5,16 @@ Date:   Tue Jul 12 13:45:54 2022 +0200
     cross compiling: avoid failing test-program
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 3722f6b1f1..b0994f61d2 100644
+index bbe9e6d..783d3f3 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -13,6 +13,9 @@ if(CCACHE_PROGRAM)
-     set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CCACHE_PROGRAM}")
+@@ -56,6 +56,9 @@ if(FREECAD_USE_CCACHE)
+     endif()
  endif()
  
 +# for cross compiling: https://stackoverflow.com/a/53635241
 +set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
 +
- project(FreeCAD)
- 
- set(PACKAGE_VERSION_NAME "Vulcan")
+ # Version and Package Name are set in the version.json file and propagate to all other
+ # files with version information in them either via CMake or via the sync_version.py
+ # script (in src/Tools/)

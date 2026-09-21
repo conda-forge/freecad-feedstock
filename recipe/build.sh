@@ -8,6 +8,10 @@ fi
 
 declare -a CMAKE_PLATFORM_FLAGS
 
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
+  CMAKE_PLATFORM_FLAGS+=(-D FREECAD_CHECK_PYSIDE:BOOL=OFF)
+fi
+
 
 if [[ ${HOST} =~ .*darwin.* ]]; then
   CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
