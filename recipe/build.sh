@@ -18,6 +18,9 @@ fi
 
 if [[ ${HOST} =~ .*darwin.* ]]; then
   CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
+  # CMake's Darwin platform module prepends the Homebrew prefix to the
+  # system search path; keep packages there out of the build
+  CMAKE_PLATFORM_FLAGS+=(-D "CMAKE_IGNORE_PREFIX_PATH=/opt/homebrew;/usr/local")
 fi
 
 # Ensure the build uses the correct Qt tools
