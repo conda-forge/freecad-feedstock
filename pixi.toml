@@ -5,7 +5,7 @@
 
 [workspace]
 name = "freecad-feedstock"
-version = "2026.9.10"  # conda-smithy version used to generate this file
+version = "2026.9.19"  # conda-smithy version used to generate this file
 description = "Pixi configuration for conda-forge/freecad-feedstock"
 authors = ["@conda-forge/freecad"]
 channels = ["conda-forge"]
