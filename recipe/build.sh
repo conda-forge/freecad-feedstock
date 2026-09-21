@@ -18,7 +18,7 @@ if [[ ${HOST} =~ .*darwin.* ]]; then
 fi
 
 # Ensure the build uses the correct Qt tools
-if [[ "${target_platform}" =~ osx-arm64 ]]; then
+if [[ "${target_platform}" =~ osx-arm64 && "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" ]]; then
     rm -f "${PREFIX}/lib/qt6/moc"
     rm -f "${PREFIX}/lib/qt6/uic"
     rm -f "${PREFIX}/lib/qt6/rcc"
