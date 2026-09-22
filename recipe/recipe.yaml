@@ -58,6 +58,7 @@ requirements:
     - hdf5
     - lark
     - libboost-devel
+    - libharfbuzz-devel
     - matplotlib-base
     - noqt5
     - occt
