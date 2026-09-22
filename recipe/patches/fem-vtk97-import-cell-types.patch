@@ -1,0 +1,98 @@
+From d7bba29475ba03d83ebb46a0629573e005d4be08 Mon Sep 17 00:00:00 2001
+From: Jacob Oursland <jacob.oursland@gmail.com>
+Date: Sun, 20 Sep 2026 01:34:53 -0700
+Subject: [PATCH] FEM: import VTK cell types from vtkCommonDataModel
+
+z88utils reached the cell-type constants through numpy_support, as
+vtk_np.vtkConstants.VTK_*. That only ever worked because numpy_support
+imported vtkConstants for its own use; VTK 9.7 no longer does, so the
+module now fails to import:
+
+  AttributeError: module 'vtkmodules.util.numpy_support' has no attribute
+  'vtkConstants'
+
+The failure is not confined to Z88. TestFemApp imports test_solver_z88 at
+module scope, so the whole FEM test module fails to load, which aborts the
+test run before any test executes.
+
+Import the eight constants used from vtkCommonDataModel, where VTK exposes
+them and where this file already gets vtkCellArray and vtkUnstructuredGrid,
+rather than from the vtkmodules.util.vtkConstants shim. The values are
+identical, so the z88-to-VTK type mapping is unchanged.
+
+Assisted-by: Claude Opus 5 (claude-opus-5)
+---
+ src/Mod/Fem/femsolver/z88/z88utils.py | 53 ++++++++++++++++-----------
+ 1 file changed, 32 insertions(+), 21 deletions(-)
+
+diff --git a/src/Mod/Fem/femsolver/z88/z88utils.py b/src/Mod/Fem/femsolver/z88/z88utils.py
+index c4e2595fcc63..263747a1400c 100644
+--- a/src/Mod/Fem/femsolver/z88/z88utils.py
++++ b/src/Mod/Fem/femsolver/z88/z88utils.py
+@@ -29,7 +29,18 @@
+ import re
+ import numpy as np
+ from vtkmodules.util import numpy_support as vtk_np
+-from vtkmodules.vtkCommonDataModel import vtkCellArray, vtkUnstructuredGrid
++from vtkmodules.vtkCommonDataModel import (
++    vtkCellArray,
++    vtkUnstructuredGrid,
++    VTK_HEXAHEDRON,
++    VTK_LINE,
++    VTK_QUADRATIC_HEXAHEDRON,
++    VTK_QUADRATIC_QUAD,
++    VTK_QUADRATIC_TETRA,
++    VTK_QUADRATIC_TRIANGLE,
++    VTK_TETRA,
++    VTK_TRIANGLE,
++)
+ from vtkmodules.vtkCommonCore import vtkPoints
+ 
+ 
+@@ -145,26 +156,26 @@ def read_nodal_result(path, grid):
+ 
+ # z88 to vtk element type
+ z88_to_vtk_type = {
+-    1: vtk_np.vtkConstants.VTK_HEXAHEDRON,
+-    2: vtk_np.vtkConstants.VTK_LINE,
+-    3: vtk_np.vtkConstants.VTK_QUADRATIC_TRIANGLE,
+-    4: vtk_np.vtkConstants.VTK_LINE,
+-    5: vtk_np.vtkConstants.VTK_LINE,
+-    6: vtk_np.vtkConstants.VTK_TRIANGLE,
+-    7: vtk_np.vtkConstants.VTK_QUADRATIC_QUAD,
+-    8: vtk_np.vtkConstants.VTK_QUADRATIC_QUAD,
+-    9: vtk_np.vtkConstants.VTK_LINE,
+-    10: vtk_np.vtkConstants.VTK_QUADRATIC_HEXAHEDRON,
+-    13: vtk_np.vtkConstants.VTK_LINE,
+-    14: vtk_np.vtkConstants.VTK_QUADRATIC_TRIANGLE,
+-    15: vtk_np.vtkConstants.VTK_QUADRATIC_TRIANGLE,
+-    16: vtk_np.vtkConstants.VTK_QUADRATIC_TETRA,
+-    17: vtk_np.vtkConstants.VTK_TETRA,
+-    18: vtk_np.vtkConstants.VTK_QUADRATIC_TRIANGLE,
+-    20: vtk_np.vtkConstants.VTK_QUADRATIC_QUAD,
+-    23: vtk_np.vtkConstants.VTK_QUADRATIC_QUAD,
+-    24: vtk_np.vtkConstants.VTK_QUADRATIC_TRIANGLE,
+-    25: vtk_np.vtkConstants.VTK_LINE,
++    1: VTK_HEXAHEDRON,
++    2: VTK_LINE,
++    3: VTK_QUADRATIC_TRIANGLE,
++    4: VTK_LINE,
++    5: VTK_LINE,
++    6: VTK_TRIANGLE,
++    7: VTK_QUADRATIC_QUAD,
++    8: VTK_QUADRATIC_QUAD,
++    9: VTK_LINE,
++    10: VTK_QUADRATIC_HEXAHEDRON,
++    13: VTK_LINE,
++    14: VTK_QUADRATIC_TRIANGLE,
++    15: VTK_QUADRATIC_TRIANGLE,
++    16: VTK_QUADRATIC_TETRA,
++    17: VTK_TETRA,
++    18: VTK_QUADRATIC_TRIANGLE,
++    20: VTK_QUADRATIC_QUAD,
++    23: VTK_QUADRATIC_QUAD,
++    24: VTK_QUADRATIC_TRIANGLE,
++    25: VTK_LINE,
+ }
+ 
+ # smesh type string names from type

@@ -1,0 +1,27 @@
+diff --git a/cMake/FindPySide6.cmake b/cMake/FindPySide6.cmake
+index ac5e837..326216c 100644
+--- a/cMake/FindPySide6.cmake
++++ b/cMake/FindPySide6.cmake
+@@ -45,7 +45,9 @@ if(PySide6_FOUND)
+         list(APPEND _pyside6_qtsvgwidgets_consumers BUILD_MATERIAL)
+     endif()
+ 
+-    if(BUILD_GUI AND _pyside6_qtsvgwidgets_consumers)
++    # the check imports PySide6 with the build-time python, which cannot
++    # load target-architecture extension modules when cross compiling
++    if(BUILD_GUI AND _pyside6_qtsvgwidgets_consumers AND FREECAD_CHECK_PYSIDE)
+         execute_process(
+             COMMAND ${Python3_EXECUTABLE} -c "import PySide6.QtSvgWidgets"
+             RESULT_VARIABLE PYSIDE6_QTSVGWIDGETS_IMPORT_FAILED
+diff --git a/cMake/FreeCAD_Helpers/InitializeFreeCADBuildOptions.cmake b/cMake/FreeCAD_Helpers/InitializeFreeCADBuildOptions.cmake
+index 4accf60..71ce371 100644
+--- a/cMake/FreeCAD_Helpers/InitializeFreeCADBuildOptions.cmake
++++ b/cMake/FreeCAD_Helpers/InitializeFreeCADBuildOptions.cmake
+@@ -17,6 +17,7 @@ macro(InitializeFreeCADBuildOptions)
+     option(FREECAD_USE_EXTERNAL_COIN_PIVY "Use system installed Coin and Pivy instead of the bundled versions." OFF)
+     option(FREECAD_USE_FREETYPE "Builds the features using FreeType libs" ON)
+     option(FREECAD_CHECK_PIVY "Check for pivy version using Python at build time" ON)
++    option(FREECAD_CHECK_PYSIDE "Check for PySide6 modules using Python at build time" ON)
+     option(FREECAD_PARALLEL_COMPILE_JOBS "Compilation jobs pool size to fit memory limitations.")
+     option(FREECAD_PARALLEL_LINK_JOBS "Linkage jobs pool size to fit memory limitations.")
+     option(BUILD_WITH_CONDA "Set ON if you build FreeCAD with conda" OFF)
