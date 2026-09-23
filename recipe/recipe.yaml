@@ -4,8 +4,8 @@
 
 context:
   name: freecad
-  version: "2026.09.16"
-  sha256: 1fba830dbb58c67c88222b375d336e721f03e728cdb0392b4080f6ef02fea0c4
+  version: "2026.09.23"
+  sha256: 25f86826e345c8716e2a6cdfa00df7f5baab06d0a360323833b60bc5d66de6a1
   # Increment for rebuilds of the same version. Optional: set FEATURE_DEBUG=1 and bump in CI for +500 if needed.
   build_number: 0
 
